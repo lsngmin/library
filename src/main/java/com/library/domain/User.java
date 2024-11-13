@@ -1,4 +1,4 @@
-package com.library.domain.user;
+package com.library.domain;
 
 
 import lombok.Getter;

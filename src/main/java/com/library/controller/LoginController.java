@@ -4,10 +4,12 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class LoginController {
-
-    @GetMapping("/login")
+    //@GetMapping("/login")
     public String login(){
         return "login";
     }
+
+
+
 
 }
