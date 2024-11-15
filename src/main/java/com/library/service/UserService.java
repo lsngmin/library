@@ -1,9 +1,21 @@
 package com.library.service;
 
 import com.library.domain.User;
+import com.library.exception.UserNotFoundException;
+import com.library.repositories.UserRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public interface UserService {
-
-    // 사용자 아이디로 사용자 정보 조회
-    User getUserByUserID(int userId);
+@Service
+public class UserService {
+    private final UserRepository userRepository;
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+//    public User getUserByUserID(int userId) {
+//        return userRepository.findByUserId(userId)
+//                .orElseThrow(() -> new UserNotFoundException("아이디 또는 비밀번호가 틀렸습니다."));
+//    }
 }

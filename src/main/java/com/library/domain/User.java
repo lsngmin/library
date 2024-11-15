@@ -5,13 +5,14 @@ import lombok.Getter;
 
 import javax.persistence.*;
 
-@Entity @Getter
+@Entity
 @Table
+@Getter
 public class User {
+    @Column
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
-    private int user_id;
+    private int userId;
 
     @Column(nullable = false)
     private String password;

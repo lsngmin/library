@@ -11,15 +11,31 @@
            http://www.springframework.org/schema/mvc
            http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!-- 컴포넌트 스캔을 위한 설정 -->
-    <context:component-scan base-package="com.library"/>
+    <context:component-scan base-package="com.library.controller"/>
+    <context:component-scan base-package="com.library.service"/>
+    <context:component-scan base-package="com.library.repository"/>
 
-    <!-- Spring MVC 활성화 -->
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html;charset=UTF-8</value>
+                        <value>text/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+    </bean>
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
 
     <!-- ViewResolver 설정 -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="prefix" value="/WEB-INF/views/login/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
