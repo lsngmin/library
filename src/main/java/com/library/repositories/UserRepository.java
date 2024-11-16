@@ -7,5 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
-    // user_id로 User 조회
+    // user_id와 password로 User 조회
+    Optional<User> findByUserIdAndPassword(int userId, String password);
 }
