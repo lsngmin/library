@@ -1,26 +1,31 @@
 package com.library.domain;
 
-
-import lombok.Getter;
-
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table
-@Getter
 public class User {
-    @Column
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private int userId;
-
-    @Column(nullable = false)
+    @Column
     private String password;
+    @Column
     private String email;
+    @Column
     private String phone;
+    @Column
     private String birth;
+    @Column
     private String name;
 
+    public int getUserId() {
+        return userId;
+    }
 
-
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 }

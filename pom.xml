@@ -11,24 +11,10 @@
   <properties>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
-    <spring.version>5.3.9</spring.version> <!-- Spring 버전 5.3.25로 수정 -->
+    <spring.version>5.3.9</spring.version>
   </properties>
 
   <dependencies>
-    <!-- Spring ORM -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-orm</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-
-    <!-- Spring Beans -->
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-beans</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-
     <!-- JUnit for Testing -->
     <dependency>
       <groupId>junit</groupId>
@@ -36,99 +22,82 @@
       <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
-
-    <!-- Spring Core -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-core</artifactId>
-      <version>${spring.version}</version>
+      <version>5.3.9</version>
     </dependency>
-
-    <!-- Spring Data JPA -->
-    <dependency>
-      <groupId>org.springframework.data</groupId>
-      <artifactId>spring-data-jpa</artifactId>
-      <version>2.5.7</version> <!-- Spring Data JPA 2.5.7 (compatible with Spring 5.3.25) -->
-    </dependency>
-
-    <!-- Hibernate Core -->
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>5.6.1.Final</version> <!-- Hibernate 5.6.1 (compatible with JDK 11) -->
-    </dependency>
-
-    <!-- MySQL Connector -->
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.28</version> <!-- MySQL Connector/J 8.0.26 (compatible with JDK 11) -->
-    </dependency>
-
-    <!-- AspectJ Weaver -->
-    <dependency>
-      <groupId>org.aspectj</groupId>
-      <artifactId>aspectjweaver</artifactId>
-      <version>1.9.6</version> <!-- AspectJ 1.9.6 (compatible with JDK 11) -->
-    </dependency>
-
-    <!-- Spring JDBC -->
     <dependency>
       <groupId>org.springframework</groupId>
-      <artifactId>spring-jdbc</artifactId>
-      <version>${spring.version}</version>
+      <artifactId>spring-beans</artifactId>
+      <version>5.3.9</version>
     </dependency>
-
-    <!-- commons-dbcp2 2.8.0 (JDK 11 호환) -->
-    <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-dbcp2</artifactId>
-      <version>2.8.0</version>
-    </dependency>
-
-    <!-- Spring Context -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
-      <version>${spring.version}</version>
+      <version>5.3.9</version>
     </dependency>
-
-    <!-- Lombok -->
     <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>1.18.22</version> <!-- Lombok 1.18.22 (compatible with JDK 11) -->
-      <scope>provided</scope>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>5.3.9</version>
     </dependency>
-
-    <!-- Servlet API -->
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>4.0.1</version> <!-- Servlet API 4.0.1 for JDK 11 compatibility -->
-    </dependency>
-
-    <!-- Spring Web MVC -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
-      <version>${spring.version}</version>
+      <version>5.3.9</version> <!-- Spring Web MVC 버전 설정 -->
     </dependency>
-
-    <!-- JPA API -->
     <dependency>
-      <groupId>javax.persistence</groupId>
-      <artifactId>javax.persistence-api</artifactId>
-      <version>2.2</version> <!-- JPA 2.2 -->
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-entitymanager</artifactId>
+      <version>5.5.7.Final</version>
     </dependency>
-
-    <!-- Tomcat JDBC -->
     <dependency>
-      <groupId>org.apache.tomcat</groupId>
-      <artifactId>tomcat-jdbc</artifactId>
-      <version>9.0.56</version> <!-- Tomcat JDBC 9.0.56 (compatible with JDK 11) -->
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.26</version>
     </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>5.3.9</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.xml.bind</groupId>
+      <artifactId>jaxb-api</artifactId>
+      <version>2.3.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-orm</artifactId>
+      <version>5.3.9</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.data</groupId>
+      <artifactId>spring-data-jpa</artifactId>
+      <version>2.4.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis</artifactId>
+      <version>3.5.7</version>
+    </dependency>
+    <dependency>
+      <groupId>org.mybatis</groupId>
+      <artifactId>mybatis-spring</artifactId>
+      <version>1.3.2</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-dbcp</groupId>
+      <artifactId>commons-dbcp</artifactId>
+      <version>1.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j-impl</artifactId>
+      <version>2.12.1</version>
 
+    </dependency>
   </dependencies>
 
   <build>

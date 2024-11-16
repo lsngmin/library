@@ -3,7 +3,6 @@ package com.library.service;
 import com.library.domain.User;
 import com.library.exception.UserNotFoundException;
 import com.library.repositories.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
