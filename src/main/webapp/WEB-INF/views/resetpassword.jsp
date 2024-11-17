@@ -207,25 +207,20 @@
 <div class="container">
     <div class="login-form">
         <h2>강릉대학교 통합도서관</h2>
-        <p class="login-title">로그인이 필요합니다</p>
+        <p class="login-title">비밀번호 재발급</p>
         <form action="/login" method="POST">
             <div class="input-group">
                 <label class="input-label">아이디</label>
                 <input type="text" class="input-field" placeholder="아이디를 입력해 주세요" name="userId", value="${savedUserId}">
             </div>
             <div class="input-group">
-                <label class="input-label">비밀번호</label>
+                <label class="input-label">생년월일</label>
                 <div class="password-wrapper">
                     <input type="password" class="input-field" placeholder="비밀번호를 입력해 주세요" name="password">
                     <span class="material-icons password-toggle">visibility_off</span>
                 </div>
             </div>
-            <div class="input-group">
-                <input type="checkbox" id="saveId" name="saveId" ${savedUserId != null ? 'checked' : ''}>
-                <label for="saveId">아이디 저장</label>
-                <a href="#" style="margin-left: auto; font-size: 13px; color: #666; text-decoration: none;">비밀번호를 잊으셨나요?</a>
-            </div>
-            <button type="submit" class="login-button">로그인</button>
+            <button type="submit" class="login-button">임시 비밀번호 발급</button>
         </form>
     </div>
     <div class="illustration">
