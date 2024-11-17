@@ -11,4 +11,7 @@ public class UserServiceImpl implements UserService {
     public void insertUser(UserVO vo) {
         userDAO.inserUser(vo);
     }
+    public UserVO getLoginUser(UserVO vo) {
+        return userDAO.getLoginUser(vo);
+    }
 }

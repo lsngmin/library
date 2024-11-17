@@ -191,7 +191,7 @@
     <div class="login-form">
         <h2>강릉대학교 통합도서관</h2>
         <p class="login-title">로그인이 필요합니다</p>
-        <form action="login" method="POST">
+        <form action="/login" method="POST">
             <div class="input-group">
                 <label class="input-label">아이디</label>
                 <input type="text" class="input-field" placeholder="아이디를 입력해 주세요" name="userId">
@@ -199,7 +199,7 @@
             <div class="input-group">
                 <label class="input-label">비밀번호</label>
                 <div class="password-wrapper">
-                    <input type="password" class="input-field" placeholder="비밀번호를 입력해 주세요" name="userPw">
+                    <input type="password" class="input-field" placeholder="비밀번호를 입력해 주세요" name="password">
                     <span class="material-icons password-toggle">visibility_off</span>
                 </div>
             </div>

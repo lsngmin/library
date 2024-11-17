@@ -3,7 +3,7 @@ package com.library.user;
 import javax.persistence.Column;
 
 public class UserVO {
-    private int userid;
+    private int userId;
     private String password;
     private String email;
     private String phone;
@@ -51,10 +51,22 @@ public class UserVO {
     }
 
     public int getUserId() {
-        return userid;
+        return userId;
     }
 
     public void setUserId(int userId) {
-        this.userid = userId;
+        this.userId = userId;
+    }
+
+    @Override
+    public String toString() {
+        return "UserVO{" +
+                "userId=" + userId +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", birth='" + birth + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
