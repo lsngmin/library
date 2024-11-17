@@ -13,8 +13,15 @@ public class UserService {
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-//    public User getUserByUserID(int userId) {
-//        return userRepository.findByUserId(userId)
-//                .orElseThrow(() -> new UserNotFoundException("아이디 또는 비밀번호가 틀렸습니다."));
-//    }
+
+    //userId와 password로 사용자 조회
+    public User findUserByIdAndPassword(int userId, String password){
+        return userRepository.findByUserIdAndPassword(userId, password)
+                .orElseThrow(() -> new UserNotFoundException("아이디 또는 비밀번호가 올바르지 않습니다."));
+    }
+
+    // 사용자 삽입
+    public void insertUser(User user) {
+        userRepository.save(user);
+    }
 }
