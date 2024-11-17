@@ -334,31 +334,31 @@
                 <div class="info-row">
                     <div class="info-col">
                         <label class="info-label">이름</label>
-                        <input type="text" class="info-input" value="이승민" readonly>
+                        <input type="text" class="info-input" value="${user.name}" readonly>
                     </div>
                     <div class="info-col">
                         <label class="info-label">학번</label>
-                        <input type="text" class="info-input" value="13204551" readonly>
+                        <input type="text" class="info-input" value="${user.userId}" readonly>
                     </div>
                 </div>
                 <div class="info-row">
                     <div class="info-col birth-section">
                         <label class="info-label">생년월일</label>
                         <div class="birth-inputs">
-                            <input type="text" class="info-input birth" value="99" readonly>
+                            <input type="text" class="info-input birth" value="${user.birth}" readonly>
                             <input type="text" class="info-input birth" value="99" readonly>
                             <input type="text" class="info-input birth" value="9999" readonly>
                         </div>
                     </div>
                     <div class="info-col">
                         <label class="info-label">소속대학</label>
-                        <input type="text" class="info-input" value="공과대학" readonly>
+                        <input type="text" class="info-input" value="{user.}" readonly>
                     </div>
                 </div>
                 <div class="info-row">
                     <div class="info-col">
                         <label class="info-label">전화번호</label>
-                        <input type="text" class="info-input" value="000-0000-0000" style="color: #FF4444;">
+                        <input type="text" class="info-input" value="${user.phone}" style="color: #FF4444;">
                     </div>
                     <div class="info-col">
                         <label class="info-label">소속학과</label>
