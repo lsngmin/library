@@ -3,7 +3,7 @@ package com.library.user;
 import javax.persistence.Column;
 
 public class UserVO {
-    private int userId;
+    private String userId;
     private String password;
     private String email;
     private String phone;
@@ -50,11 +50,11 @@ public class UserVO {
         this.name = name;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

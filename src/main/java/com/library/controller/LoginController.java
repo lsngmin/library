@@ -25,8 +25,10 @@ public class LoginController {
     //로그인 처리
     @PostMapping(value = "/login")
     public String loginUser(UserVO vo, HttpSession session) {
-        if(vo.getUserId() == 0) {
+        String userId = vo.getUserId();
+        if(vo.getUserId() == null || vo.getUserId().equals("")) {
             throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다,");
+
         }
         UserVO user = userService.getLoginUser(vo);
         if (user != null) {
