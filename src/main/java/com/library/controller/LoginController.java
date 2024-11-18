@@ -54,7 +54,7 @@ public class LoginController {
                 cookie.setPath("/");
                 response.addCookie(cookie);
             }
-            return "myinfo";
+            return "redirect:/main";
         } else {
             return "login";
         }
