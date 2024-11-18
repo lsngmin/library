@@ -16,9 +16,8 @@ public class AdminLoginController {
     @Autowired
     private AdminService adminService;
     @GetMapping("/admin")
-    public String getAdminLogin(@ModelAttribute("adminUser") AdminVO vo,
-                                Model model) {
-        return "admin";
+    public String getAdminLogin(@ModelAttribute("adminUser") AdminVO vo, Model model) {
+        return "admin/admin";
     }
     @PostMapping("/admin")
     public String postAdminLoginProcess(AdminVO vo, HttpSession session) {
@@ -29,9 +28,9 @@ public class AdminLoginController {
         AdminVO user = adminService.selectAdmin(vo);
         if(user != null && user.getAdminPassword().equals(vo.getAdminPassword())) {
             session.setAttribute("adminUser", user);
-            return "admindashboard";
+            return "redirect:admindashboard";
         } else {
-            return "admin";
+            return "admin/admin";
         }
     }
 }

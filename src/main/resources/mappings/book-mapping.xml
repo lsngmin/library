@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BookDAO">
+    <insert id="insertBook">
+        INSERT INTO Book (
+        bookCode,
+        bookStatus,
+        bookPage,
+        bookImageSrc,
+        bookName,
+        bookPublisher,
+        bookPublishDate,
+        bookAuthor,
+        bookQuantity,
+        bookPrice,
+        bookCategory,
+        bookLocation,
+        bookDecription
+        ) VALUES (
+        #{bookCode},
+        #{bookStatus},
+        #{bookPage},
+        #{bookImageSrc},
+        #{bookName},
+        #{bookPublisher},
+        #{bookPublishDate},
+        #{bookAuthor},
+        #{bookQuantity},
+        #{bookPrice},
+        #{bookCategory},
+        #{bookLocation},
+        #{bookDecription}
+        );
+    </insert>
+</mapper>

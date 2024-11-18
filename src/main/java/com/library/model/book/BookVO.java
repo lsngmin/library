@@ -12,6 +12,11 @@ public class BookVO {
     private String bookLocation;
     private String bookDecription;
 
+    private String bookStatus;
+    private String bookPage;
+    private String bookImageSrc;
+
+
     public String getBookCode() {
         return bookCode;
     }
