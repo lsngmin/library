@@ -171,7 +171,7 @@
             <img src="/img/hopeImage.png" alt="희망도서 아이콘">
             <p>희망도서</p>
         </a>
-        <a href="notice.jsp" class="menu-item">
+        <a href="notice" class="menu-item">
             <img src="/img/noticeImage.png" alt="공지사항 아이콘">
             <p>공지사항</p>
         </a>
