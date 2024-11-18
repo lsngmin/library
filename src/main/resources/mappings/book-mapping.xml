@@ -34,4 +34,13 @@
         #{bookDecription}
         );
     </insert>
+
+    <select id="selectBookTotal" resultType="int">
+        SELECT COUNT(bookCode) AS totalBooks
+        FROM Book;
+    </select>
+
+    <select id="selectSearchBook" resultType="Book">
+        select bookCode, bookName, bookPublisher, bookAuthor, bookPublishDate from Book where bookCode = #{bookCode};
+    </select>
 </mapper>

@@ -2,7 +2,9 @@ package com.library.model.book;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class BookDAO {
     @Autowired
     private SqlSessionTemplate mybatis;
@@ -18,5 +20,13 @@ public class BookDAO {
     }
     public void deleteBook(BookVO vo) {
         mybatis.delete("BookDAO.deleteBook", vo);
+    }
+
+    public int selectTotalBook() {
+        return mybatis.selectOne("BookDAO.selectBookTotal");
+    }
+
+    public BookVO selectSearchBook(BookVO vo) {
+        return (BookVO) mybatis.selectOne("BookDAO.selectSearchBook", vo);
     }
 }

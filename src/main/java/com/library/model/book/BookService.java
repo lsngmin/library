@@ -5,4 +5,6 @@ public interface BookService {
     BookVO selectBook(BookVO vo);
     void updateBook(BookVO vo);
     void deleteBook(BookVO vo);
+    int selectTotalBook();
+    BookVO selectSearchBook(BookVO vo);
 }

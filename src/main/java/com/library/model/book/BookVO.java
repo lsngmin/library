@@ -11,7 +11,6 @@ public class BookVO {
     private String bookCategory;
     private String bookLocation;
     private String bookDecription;
-
     private String bookStatus;
     private String bookPage;
     private String bookImageSrc;

@@ -1,7 +1,9 @@
 package com.library.model.book;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service("bookService")
 public class BookServiceImpl implements BookService {
     @Autowired
     private BookDAO bookDAO;
@@ -24,4 +26,16 @@ public class BookServiceImpl implements BookService {
     public void deleteBook(BookVO vo) {
         bookDAO.deleteBook(vo);
     }
+
+    @Override
+    public int selectTotalBook() {
+        return bookDAO.selectTotalBook();
+    }
+
+    @Override
+    public BookVO selectSearchBook(BookVO vo) {
+        return (BookVO) bookDAO.selectSearchBook(vo);
+    }
+
+
 }

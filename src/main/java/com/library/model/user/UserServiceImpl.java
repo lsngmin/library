@@ -5,8 +5,11 @@ import org.springframework.stereotype.Service;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
-    @Autowired
-    private UserDAO userDAO;
+    private final UserDAO userDAO;
+
+    public UserServiceImpl(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
 
     public void insertUser(UserVO vo) {
         userDAO.inserUser(vo);
@@ -17,5 +20,10 @@ public class UserServiceImpl implements UserService {
 
     public int getTotalUser() {
         return userDAO.getTotalUser();
+    }
+
+    @Override
+    public UserVO SelectSearchUser(UserVO vo) {
+        return userDAO.selectSearchUser(vo);
     }
 }

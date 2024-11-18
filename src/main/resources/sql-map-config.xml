@@ -11,7 +11,8 @@
     <typeAliases>
         <typeAlias alias="User" type="com.library.model.user.UserVO"/>
         <typeAlias alias="Admin" type="com.library.admin.model.AdminVO"/>
-        <typeAlias alias="Book" type="com.library.admin.model.BookVO"/>
+        <typeAlias alias="Book" type="com.library.model.book.BookVO"/>
+        <typeAlias alias="Rental" type="com.library.rental.model.RentalVO"/>
 
     </typeAliases>
 
@@ -31,5 +32,7 @@
         <mapper resource="mappings/user-mapping.xml"/>
         <mapper resource="mappings/admin-mapping.xml"/>
         <mapper resource="mappings/book-mapping.xml"/>
+        <mapper resource="mappings/rental-mapping.xml"/>
+
     </mappers>
 </configuration>
