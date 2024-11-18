@@ -104,6 +104,12 @@
       <version>4.0.1</version> <!-- 또는 사용하는 서블릿 API 버전에 맞는 버전 -->
       <scope>provided</scope>
     </dependency>
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
   </dependencies>
 
   <build>

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %><!DOCTYPE html>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -48,6 +48,7 @@
         .header-right {
             display: flex;
             align-items: center;
+            gap: 20px;
         }
         .header-right img {
             height: 25px;
@@ -136,8 +137,18 @@
         </a>
     </div>
     <div class="header-right">
-        <img src="/img/userImage.png" alt="사용자 아이콘">
-        <a href="/login">로그인</a>
+        <c:choose>
+            <c:when test="${not empty user}">
+                <!-- 로그인 상태 -->
+                <a href="myInfo">내 정보</a>
+                <a href="logout">로그아웃</a>
+            </c:when>
+            <c:otherwise>
+                <!-- 비로그인 상태 -->
+                <img src="/img/userImage.png" alt="사용자 아이콘">
+                <a href="/login">로그인</a>
+            </c:otherwise>
+        </c:choose>
     </div>
 </header>
 
