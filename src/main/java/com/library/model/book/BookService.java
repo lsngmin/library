@@ -1,6 +1,4 @@
-package com.library.book;
-
-import java.awt.print.Book;
+package com.library.model.book;
 
 public interface BookService {
     void insertBook(BookVO vo);

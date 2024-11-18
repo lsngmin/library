@@ -9,7 +9,8 @@
     </settings>
 
     <typeAliases>
-        <typeAlias alias="User" type="com.library.user.UserVO"/>
+        <typeAlias alias="User" type="com.library.model.user.UserVO"/>
+        <typeAlias alias="Admin" type="com.library.admin.model.AdminVO"/>
     </typeAliases>
 
     <environments default="development">
@@ -26,5 +27,7 @@
 
     <mappers>
         <mapper resource="mappings/user-mapping.xml"/>
+        <mapper resource="mappings/admin-mapping.xml"/>
+
     </mappers>
 </configuration>

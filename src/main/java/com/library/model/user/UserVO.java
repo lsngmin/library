@@ -1,6 +1,4 @@
-package com.library.user;
-
-import javax.persistence.Column;
+package com.library.model.user;
 
 public class UserVO {
     private String userId;

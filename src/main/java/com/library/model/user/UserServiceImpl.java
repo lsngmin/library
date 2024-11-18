@@ -1,4 +1,4 @@
-package com.library.user;
+package com.library.model.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

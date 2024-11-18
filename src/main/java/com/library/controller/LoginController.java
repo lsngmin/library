@@ -1,7 +1,7 @@
 package com.library.controller;
 
-import com.library.user.UserService;
-import com.library.user.UserVO;
+import com.library.model.user.UserService;
+import com.library.model.user.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +36,7 @@ public class LoginController {
     @PostMapping(value = "/login")
     public String loginUser(UserVO vo, HttpSession session, HttpServletResponse response,
                             @RequestParam(value = "saveId", required = false) String saveId) {
+        System.out.println("sssssssssssssssss" + vo.getUserId());
         if(vo.getUserId() == null || vo.getUserId().equals("")) {
             throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다,");
         }

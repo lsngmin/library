@@ -1,4 +1,4 @@
-package com.library.user;
+package com.library.model.user;
 
 public interface UserService {
     void insertUser(UserVO vo);

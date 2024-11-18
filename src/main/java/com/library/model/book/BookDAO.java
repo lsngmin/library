@@ -1,9 +1,7 @@
-package com.library.book;
+package com.library.model.book;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.awt.print.Book;
 
 public class BookDAO {
     @Autowired

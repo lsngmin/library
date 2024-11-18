@@ -1,4 +1,4 @@
-package com.library.book;
+package com.library.model.book;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

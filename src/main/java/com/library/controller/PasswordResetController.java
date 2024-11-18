@@ -1,7 +1,7 @@
 package com.library.controller;
 
-import com.library.user.UserService;
-import com.library.user.UserVO;
+import com.library.model.user.UserService;
+import com.library.model.user.UserVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
