@@ -1,7 +1,12 @@
 package com.library.model.book;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
 
+@Service("bookService")
 public class BookServiceImpl implements BookService {
     @Autowired
     private BookDAO bookDAO;
@@ -24,4 +29,22 @@ public class BookServiceImpl implements BookService {
     public void deleteBook(BookVO vo) {
         bookDAO.deleteBook(vo);
     }
+
+    @Override
+    public BookVO getBookById(String bookCode) {
+        BookVO vo = new BookVO();
+        vo.setBookCode(bookCode);
+        return bookDAO.selectBook(vo);  // 기존 selectBook 메서드 활용
+    }
+
+    @Override
+    public List<BookVO> getBookList() {
+        return bookDAO.getBookList();
+    }
+
+    @Override
+    public void createBookTable() {  // 추가
+        bookDAO.createBookTable();
+    }
+
 }

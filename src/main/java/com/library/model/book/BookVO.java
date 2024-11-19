@@ -96,4 +96,30 @@ public class BookVO {
     public void setBookDecription(String bookDecription) {
         this.bookDecription = bookDecription;
     }
+
+    // 추가할 getter/setter
+    public String getBookStatus() {
+        return bookStatus;
+    }
+
+    public void setBookStatus(String bookStatus) {
+        this.bookStatus = bookStatus;
+    }
+
+    public String getBookPage() {
+        return bookPage;
+    }
+
+    public void setBookPage(String bookPage) {
+        this.bookPage = bookPage;
+    }
+
+    public String getBookImageSrc() {
+        return bookImageSrc;
+    }
+
+    public void setBookImageSrc(String bookImageSrc) {
+        this.bookImageSrc = bookImageSrc;
+    }
+
 }

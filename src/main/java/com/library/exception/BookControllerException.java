@@ -1,4 +1,3 @@
-/*
 package com.library.exception;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -6,7 +5,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class BookControllerException {
-
     @ExceptionHandler(Exception.class)
     public String handleException(Exception e) {
         e.printStackTrace();
@@ -18,4 +16,3 @@ public class BookControllerException {
         return "redirect:/library/adminBookRegister.jsp?error=invalid";
     }
 }
- */

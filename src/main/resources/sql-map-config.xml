@@ -11,7 +11,7 @@
     <typeAliases>
         <typeAlias alias="User" type="com.library.model.user.UserVO"/>
         <typeAlias alias="Admin" type="com.library.admin.model.AdminVO"/>
-        <typeAlias alias="Book" type="com.library.admin.model.BookVO"/>
+        <typeAlias alias="Book" type="com.library.model.book.BookVO"/>
 
     </typeAliases>
 
