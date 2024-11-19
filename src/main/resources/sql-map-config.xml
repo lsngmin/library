@@ -14,6 +14,7 @@
         <typeAlias alias="Book" type="com.library.model.book.BookVO"/>
         <typeAlias alias="Rental" type="com.library.rental.model.RentalVO"/>
 
+
     </typeAliases>
 
     <environments default="development">
