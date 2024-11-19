@@ -6,9 +6,14 @@ public interface BookService {
     BookVO selectBook(BookVO vo);
     void updateBook(BookVO vo);
     void deleteBook(BookVO vo);
+
     void createBookTable();
 
     BookVO getBookById(String bookCode);
 
     List<BookVO> getBookList();
+
+    int selectTotalBook();
+    BookVO selectSearchBook(BookVO vo);
+
 }

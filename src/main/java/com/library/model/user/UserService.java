@@ -6,4 +6,5 @@ public interface UserService {
     UserVO getLoginUser(UserVO vo);
     public int getTotalUser();
 
+    UserVO SelectSearchUser(UserVO vo);
 }

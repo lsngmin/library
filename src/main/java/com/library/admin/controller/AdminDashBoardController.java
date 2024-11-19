@@ -1,6 +1,7 @@
 package com.library.admin.controller;
 
 import com.library.admin.model.AdminVO;
+import com.library.model.book.BookService;
 import com.library.model.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,8 @@ import javax.servlet.http.HttpSession;
 public class AdminDashBoardController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private BookService bookService;
     @GetMapping("/admindashboard")
     public String getAdminDashboard(HttpSession session, Model model) {
 
@@ -24,7 +27,11 @@ public class AdminDashBoardController {
             return "redirect:admin";
         } else {
             int totalUserCount = userService.getTotalUser();
+            int totalBookCount = bookService.selectTotalBook();
+
             model.addAttribute("totalUserCount", totalUserCount);
+            model.addAttribute("totalBookCount", totalBookCount);
+
             return "admin/admindashboard";
         }
     }

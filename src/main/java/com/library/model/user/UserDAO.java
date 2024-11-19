@@ -16,6 +16,9 @@ public class UserDAO{
     }
 
     public int getTotalUser() {
-        return mybatis.selectOne("UserDAO.selectTotalUser");
+        return (int) mybatis.selectOne("UserDAO.selectTotalUser");
+    }
+    public UserVO selectSearchUser(UserVO vo) {
+        return (UserVO) mybatis.selectOne("UserDAO.selectSearchUser", vo);
     }
 }

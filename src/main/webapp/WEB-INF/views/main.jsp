@@ -159,23 +159,23 @@
         <img src="/img/searchImage.png" alt="검색 아이콘" onclick="alert('검색 기능은 준비 중입니다!')"> <!-- 검색 아이콘 -->
     </div>
     <div class="menu-container">
-        <a href="guide.jsp" class="menu-item">
+        <a href="guide" class="menu-item">
             <img src="/img/guideImage.png" alt="이용안내 아이콘">
             <p>이용안내</p>
         </a>
-        <a href="donation.jsp" class="menu-item">
+        <a href="donation" class="menu-item">
             <img src="/img/donationImage.png" alt="도서기증 아이콘">
             <p>도서기증</p>
         </a>
-        <a href="hope.jsp" class="menu-item">
+        <a href="hope" class="menu-item">
             <img src="/img/hopeImage.png" alt="희망도서 아이콘">
             <p>희망도서</p>
         </a>
-        <a href="notice.jsp" class="menu-item">
+        <a href="notice" class="menu-item">
             <img src="/img/noticeImage.png" alt="공지사항 아이콘">
             <p>공지사항</p>
         </a>
-        <a href="popular.jsp" class="menu-item">
+        <a href="popular" class="menu-item">
             <img src="/img/popularImage.png" alt="인기도서 아이콘">
             <p>인기도서</p>
         </a>

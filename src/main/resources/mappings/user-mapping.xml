@@ -12,4 +12,7 @@
     <select id="selectTotalUser" resultType="int">
         SELECT COUNT(userId) AS totalUsers FROM User;
     </select>
+    <select id="selectSearchUser" resultType="User">
+        select * from User where userId=#{userId};
+    </select>
 </mapper>

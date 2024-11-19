@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
+
 @Service("bookService")
 public class BookServiceImpl implements BookService {
     @Autowired
@@ -46,5 +47,15 @@ public class BookServiceImpl implements BookService {
     public void createBookTable() {  // 추가
         bookDAO.createBookTable();
     }
+
+    public int selectTotalBook() {
+        return bookDAO.selectTotalBook();
+    }
+
+    @Override
+    public BookVO selectSearchBook(BookVO vo) {
+        return (BookVO) bookDAO.selectSearchBook(vo);
+    }
+
 
 }

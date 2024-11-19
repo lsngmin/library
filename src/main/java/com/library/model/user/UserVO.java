@@ -7,6 +7,51 @@ public class UserVO {
     private String phone;
     private String birth;
     private String name;
+    private String colleges;
+    private String departments;
+    private String rentalAvailable;
+    private String status;
+    private String reason;
+
+    public String getColleges() {
+        return colleges;
+    }
+
+    public void setColleges(String colleges) {
+        this.colleges = colleges;
+    }
+
+    public String getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(String departments) {
+        this.departments = departments;
+    }
+
+    public String getRentalAvailable() {
+        return rentalAvailable;
+    }
+
+    public void setRentalAvailable(String rentalAvailable) {
+        this.rentalAvailable = rentalAvailable;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
 
     public String getPassword() {
         return password;

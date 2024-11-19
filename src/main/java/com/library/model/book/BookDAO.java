@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
+
 @Repository
 public class BookDAO {
     @Autowired
@@ -35,5 +36,13 @@ public class BookDAO {
     public void createBookTable() {
         mybatis.update("BookDAO.createBookTable");
     }
+
+
+    public int selectTotalBook() {
+        return mybatis.selectOne("BookDAO.selectBookTotal");
+    }
+
+    public BookVO selectSearchBook(BookVO vo) {
+        return (BookVO) mybatis.selectOne("BookDAO.selectSearchBook", vo);
 
 }

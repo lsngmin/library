@@ -6,8 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>도서관 관리 시스템</title>
   <link rel="stylesheet" href="/css/admindashboard/admindashboard.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/js/admindashboard/searchUser.js"></script>
+  <script src="/js/admindashboard/searchBook.js"></script>
+  <script src="/js/admindashboard/rentalExecute.js"></script>
+
+
+
 </head>
 <body>
+<button id="testButton">클릭하세요</button>
 <nav class="main-nav">
   <ul class="left">
     <li><a href="/admindashboard"><img src="/img/admindashboard/home_icon.png" alt="홈 아이콘" class="logout_icon">&nbsp홈</a></li>
@@ -35,7 +43,7 @@
     <div class="icon"><img src="/img/admindashboard/currentBook_icon.png" alt="아이콘" class="info_icon"></div>
     <div class="details">
       <div class="title">현재까지 등록된 도서</div>
-      <div class="number">12,542</div>
+      <div class="number">${totalBookCount}</div>
     </div>
   </div>
   <div class="info-box">
@@ -63,31 +71,34 @@
 <div class="loan-container">
     <h2>도서 대여</h2>
     <p>사용자의 학번과 도서 등록코드를 입력해 주세요</p><br>
+
     <div class="form-group">
-      <label for="student-id">학번</label>
-      <input type="text" id="student-id" placeholder="ex> 20131122">
+      <label for="userId">학번</label>
+      <input type="text" id="userId" name="userId" placeholder="ex> 20131122">
     </div>
+    <button id="search-button" style="display:none;">Submit</button>
+
     <div class="inline-group">
       <div class="form-group">
         <label for="name">이름</label>
         <input type="text" id="name" value="홍길동" disabled>
       </div>
       <div class="form-group">
-        <label for="department">단과대학</label>
-        <input type="text" id="department" value="공과대학" disabled>
+        <label for="colleges">단과대학</label>
+        <input type="text" id="colleges" value="공과대학" disabled>
       </div>
       <div class="form-group">
-        <label for="major">학과</label>
-        <input type="text" id="major" value="소프트웨어학과" disabled>
+        <label for="departments">학과</label>
+        <input type="text" id="departments" value="소프트웨어학과" disabled>
       </div>
     </div>
     <div class="form-group">
-      <label for="available-loans">대출 잔여 수량</label>
-      <input type="text" id="available-loans" value="3" disabled>
+      <label for="rentalAvailable">대출 잔여 수량</label>
+      <input type="text" id="rentalAvailable" value="3" disabled>
     </div>
     <div class="form-group">
-      <label for="loan-possible">대출 가능 여부</label>
-      <input type="text" id="loan-possible" value="불가능" disabled style="border: 1px solid red;">
+      <label for="status">대출 가능 여부</label>
+      <input type="text" id="status" value="불가능" disabled style="border: 1px solid red;">
     </div>
     <div class="form-group">
       <label for="reason">사유</label>
@@ -95,48 +106,50 @@
     </div>
     <div class="inline-group">
       <div class="form-group">
-        <label for="book-code">도서 코드</label>
-        <input type="text" id="book-code" placeholder="도서 코드를 입력하세요...">
+        <label for="bookCode">도서 코드</label>
+        <input type="text" id="bookCode" placeholder="도서 코드를 입력하세요...">
       </div>
       <div class="form-group">
-        <label for="book-title">도서명</label>
-        <input type="text" id="book-title" value="총균쇠" disabled>
+        <label for="bookName">도서명</label>
+        <input type="text" id="bookName" value="총균쇠" disabled>
       </div>
     </div>
     <div class="inline-group">
       <div class="form-group">
-        <label for="author">저자</label>
-        <input type="text" id="author" value="재레드 다이아몬드 지음; 김진준 옮김" disabled>
+        <label for="bookAuthor">저자</label>
+        <input type="text" id="bookAuthor" value="재레드 다이아몬드 지음; 김진준 옮김" disabled>
       </div>
       <div class="form-group">
-        <label for="publisher">출판사</label>
-        <input type="text" id="publisher" value="문학사상" disabled>
+        <label for="bookPublisher">출판사</label>
+        <input type="text" id="bookPublisher" value="문학사상" disabled>
       </div>
       <div class="form-group">
-        <label for="publication-year">출판일</label>
-        <input type="text" id="publication-year" value="2014" disabled>
+        <label for="bookPublishDate">출판일</label>
+        <input type="text" id="bookPublishDate" value="2014" disabled>
       </div>
     </div>
     <div class="inline-group">
       <div class="form-group">
-        <label for="start-date">대출 시작일</label>
-        <input type="text" id="start-date" value="2024 - 10 - 12" disabled>
+        <label for="rentalStartDate">대출 시작일</label>
+        <input type="text" id="rentalStartDate" value="2024 - 10 - 12" disabled>
       </div>
       <div class="form-group">
-        <label for="end-date">대출 종료일</label>
-        <input type="text" id="end-date" value="2024 - 10 - 26" disabled>
+        <label for="rentalEndDate">대출 종료일</label>
+        <input type="text" id="rentalEndDate" value="2024 - 10 - 26" disabled>
       </div>
     </div>
-    <button class="btn-submit">대출 실행</button>
+  <div class="form-group">
+    <button class="btn-submit" id="RentalExecute">대출 실행</button>
   </div>
+</div>
 
 <div class="container">
   <div class="book-return-section">
     <h2>도서 반납</h2>
     <p>사용자의 학번 입력 후 반납할 도서를 체크해 주세요</p>
     <div class="form-group">
-      <label for="student-id">학번</label>
-      <input type="text" id="student-ids" placeholder="ex> 20131122">
+      <label for="student-idss">학번</label>
+      <input type="text" id="student-idss" placeholder="ex> 20131122">
     </div>
     <div class="inline-group">
       <div class="form-group">
@@ -144,11 +157,11 @@
         <input type="text" id="names" value="홍길동" disabled>
       </div>
       <div class="form-group">
-        <label for="department">단과대학</label>
-        <input type="text" id="departments" value="공과대학" disabled>
+        <label for="departments">단과대학</label>
+        <input type="text" id="departmentss" value="공과대학" disabled>
       </div>
       <div class="form-group">
-        <label for="major">학과</label>
+        <label for="majors">학과</label>
         <input type="text" id="majors" value="소프트웨어학과" disabled>
       </div>
     </div>
@@ -221,6 +234,5 @@
     <div class="status-message error">연체중이 아닙니다.</div>
   </div>
 </div>
-
 </body>
 </html>
