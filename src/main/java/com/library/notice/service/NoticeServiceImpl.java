@@ -5,6 +5,8 @@ import com.library.notice.model.NoticeVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class NoticeServiceImpl implements NoticeService {
 
@@ -17,8 +19,13 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
     @Override
-    public NoticeVO selectNotice(NoticeVO vo) {
-        return noticeDAO.selectNotice(vo);
+    public NoticeVO selectNotice(String cnt) {
+        return noticeDAO.selectNotice(cnt);
+    }
+
+    @Override
+    public List<NoticeVO> selectAllNotices() {
+        return noticeDAO.selectAllNotices();
     }
 
     @Override
@@ -27,7 +34,7 @@ public class NoticeServiceImpl implements NoticeService {
     }
 
     @Override
-    public void deleteNotice(NoticeVO vo) {
-        noticeDAO.deleteNotice(vo);
+    public void deleteNotice(String cnt) {
+        noticeDAO.deleteNotice(cnt);
     }
 }

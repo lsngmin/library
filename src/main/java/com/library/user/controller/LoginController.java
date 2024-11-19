@@ -42,6 +42,7 @@ public class LoginController {
         }
         UserVO user = userService.getLoginUser(vo);
         if (user != null && vo.getPassword().equals(user.getPassword())) {
+            session.setAttribute("userId", user.getUserId());
             session.setAttribute("user", user);
             if("on".equals(saveId)) {
                 Cookie cookie = new Cookie("savedUserId", vo.getUserId());

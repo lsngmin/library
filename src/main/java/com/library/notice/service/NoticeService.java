@@ -2,10 +2,12 @@ package com.library.notice.service;
 
 import com.library.notice.model.NoticeVO;
 
-public interface NoticeService {
+import java.util.List;
 
-    void insertNotice(NoticeVO vo);
-    NoticeVO selectNotice(NoticeVO vo);
-    void updateNotice(NoticeVO vo);
-    void deleteNotice(NoticeVO vo);
+public interface NoticeService {
+    void insertNotice(NoticeVO vo); // 공지사항 추가
+    NoticeVO selectNotice(String cnt); // 특정 공지사항 조회
+    List<NoticeVO> selectAllNotices(); // 모든 공지사항 조회
+    void updateNotice(NoticeVO vo); // 공지사항 수정
+    void deleteNotice(String cnt); // 공지사항 삭제
 }

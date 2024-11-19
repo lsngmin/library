@@ -255,8 +255,23 @@
         <h3>신청 내역</h3>
         <table class="table">
             <tr><th>접수 상태</th><th>도서명</th><th>저자</th><th>출판사</th><th>신청일자</th><th>취소</th></tr>
-            <tr><td>접수 완료</td><td>자바 프로그래밍</td><td>홍길동</td><td>한빛미디어</td><td>2024.10.11</td><td><button class="cancel-btn" onclick="deleteRow(this)">취소</button></td>
-            </tr>
+            <tbody>
+            <c:forEach var="donation" items="${donations}">
+                <tr>
+                    <td>${donation.donationStatus}</td>
+                    <td>${donation.donationBookName}</td>
+                    <td>${donation.donationBookPublisher}</td>
+                    <td>${donation.donationBookPublisher}</td>
+                    <td><fmt:formatDate value="${donation.donationDate}" pattern="yyyy-MM-dd" /></td>
+                    <td>
+                        <form method="post" action="/donation/cancel" style="display:inline;">
+                            <input type="hidden" name="donationCode" value="${donation.donationCode}">
+                            <button type="submit" class="cancel-btn">취소</button>
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
         </table>
     </div>
 </div>

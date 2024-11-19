@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="NoticeDAO">
+
+    <!-- 공지사항 추가 -->
+    <insert id="insertNotice">
+        INSERT INTO NoticeBoard
+        (cnt, category, title, writer, writerId, content, date)
+        VALUES
+        (#{cnt}, #{category}, #{title}, #{writer}, #{writerId}, #{content}, #{date})
+    </insert>
+
+    <!-- 특정 공지사항 조회 -->
+    <select id="selectNotice" parameterType="string" resultType="com.library.notice.model.NoticeVO">
+        SELECT * FROM NoticeBoard WHERE cnt = #{cnt}
+    </select>
+
+    <!-- 모든 공지사항 조회 -->
+    <select id="selectAllNotices" resultType="com.library.notice.model.NoticeVO">
+        SELECT * FROM NoticeBoard ORDER BY date DESC
+    </select>
+
+    <!-- 공지사항 수정 -->
+    <update id="updateNotice">
+        UPDATE NoticeBoard
+        SET category = #{category},
+        title = #{title},
+        writer = #{writer},
+        writerId = #{writerId},
+        content = #{content},
+        date = #{date}
+        WHERE cnt = #{cnt}
+    </update>
+
+    <!-- 공지사항 삭제 -->
+    <delete id="deleteNotice">
+        DELETE FROM NoticeBoard WHERE cnt = #{cnt}
+    </delete>
+
+</mapper>

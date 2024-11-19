@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="DonationDAO">
+
+    <insert id="insertDonation">
+        INSERT INTO DonationBook
+        (donationCode, donationStatus, donationDate, donationUserId,
+        donationUserName, donationUserPhone, donationUserEmail,
+        donationCategory, donationBookName, donationBookPubliher,
+        donationBookPublishDate, donationReason)
+        VALUES
+        (#{donationCode}, #{donationStatus}, #{donationDate}, #{donationUserId},
+        #{donationUserName}, #{donationUserPhone}, #{donationUserEmail},
+        #{donationCategory}, #{donationBookName}, #{donationBookPublisher},
+        #{donationBookPublishDate}, #{donationReason})
+    </insert>
+
+
+    <select id="selectDonation" parameterType="string" resultType="com.library.donation.model.DonationVO">
+        SELECT * FROM DonationBook WHERE donationCode = #{donationCode}
+    </select>
+
+    <select id="selectAllDonations" resultType="com.library.donation.model.DonationVO">
+        SELECT * FROM DonationBook
+    </select>
+
+    <!-- 사용자별 기증 조회 -->
+    <select id="selectDonationsByUser" parameterType="string" resultType="com.library.donation.model.DonationVO">
+        SELECT * FROM DonationBook WHERE donationUserId = #{userId}
+    </select>
+
+    <update id="updateDonationStatus">
+        UPDATE DonationBook
+        SET donationStatus = #{donationStatus}
+        WHERE donationCode = #{donationCode}
+    </update>
+
+    <delete id="deleteDonation">
+        DELETE FROM DonationBook WHERE donationCode = #{donationCode}
+    </delete>
+
+
+</mapper>
