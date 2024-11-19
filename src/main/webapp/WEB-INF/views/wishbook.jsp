@@ -1,271 +1,329 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>강릉대학교 통합도서관</title>
+    <title>강릉대학교통합도서관 - 회원도서 신청 내역</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* Previous styles remain the same */
+
+        .page-title {
+            font-size: 50px;  /* Increased from 24px */
+            margin-bottom: 30px;
+            font-weight: 400;  /* Made slightly bolder */
+            color: #333;
+        }
+
+        /* Rest of the previous styles remain the same */
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            box-sizing: border-box;
         }
 
-        header {
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #fff;
+        }
+
+        .header {
             display: flex;
             justify-content: space-between;
+            padding: 15px 30px;
             align-items: center;
-            padding: 20px;
-            background-color: #fff;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #eee;
         }
 
-        .logo-container {
+        .logo {
             display: flex;
             align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .user-menu {
+            display: flex;
             gap: 15px;
         }
 
-        .logo-container img {
-            height: 50px;
-        }
-
-        .header-title {
-            margin: 0;
-            font-size: 20px;
-            font-weight: bold;
+        .user-menu a {
+            text-decoration: none;
             color: #333;
-            cursor: pointer;
+            font-size: 14px;
         }
 
-        .header-title a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .login-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .login-container img {
-            height: 30px;
-        }
-
-        .login-container a {
-            text-decoration: none;
-            font-size: 16px;
-            color: #000;
-        }
-
-        .main-container {
-            display: flex;
-            max-width: 1200px;
-            margin: 20px auto;
-        }
-
-        .sidebar {
+        .left-sidebar {
             width: 220px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 15px;
+            background-color: #f5f5f5;
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+            left: 0;
+            top: 70px;
         }
 
-        .sidebar-title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            padding: 10px;
-            background-color: #eee;
-            text-align: center;
-            border-radius: 4px;
-        }
-
-        .sidebar ul {
+        .sidebar-menu {
             list-style: none;
-            padding: 0;
-            margin: 0;
         }
 
-        .sidebar ul li {
-            margin: 15px 0;
-            display: flex;
-            align-items: center;
+        .sidebar-menu li {
+            margin-bottom: 15px;
         }
 
-        .sidebar ul li.active {
-            font-weight: bold;
-            color: #007bff;
-        }
-
-        .sidebar ul li.active:before {
-            content: "◆";
-            color: #007bff;
-            margin-right: 8px;
-        }
-
-        .sidebar ul li:before {
-            content: "◆";
-            color: #ccc;
-            margin-right: 8px;
-        }
-
-        .sidebar ul li a {
-            text-decoration: none;
-            color: #333;
+        .sidebar-menu .active {
+            border: 1px solid #333;
+            padding: 10px;
         }
 
         .content {
-            flex-grow: 1;
-            padding-left: 20px;
+            margin-left: 220px;
+            padding: 30px;
         }
 
-        .search-header {
-            font-size: 18px;
+        .status-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .status-tab {
+            padding: 12px 30px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            background: none;
+            cursor: pointer;
+            border-radius: 8px; /* 둥근 모서리 */
+        }
+
+        .status-table {
+            width: 100%;           /* 기존 크기 유지 */
+            max-width: 1200px;     /* 테이블의 최대 너비 증가 */
+            border-collapse: separate; /* 셀 간격 분리 */
+            border-spacing: 15px;  /* 셀 간격 추가 */
+        }
+
+        .status-table td {
+            padding: 20px;         /* 셀 내부 여백 증가 */
+            font-size: 20px;       /* 글자 크기 */
+            background-color: #fff; /* 배경색 */
+            border: 1px solid #ddd; /* 셀 경계선 */
+            border-radius: 8px;    /* 셀 둥근 모서리 */
+        }
+
+        .status-table tr {
+            background-color: #f9f9f9; /* 각 행 배경색 */
+            height: 80px; /* 행 높이 증가 */
+        }
+
+        .status-row {
+            background-color: #fff; /* 흰색 배경 */
+            border: 1px solid #ddd; /* 테두리 */
+            border-radius: 4px; /* 모서리 둥글게 */
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
+            margin-bottom: 35px; /* 행 간 간격 */
+            padding: 10px; /* 박스 내부 여백 */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 80px; /* 최소 높이 증가 */
+        }
+
+        .status-cell {
+            flex: 1; /* 셀 너비 균등 분배 */
+            text-align: center;
+            padding: 20px; /* 셀 내부 여백 증가 */
+            font-size: 18px; /* 글자 크기 증가 */
+        }
+
+        .cancel-btn {
+            padding: 5px 10px;
+            cursor: pointer;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            color: #333;
+            font-size: 13px;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .cancel-btn:hover {
+            background-color: #f8f8f8;
+        }
+
+        .info-text {
+            color: #0066cc;
+            background-color: #e6f3ff;
+            padding: 10px 15px; /* 글자 크기에 맞는 여백 설정 */
+            border-radius: 4px;
+            font-size: 14px;
+            margin-bottom: 20px;
+            text-align: right; /* 오른쪽 정렬 */
+            width: fit-content; /* 글자 길이에 맞게 박스 크기 자동 조정 */
+            margin-left: auto; /* 오른쪽 정렬을 위해 왼쪽 여백 자동 */
+        }
+
+        .footer {
+            margin-left: 220px;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
             margin-bottom: 10px;
         }
 
-        .search-container {
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 13px;
         }
 
-        .search-container form {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+        .copyright {
+            color: #666;
+            font-size: 12px;
         }
 
-        .search-container input[type="text"] {
-            flex-grow: 1;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+        .status-table tr {
+            background-color: #fff; /* 흰색 배경 */
+            border: 1px solid #ddd; /* 테두리 */
+            border-radius: 4px; /* 모서리 둥글게 */
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* 약간의 그림자 */
+            height: 80px; /* 행 높이 증가 */
         }
 
-        .search-container button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
+        .status-table td {
+            padding: 8px 5px; /* 여백 축소 */
+            text-align: center; /* 내용 중앙 정렬 */
+        }
+
+        .cancel-btn {
+            padding: 5px 10px; /* 버튼 여백 유지 */
             cursor: pointer;
-        }
-
-        .search-filters {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .results-summary {
-            font-size: 14px;
-            margin-top: 10px;
-            color: #555;
-        }
-
-        .results-container {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-        }
-
-        .result-item {
-            margin-bottom: 20px;
-            display: flex;
-            gap: 15px;
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .result-item:last-child {
-            border-bottom: none;
-        }
-
-        .result-item img {
-            width: 100px;
-            height: 120px;
-            object-fit: cover;
+            background-color: white;
+            border: 1px solid #ddd;
             border-radius: 4px;
+            color: #333;
+            font-size: 13px;
+            font-family: 'Noto Sans KR', sans-serif;
         }
 
-        .result-details {
-            flex-grow: 1;
+        .cancel-btn:hover {
+            background-color: #f8f8f8;
         }
-
-        .result-details h4 {
-            margin: 0;
-            font-size: 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .result-details .subject {
-            font-size: 14px;
-            color: #007bff;
-            margin: 5px 0;
-        }
-
-        .result-actions {
-            margin-top: 10px;
-        }
-
-
     </style>
 </head>
 <body>
-<header>
-    <div class="logo-container">
-        <img src="img/logoImage.png" alt="강릉대학교 로고">
-        <h1 class="header-title"><a href="main">강릉대학교 통합도서관</a></h1>
+<header class="header">
+    <div class="logo">
+        <img src="library-logo.png" alt="강릉대학교통합도서관">
     </div>
-    <div class="login-container">
-        <img src="img/userImage.png" alt="사용자 아이콘">
-        <a href="login">로그인</a>
+    <div class="user-menu">
+        <a href="#"><img src="user-icon.png" alt=""> 내정보</a>
+        <a href="#">로그아웃</a>
     </div>
 </header>
 
-<div class="main-container">
-    <aside class="sidebar">
-        <div class="sidebar-title">자료검색</div>
-        <ul>
-            <li class="active"><a href="#">통합검색</a></li>
-            <li><a href="#">희망도서</a></li>
-            <li><a href="#">인기도서</a></li>
-            <li><a href="#">공지사항</a></li>
-            <li><a href="#">이용사항</a></li>
-        </ul>
-    </aside>
-
-    <div class="content">
-        <h2 class="search-header">통합검색</h2>
-
-
-        <section class="results-container">
-            <div class="result-item">
-                <img src="book1.jpg" alt="책 이미지">
-                <div class="result-details">
-                    <p class="subject">사회과학</p>
-                    <p>도서명: 총균쇠</p>
-                    <p>저자: 재레드 다이아몬드</p>
-                    <p>발행사항: 문학사상,2014</p>
-                    <p>매체구분: 인쇄자료</p>
-                    <p>발행년: 2014</p>
-                </div>
-            </div>
-        </section>
-    </div>
+<div class="left-sidebar">
+    <h2>내정보</h2>
+    <ul class="sidebar-menu">
+        <li>내정보</li>
+        <li>관심도서 목록</li>
+        <li class="active">희망도서 신청 내역</li>
+        <li>도서기증 신청</li>
+        <li>비밀번호 변경</li>
+    </ul>
 </div>
+
+<main class="content">
+    <h2 class="page-title">희망도서 신청 내역</h2>
+
+    <div class="status-tabs">
+        <button class="status-tab">전체</button>
+        <button class="status-tab active">접수중</button>
+        <button class="status-tab">검토중</button>
+        <button class="status-tab">처리완료</button>
+    </div>
+
+    <div class="info-text">
+        접수중 상태일 때만 취소가 가능합니다.
+    </div>
+
+    <!-- 접수중 상태 -->
+    <div class="status-row">
+        <div class="status-cell">접수중</div>
+        <div class="status-cell">인형의 집</div>
+        <div class="status-cell">안미란</div>
+        <div class="status-cell">민음사</div>
+        <div class="status-cell">2024.10.11</div>
+        <div class="status-cell"><button class="cancel-btn">취소</button></div>
+    </div>
+
+    <div class="status-row">
+        <div class="status-cell">접수중</div>
+        <div class="status-cell">코스모스</div>
+        <div class="status-cell">재레미</div>
+        <div class="status-cell">한빛미디어</div>
+        <div class="status-cell">2024.10.11</div>
+        <div class="status-cell"><button class="cancel-btn">취소</button></div>
+    </div>
+
+    <!-- 검토중 상태 (취소 불가) -->
+    <div class="status-row">
+        <div class="status-cell">검토중</div>
+        <div class="status-cell">버드걸</div>
+        <div class="status-cell">신혜빈</div>
+        <div class="status-cell">문학동네</div>
+        <div class="status-cell">2024.10.09</div>
+        <div class="status-cell"><button class="cancel-btn" disabled>취소</button></div>
+    </div>
+
+    <!-- 처리완료 상태 (취소 불가) -->
+    <div class="status-row">
+        <div class="status-cell">처리완료</div>
+        <div class="status-cell">예쁜아이</div>
+        <div class="status-cell">토리헤이드</div>
+        <div class="status-cell">아름드리미디어</div>
+        <div class="status-cell">2024.10.01</div>
+        <div class="status-cell"><button class="cancel-btn" disabled>취소</button></div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="footer-links">
+        <a href="#">이용약관</a>
+        <a href="#">개인정보처리방침</a>
+        <a href="#">규정 실정</a>
+        <a href="#">운영체계</a>
+        <a href="#">도서관 안내</a>
+    </div>
+    <p class="copyright">Copyright © 2024 강릉대학교. All rights reserved.</p>
+</footer>
+
+<script>
+    document.querySelectorAll('.status-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.status-tab').forEach(t => {
+                t.classList.remove('active');
+            });
+            tab.classList.add('active');
+        });
+    });
+
+    document.querySelectorAll('.cancel-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if(confirm('신청을 취소하시겠습니까?')) {
+                // Add cancellation logic here
+            }
+        });
+    });
+</script>
 </body>
 </html>
