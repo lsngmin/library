@@ -1,4 +1,4 @@
-package com.library.model.book;
+package com.library.book.model;
 
 public class BookVO {
     private String bookCode;

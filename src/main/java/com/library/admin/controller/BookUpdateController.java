@@ -5,8 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import com.library.model.book.BookVO;          // 추가
-import com.library.model.book.BookService;     // 추가
+import com.library.book.model.BookVO;          // 추가
+import com.library.book.service.BookService;     // 추가
 
 @Controller
 @RequestMapping("/library")

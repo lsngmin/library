@@ -1,5 +1,7 @@
-package com.library.model.notice;
+package com.library.notice.service;
 
+import com.library.notice.model.NoticeDAO;
+import com.library.notice.model.NoticeVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

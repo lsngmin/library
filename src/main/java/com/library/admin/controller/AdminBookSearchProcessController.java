@@ -1,9 +1,7 @@
 package com.library.admin.controller;
 
-import com.library.model.book.BookService;
-import com.library.model.book.BookVO;
-import com.library.model.user.UserService;
-import com.library.model.user.UserVO;
+import com.library.book.service.BookService;
+import com.library.book.model.BookVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -11,14 +11,14 @@
     </insert>
 
 
-    <select id="selectNotice" parameterType="com.library.model.notice.NoticeVO" resultType="com.library.model.notice.NoticeVO">
+    <select id="selectNotice" parameterType="com.library.notice.model.NoticeVO" resultType="com.library.notice.model.NoticeVO">
         SELECT *
         FROM NoticeBoard
         WHERE cnt = #{cnt}
     </select>
 
 
-    <update id="updateNotice" parameterType="com.library.model.notice.NoticeVO">
+    <update id="updateNotice" parameterType="com.library.notice.model.NoticeVO">
         UPDATE NoticeBoard
         SET category = #{category},
         title = #{title},
@@ -30,7 +30,7 @@
     </update>
 
 
-    <delete id="deleteNotice" parameterType="com.library.model.notice.NoticeVO">
+    <delete id="deleteNotice" parameterType="com.library.notice.model.NoticeVO">
         DELETE FROM NoticeBoard
         WHERE cnt = #{cnt}
     </delete>

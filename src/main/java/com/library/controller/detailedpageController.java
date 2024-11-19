@@ -1,4 +1,4 @@
-package com.library.controller;
-
-public class detailedpage {
-}
+//package com.library.controller;
+//
+//public class detailedpage {
+//}

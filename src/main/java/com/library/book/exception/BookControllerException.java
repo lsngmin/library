@@ -1,4 +1,4 @@
-package com.library.exception;
+package com.library.book.exception;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

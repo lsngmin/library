@@ -1,9 +1,8 @@
 package com.library.admin.controller;
 
-import com.library.model.user.UserService;
-import com.library.model.user.UserVO;
+import com.library.user.service.UserService;
+import com.library.user.model.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;

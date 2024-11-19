@@ -1,9 +1,11 @@
-package com.library.model.book;
+package com.library.book.service;
 
+import com.library.book.model.BookDAO;
+import com.library.book.model.BookVO;
+import com.library.book.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 

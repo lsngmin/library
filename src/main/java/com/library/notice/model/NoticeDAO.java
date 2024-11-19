@@ -1,4 +1,4 @@
-package com.library.model.notice;
+package com.library.notice.model;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;

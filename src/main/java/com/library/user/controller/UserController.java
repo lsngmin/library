@@ -1,5 +1,6 @@
-package com.library.model.user;
+package com.library.user.controller;
 
+import com.library.user.model.UserVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 

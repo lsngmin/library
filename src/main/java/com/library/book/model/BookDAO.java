@@ -1,12 +1,9 @@
-package com.library.model.book;
+package com.library.book.model;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+
 import java.util.List;
 
 
@@ -18,12 +15,15 @@ public class BookDAO {
     public void insertBook(BookVO vo) {
         mybatis.insert("BookDAO.insertBook", vo);
     }
+
     public BookVO selectBook(BookVO vo) {
         return mybatis.selectOne("BookDAO.selectBook", vo);
     }
+
     public void updateBook(BookVO vo) {
         mybatis.update("BookDAO.updateBook", vo);
     }
+
     public void deleteBook(BookVO vo) {
         mybatis.delete("BookDAO.deleteBook", vo);
     }
@@ -45,4 +45,5 @@ public class BookDAO {
     public BookVO selectSearchBook(BookVO vo) {
         return (BookVO) mybatis.selectOne("BookDAO.selectSearchBook", vo);
 
+    }
 }

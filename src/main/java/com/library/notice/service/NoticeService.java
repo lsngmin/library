@@ -1,4 +1,6 @@
-package com.library.model.notice;
+package com.library.notice.service;
+
+import com.library.notice.model.NoticeVO;
 
 public interface NoticeService {
 

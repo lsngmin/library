@@ -1,4 +1,4 @@
-package com.library.model.user;
+package com.library.user.model;
 
 public class UserVO {
     private String userId;

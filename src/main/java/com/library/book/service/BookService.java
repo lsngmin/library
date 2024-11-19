@@ -1,4 +1,6 @@
-package com.library.model.book;
+package com.library.book.service;
+import com.library.book.model.BookVO;
+
 import java.util.List;
 
 public interface BookService {

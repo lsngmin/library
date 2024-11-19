@@ -9,9 +9,9 @@
     </settings>
 
     <typeAliases>
-        <typeAlias alias="User" type="com.library.model.user.UserVO"/>
+        <typeAlias alias="User" type="com.library.user.model.UserVO"/>
         <typeAlias alias="Admin" type="com.library.admin.model.AdminVO"/>
-        <typeAlias alias="Book" type="com.library.model.book.BookVO"/>
+        <typeAlias alias="Book" type="com.library.book.model.BookVO"/>
         <typeAlias alias="Rental" type="com.library.rental.model.RentalVO"/>
 
 

@@ -1,14 +1,12 @@
 package com.library.admin.controller;
 
 import com.library.admin.model.AdminVO;
-import com.library.model.book.BookService;
-import com.library.model.user.UserService;
+import com.library.book.service.BookService;
+import com.library.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.servlet.http.HttpSession;
 
