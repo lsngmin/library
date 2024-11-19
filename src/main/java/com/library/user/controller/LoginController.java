@@ -11,6 +11,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class LoginController {
@@ -42,6 +44,7 @@ public class LoginController {
         }
         UserVO user = userService.getLoginUser(vo);
         if (user != null && vo.getPassword().equals(user.getPassword())) {
+            session.setAttribute("userId", user.getUserId());
             session.setAttribute("user", user);
             if("on".equals(saveId)) {
                 Cookie cookie = new Cookie("savedUserId", vo.getUserId());
@@ -58,5 +61,24 @@ public class LoginController {
         } else {
             return "login";
         }
+    }
+    @PostMapping("/loginAjax")
+    @ResponseBody
+    public Map<String, Object> loginAjax(@RequestBody UserVO vo, HttpSession session) {
+        Map<String, Object> response = new HashMap<>();
+
+
+        UserVO user = userService.getLoginUser(vo);
+
+        if (user != null && vo.getPassword().equals(user.getPassword())) {
+            session.setAttribute("userId", user.getUserId());
+            session.setAttribute("user", user);
+            response.put("status", "success");
+        } else {
+
+            response.put("status", "fail");
+            response.put("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
+        }
+        return response;
     }
 }
