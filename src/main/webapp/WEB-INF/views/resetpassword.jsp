@@ -198,9 +198,9 @@
     <div class="logo-container">
         <img src="/img/logoImage.png" alt="강릉대학교 통합도서관" class="logo">
     </div>
-        <div class="header-content">
-            <span class="site-name">강릉대학교 통합도서관</span>
-        </div>
+    <div class="header-content">
+        <span class="site-name">강릉대학교 통합도서관</span>
+    </div>
     </div>
 </header>
 
