@@ -9,7 +9,7 @@ public interface BookService {
     void updateBook(BookVO vo);
     void deleteBook(BookVO vo);
 
-    void createBookTable();
+    //void createBookTable();
 
     BookVO getBookById(String bookCode);
 
