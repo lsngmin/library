@@ -6,6 +6,7 @@
     <title>강릉대학교 통합도서관</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet"  href="/resources/css/login.css">
+    <script src="login.js"></script>
 </head>
 <body>
 <header class="header">
@@ -57,15 +58,5 @@
     </div>
     <div>Copyright © 2024 강릉대학교. All rights reserved.</div>
 </footer>
-
-<script>
-    document.querySelector('.password-toggle').addEventListener('click', function() {
-        const passwordInput = this.previousElementSibling;
-        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordInput.setAttribute('type', type);
-
-        this.textContent = type === 'password' ? 'visibility_off' : 'visibility';
-    });
-</script>
 </body>
 </html>

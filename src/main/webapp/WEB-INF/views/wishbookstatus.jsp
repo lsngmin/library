@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="wishbookstatus.js"></script>
     <meta charset="UTF-8">
     <title>강릉대학교통합도서관 - 회원도서 신청 내역</title>
     <link rel="stylesheet"  href="/resources/css/wishbookstatus.css">
@@ -93,24 +94,5 @@
     </div>
     <p class="copyright">Copyright © 2024 강릉대학교. All rights reserved.</p>
 </footer>
-
-<script>
-    document.querySelectorAll('.status-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-            document.querySelectorAll('.status-tab').forEach(t => {
-                t.classList.remove('active');
-            });
-            tab.classList.add('active');
-        });
-    });
-
-    document.querySelectorAll('.cancel-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            if(confirm('신청을 취소하시겠습니까?')) {
-                // Add cancellation logic here
-            }
-        });
-    });
-</script>
 </body>
 </html>
