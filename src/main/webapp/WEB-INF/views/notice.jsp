@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.library.noticeBoard.model.NoticeBoardVO" %>
+<%@ page import="org.springframework.web.context.WebApplicationContext" %>
+<%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -234,22 +239,16 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>2126</td>
-                <td>일반공지</td>
-                <td>Knovel 교육 STEM 연구자...</td>
-                <td>이성현</td>
-                <td>2024.10.11</td>
-                <td>9</td>
-            </tr>
-            <tr>
-                <td>2125</td>
-                <td>일반공지</td>
-                <td>BK21 대학원혁신 지원...</td>
-                <td>이성현</td>
-                <td>2024.10.10</td>
-                <td>30</td>
-            </tr>
+            <c:forEach var="notice" items="${noticeList}">
+                <tr>
+                    <td>${notice.cnt}</td>
+                    <td>${notice.category}</td>
+                    <td>${notice.title}</td>
+                    <td>${notice.writer}</td>
+                    <td>${notice.date}</td>
+                    <td>조회수 없음</td> <!-- 조회수 데이터가 없다면 임시 표시 -->
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
     </div>

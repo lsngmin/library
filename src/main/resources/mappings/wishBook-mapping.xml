@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="WishBookDAO">
+
+    <!-- Insert a book wish -->
+    <insert id="insertBookWish" parameterType="com.library.wishBook.model.WishBookVO">
+        INSERT INTO BookWishList
+        (wishCode, wishStatus, wishUserId, wishBookName, wishBookPublisher,
+         wishBookAuthor, wishBookPublishDate, wishBookPrice, wishUserName, wishUserPhone)
+        VALUES
+            (#{wishCode}, #{wishStatus}, #{wishUserId}, #{wishBookName}, #{wishBookPublisher},
+             #{wishBookAuthor}, #{wishBookPublishDate}, #{wishBookPrice}, #{wishUserName}, #{wishUserPhone})
+    </insert>
+
+    <!-- Get a book wish by wishCode -->
+    <select id="getBookWishByCode" parameterType="string" resultType="com.library.wishBook.model.WishBookVO">
+        SELECT *
+        FROM BookWishList
+        WHERE wishCode = #{wishCode}
+    </select>
+
+    <!-- Update a book wish -->
+    <update id="updateBookWish" parameterType="com.library.wishBook.model.WishBookVO">
+        UPDATE BookWishList
+        SET wishStatus = #{wishStatus},
+            wishUserId = #{wishUserId},
+            wishBookName = #{wishBookName},
+            wishBookPublisher = #{wishBookPublisher},
+            wishBookAuthor = #{wishBookAuthor},
+            wishBookPublishDate = #{wishBookPublishDate},
+            wishBookPrice = #{wishBookPrice},
+            wishUserName = #{wishUserName},
+            wishUserPhone = #{wishUserPhone}
+        WHERE wishCode = #{wishCode}
+    </update>
+
+    <!-- Delete a book wish -->
+    <delete id="deleteBookWish" parameterType="string">
+        DELETE
+        FROM BookWishList
+        WHERE wishCode = #{wishCode}
+    </delete>
+
+    <!-- Get all book wishes -->
+    <select id="getAllBookWishes" resultType="com.library.wishBook.model.WishBookVO">
+        SELECT *
+        FROM BookWishList
+        ORDER BY wishCode DESC
+    </select>
+
+</mapper>
