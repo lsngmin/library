@@ -1,22 +1,20 @@
-package com.library.notice.model;
+package com.library.noticeBoard.model;
 
-import java.util.Date;
-
-public class NoticeVO {
-
-    private int cnt;
+public class NoticeBoardVO {
+    private String cnt;
     private String category;
     private String title;
     private String writer;
     private String writerId;
     private String content;
-    private Date date;
+    private String date;
 
-    public int getCnt() {
+    // Getters and Setters
+    public String getCnt() {
         return cnt;
     }
 
-    public void setCnt(int cnt) {
+    public void setCnt(String cnt) {
         this.cnt = cnt;
     }
 
@@ -60,11 +58,11 @@ public class NoticeVO {
         this.content = content;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }
