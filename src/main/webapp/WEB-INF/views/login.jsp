@@ -191,16 +191,27 @@
             text-decoration: none;
             font-size: 13px;
         }
+
+        .header-content .site-name {
+            font-size: 20px;
+            color: #333;
+            font-weight: bold;
+            text-decoration: none; /* 밑줄 제거 */
+        }
+        .header-content .site-name:hover {
+            text-decoration: underline; /* 필요하면 마우스를 올렸을 때만 밑줄 표시 */
+        }
     </style>
 </head>
 <body>
 <header class="header">
     <div class="logo-container">
-        <img src="/img/logoImage.png" alt="강릉대학교 통합도서관" class="logo">
+        <a href="/main">
+            <img src="/img/logoImage.png" alt="강릉대학교 통합도서관" class="logo">
+        </a>
     </div>
     <div class="header-content">
-        <span class="site-name">강릉대학교 통합도서관</span>
-    </div>
+        <a href="/main" class="site-name">강릉대학교 통합도서관</a>
     </div>
 </header>
 
