@@ -11,7 +11,7 @@
 <header>
     <div class="logo-container">
         <a href="/main">
-            <img src="/img/logoImage.png" alt="강릉대학교 통합도서관 로고">
+            <img src="/img/whiteImage.png" alt="강릉대학교 통합도서관 로고">
             <h1>강릉대학교 통합도서관</h1>
         </a>
     </div>
@@ -19,12 +19,14 @@
         <c:choose>
             <c:when test="${not empty user}">
                 <!-- 로그인 상태 -->
-                <a href="myInfo">내 정보</a>
-                <a href="logout">로그아웃</a>
+                <a href="myInfo" style="display: inline-flex; align-items: center;">
+                    <span style="vertical-align: middle;">내 정보</span>
+                    <img src="/img/userImage.png" alt="사용자 아이콘" style="width: 30px; height: 30px; margin-left: 5px; vertical-align: middle;"> <!-- 사용자 아이콘 가까이 배치 -->
+                </a>
+                <a href="logout" style="margin-left: 15px;">로그아웃</a>
             </c:when>
             <c:otherwise>
                 <!-- 비로그인 상태 -->
-                <img src="/img/userImage.png" alt="사용자 아이콘">
                 <a href="/login">로그인</a>
             </c:otherwise>
         </c:choose>
@@ -46,7 +48,7 @@
             <img src="/img/donationImage.png" alt="도서기증 아이콘">
             <p>도서기증</p>
         </a>
-        <a href="hope" class="menu-item">
+        <a href="wishbookapply" class="menu-item">
             <img src="/img/hopeImage.png" alt="희망도서 아이콘">
             <p>희망도서</p>
         </a>
