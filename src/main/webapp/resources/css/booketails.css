@@ -186,12 +186,7 @@ header {
     border-bottom: none;
 }
 
-.result-item img {
-    width: 180px;
-    height: 230px;
-    object-fit: cover;
-    border-radius: 4px;
-}
+
 
 .result-details {
     flex-grow: 1;
@@ -213,6 +208,12 @@ header {
 
 .result-actions {
     margin-top: 10px;
+}
+.result-item img {
+    width: 180px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 4px;
 }
 .book-introduction {
     margin-top: 20px;
