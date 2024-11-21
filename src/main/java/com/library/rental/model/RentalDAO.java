@@ -4,6 +4,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Map;
+
 @Repository
 public class RentalDAO {
     @Autowired
@@ -13,6 +16,9 @@ public class RentalDAO {
         mybatis.insert("RentalDAO.insertRental", vo);
     }
 
+    public List<Map<String, Object>> selectRentalList(RentalVO vo) {
+        return mybatis.selectList("RentalDAO.selectRentalList", vo);
+    }
 
 }
 

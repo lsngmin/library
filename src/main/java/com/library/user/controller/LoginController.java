@@ -37,12 +37,15 @@ public class LoginController {
     //로그인 처리
     @PostMapping(value = "/login")
     public String loginUser(UserVO vo, HttpSession session, HttpServletResponse response,
-                            @RequestParam(value = "saveId", required = false) String saveId) {
-        System.out.println("sssssssssssssssss" + vo.getUserId());
-        if(vo.getUserId() == null || vo.getUserId().equals("")) {
-            throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다,");
+                            @RequestParam(value = "saveId", required = false) String saveId,
+                            Model model) {
+
+        if(vo.getUserId() == null || vo.getUserId().equals("") || vo.getPassword() == null || vo.getPassword().equals("")) {
+            model.addAttribute("errorMessage", "아이디 또는 비밀번호가 입력되지 않았습니다.");
+            return "login";
         }
         UserVO user = userService.getLoginUser(vo);
+
         if (user != null && vo.getPassword().equals(user.getPassword())) {
             session.setAttribute("userId", user.getUserId());
             session.setAttribute("user", user);

@@ -10,7 +10,6 @@ import com.library.book.service.BookService;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin")
 public class BookInquiryController {
     private final BookService bookService;
 

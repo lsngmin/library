@@ -20,4 +20,18 @@
         #{rentalExtension}
         )
     </insert>
+    <select id="selectRentalList" parameterType="Rental" resultType="map">
+        SELECT
+        b.bookName,
+        b.bookAuthor,
+        b.bookPublisher,
+        br.rentalEndDate
+        FROM
+        BookRental br
+        JOIN
+        Book b
+        ON
+        br.rentalBookCode = b.BookCode
+        WHERE
+        br.rentalUserId = #{rentalUserId};    </select>
 </mapper>
