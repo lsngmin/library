@@ -33,10 +33,15 @@ public class BookDAO {
     }
 
     // 테이블 생성 메서드 추가
+    /*
     public void createBookTable() {
         mybatis.update("BookDAO.createBookTable");
     }
+     */
 
+    public void insertBook() {
+        mybatis.insert("BookDAO.insertBook");
+    }
 
     public int selectTotalBook() {
         return mybatis.selectOne("BookDAO.selectBookTotal");
@@ -44,6 +49,6 @@ public class BookDAO {
 
     public BookVO selectSearchBook(BookVO vo) {
         return (BookVO) mybatis.selectOne("BookDAO.selectSearchBook", vo);
-
     }
+
 }

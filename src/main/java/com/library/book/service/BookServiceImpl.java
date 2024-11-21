@@ -45,10 +45,12 @@ public class BookServiceImpl implements BookService {
         return bookDAO.getBookList();
     }
 
+    /*
     @Override
     public void createBookTable() {  // 추가
         bookDAO.createBookTable();
     }
+     */
 
     public int selectTotalBook() {
         return bookDAO.selectTotalBook();

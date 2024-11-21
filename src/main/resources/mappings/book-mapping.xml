@@ -80,4 +80,5 @@
     <select id="selectSearchBook" resultType="Book">
         select bookCode, bookName, bookPublisher, bookAuthor, bookPublishDate from Book where bookCode = #{bookCode};
     </select>
+
 </mapper>
