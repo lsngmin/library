@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BookDAO">
+    <insert id="insertBook">
+        INSERT INTO Book (
+        bookCode,
+        bookStatus,
+        bookPage,
+        bookImageSrc,
+        bookName,
+        bookPublisher,
+        bookPublishDate,
+        bookAuthor,
+        bookQuantity,
+        bookPrice,
+        bookCategory,
+        bookLocation,
+        bookDecription
+        ) VALUES (
+        #{bookCode},
+        #{bookStatus},
+        #{bookPage},
+        #{bookImageSrc},
+        #{bookName},
+        #{bookPublisher},
+        #{bookPublishDate},
+        #{bookAuthor},
+        #{bookQuantity},
+        #{bookPrice},
+        #{bookCategory},
+        #{bookLocation},
+        #{bookDecription}
+        );
+    </insert>
+
+    <select id="getBookList" resultType="Book">
+        SELECT
+        bookCode,
+        bookStatus,
+        bookPage,
+        bookImageSrc,
+        bookName,
+        bookPublisher,
+        bookPublishDate,
+        bookAuthor,
+        bookQuantity,
+        bookPrice,
+        bookCategory,
+        bookLocation,
+        bookDecription
+        FROM Book
+        ORDER BY bookCode DESC
+    </select>
+
+    <update id="createBookTable">
+        CREATE TABLE IF NOT EXISTS Book (
+        bookCode VARCHAR(50) PRIMARY KEY,
+        bookStatus VARCHAR(20),
+        bookPage VARCHAR(20),
+        bookImageSrc VARCHAR(200),
+        bookName VARCHAR(100) NOT NULL,
+        bookPublisher VARCHAR(100),
+        bookPublishDate VARCHAR(20),
+        bookAuthor VARCHAR(100),
+        bookQuantity VARCHAR(20),
+        bookPrice VARCHAR(50),
+        bookCategory VARCHAR(50),
+        bookLocation VARCHAR(100),
+        bookDecription TEXT
+        )
+    </update>
+
+    <select id="selectBookTotal" resultType="int">
+        SELECT COUNT(bookCode) AS totalBooks
+        FROM Book;
+    </select>
+
+    <select id="selectSearchBook" resultType="Book">
+        select bookCode, bookName, bookPublisher, bookAuthor, bookPublishDate from Book where bookCode = #{bookCode};
+    </select>
+
+</mapper>

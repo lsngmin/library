@@ -9,8 +9,12 @@
     </settings>
 
     <typeAliases>
-        <typeAlias alias="User" type="com.library.model.user.UserVO"/>
+        <typeAlias alias="User" type="com.library.user.model.UserVO"/>
         <typeAlias alias="Admin" type="com.library.admin.model.AdminVO"/>
+        <typeAlias alias="Book" type="com.library.book.model.BookVO"/>
+        <typeAlias alias="Rental" type="com.library.rental.model.RentalVO"/>
+        <typeAlias alias="Donation" type="com.library.donationBook.model.DonationBookVO"/>
+        <typeAlias alias="Notice" type="com.library.noticeBoard.model.NoticeBoardVO"/>
     </typeAliases>
 
     <environments default="development">
@@ -28,6 +32,9 @@
     <mappers>
         <mapper resource="mappings/user-mapping.xml"/>
         <mapper resource="mappings/admin-mapping.xml"/>
-
+        <mapper resource="mappings/book-mapping.xml"/>
+        <mapper resource="mappings/rental-mapping.xml"/>
+        <mapper resource="mappings/donationBook-mapping.xml"/>
+        <mapper resource="mappings/noticeBoard-mapping.xml"/>
     </mappers>
 </configuration>

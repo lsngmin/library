@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="NoticeBoardDAO">
+
+    <!-- Insert NoticeBoard -->
+    <insert id="insertNoticeBoard" parameterType="com.library.noticeBoard.model.NoticeBoardVO">
+        INSERT INTO NoticeBoard
+            (cnt, category, title, writer, writerId, content, date)
+        VALUES
+            (#{cnt}, #{category}, #{title}, #{writer}, #{writerId}, #{content}, #{date})
+    </insert>
+
+    <!-- Retrieve NoticeBoard by cnt -->
+    <select id="getNoticeBoardByCnt" parameterType="string" resultType="com.library.noticeBoard.model.NoticeBoardVO">
+        SELECT * FROM NoticeBoard WHERE cnt = #{cnt}
+    </select>
+
+    <!-- Update NoticeBoard -->
+    <update id="updateNoticeBoard" parameterType="com.library.noticeBoard.model.NoticeBoardVO">
+        UPDATE NoticeBoard
+        SET category = #{category},
+            title = #{title},
+            writer = #{writer},
+            writerId = #{writerId},
+            content = #{content},
+            date = #{date}
+        WHERE cnt = #{cnt}
+    </update>
+
+    <!-- Delete NoticeBoard -->
+    <delete id="deleteNoticeBoard" parameterType="string">
+        DELETE FROM NoticeBoard WHERE cnt = #{cnt}
+    </delete>
+
+    <!-- Retrieve All NoticeBoards -->
+    <select id="getAllNoticeBoards" resultType="com.library.noticeBoard.model.NoticeBoardVO">
+        SELECT * FROM NoticeBoard
+    </select>
+
+</mapper>
