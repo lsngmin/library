@@ -10,7 +10,7 @@
 <body>
 <div class="side-nav">
     <div class="logo">
-        <img src="logo.png" alt="로고">
+        <img src="img/logoImage.png" alt="로고">
         강릉대학교 통합도서관
     </div>
     <div class="nav-item active">내정보</div>
