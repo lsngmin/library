@@ -23,4 +23,9 @@ public class RentalServiceImpl implements RentalService {
     public List<Map<String, Object>> selectRentalList(RentalVO vo) {
         return rentalDAO.selectRentalList(vo);
     }
+
+    @Override
+    public void deleteRental(String userId, String bookName) {
+        rentalDAO.deleteRental(userId, bookName);
+    }
 }

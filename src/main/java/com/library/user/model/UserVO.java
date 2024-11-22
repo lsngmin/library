@@ -12,6 +12,15 @@ public class UserVO {
     private String rentalAvailable;
     private String status;
     private String reason;
+    private String OverDueDate;
+
+    public String getOverDueDate() {
+        return OverDueDate;
+    }
+
+    public void setOverDueDate(String overDueDate) {
+        OverDueDate = overDueDate;
+    }
 
     public String getColleges() {
         return colleges;

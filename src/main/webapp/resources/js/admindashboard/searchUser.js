@@ -51,11 +51,11 @@ $(document).ready(function() {
     $('#return-userId').keypress(function (event) {
         if (event.key === 'Enter') {
             event.preventDefault(); // 기본 엔터 동작 방지
-            searchUser(); // 엔터 시 searchUser 함수 호출
+            searchReturnUser(); // 엔터 시 searchUser 함수 호출
         }
     });
 });
-function searchUser() {
+function searchReturnUser() {
     var userID = $('#return-userId').val();
     $.ajax({
         type: 'POST',

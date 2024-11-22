@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
+
 
 @Repository
 public class RentalDAO {
@@ -19,6 +21,11 @@ public class RentalDAO {
     public List<Map<String, Object>> selectRentalList(RentalVO vo) {
         return mybatis.selectList("RentalDAO.selectRentalList", vo);
     }
-
+    public void deleteRental(String userId, String bookName) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("userId", userId);
+        params.put("bookName", bookName);
+        mybatis.delete("RentalDAO.deleteRental", params);
+    }
 }
 

@@ -27,4 +27,25 @@ public class UserServiceImpl implements UserService {
     public UserVO SelectSearchUser(UserVO vo) {
         return userDAO.selectSearchUser(vo);
     }
+
+    @Override
+    public void updateOverDueDate(UserVO vo) {
+        userDAO.updateOverDueDate(vo);
+    }
+
+    @Override
+    public void updateRentalAvailableM(String userId) {
+        userDAO.updateRentalAvailableM(userId);
+    }
+
+    @Override
+    public void updateRentalAvailableP(String userId) {
+        userDAO.updateRentalAvailableP(userId);
+    }
+
+    @Override
+    public void updateStatus(String userId) {
+        userDAO.updateStatus(userId);
+    }
+
 }

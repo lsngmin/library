@@ -9,4 +9,12 @@ public interface UserService {
     public int getTotalUser();
 
     UserVO SelectSearchUser(UserVO vo);
+
+    public void updateOverDueDate(UserVO vo)
+            ;
+    public void updateRentalAvailableM(String userId);
+    public void updateRentalAvailableP(String userId);
+
+    public void updateStatus(String userId);
+
 }

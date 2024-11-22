@@ -12,6 +12,10 @@
   <script src="/js/admindashboard/rentalExecute.js"></script>
   <script src="/js/admindashboard/admindashboard.js"></script>
   <script src="/js/admindashboard/rentalReturn.js"></script>
+  <script src="/js/admindashboard/rentalList.js"></script>
+  <script src="/js/admindashboard/clearOverDue.js"></script>
+
+
 
 
 
@@ -186,7 +190,7 @@
     <div class="warning-message">
       <p>반납 실행 전 책을 다시 확인해 주시고 반납해 주시기 바랍니다.</p>
     </div>
-    <button class="btn-submit">반납 실행</button>
+    <button class="btn-submit" id="returnBooksButton">반납 실행</button>
   </div>
 
   <div class="overdue-clear-section">
@@ -207,9 +211,9 @@
       <label for="notes">비고</label>
       <textarea id="notes" rows="3" placeholder="..."></textarea>
     </div>
-    <button class="btn-submit">제출하기</button>
+    <button class="btn-submit" id="clear-over-due-button">제출하기</button>
 
-    <div class="status-message success">연체가 해제 되었습니다.</div>
+    <div class="status-message success" display>연체가 해제 되었습니다.</div>
     <div class="status-message warning">학번을 확인해 주세요.</div>
     <div class="status-message error">연체중이 아닙니다.</div>
   </div>

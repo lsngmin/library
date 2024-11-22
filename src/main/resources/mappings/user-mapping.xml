@@ -15,4 +15,29 @@
     <select id="selectSearchUser" resultType="User">
         select * from User where userId=#{userId};
     </select>
+    <update id="updateOverDueDate" parameterType="User">
+        UPDATE User
+        SET OverDueDate = 0
+        WHERE userId = #{userId}
+    </update>
+
+    <update id="updateRentalAvailableM" parameterType="User">
+        UPDATE User
+        SET rentalAvailable = CAST(rentalAvailable AS SIGNED) - 1
+        WHERE userId = #{userId};
+    </update>
+
+    <update id="updateRentalAvailableP" parameterType="User">
+        UPDATE User
+        SET rentalAvailable = CAST(rentalAvailable AS SIGNED) + 1
+        WHERE userId = #{userId};
+    </update>
+
+    <update id="updateStatus" >
+        UPDATE User
+        SET Status = CASE
+        WHEN Status = 1 THEN 0
+        END
+        WHERE userId = #{userId};
+    </update>
 </mapper>

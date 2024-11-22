@@ -12,6 +12,7 @@ $(document).ready(function() {
         var name = $('#name').val();
         var bookName = $('#bookName').val();
         var status = $('#status').val();
+        var rentalAvailable = $('#rentalAvailable').val();
 
         $.ajax({
             type: 'POST',
@@ -24,7 +25,8 @@ $(document).ready(function() {
                 rentalEndDate: rentalEndDate,
                 name: name,
                 bookName: bookName,
-                status: status
+                status: status,
+                rentalAvailable:rentalAvailable
             }),
             success: function (response) {
                 if (response.error) {
