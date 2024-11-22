@@ -61,5 +61,9 @@ public class BookServiceImpl implements BookService {
         return (BookVO) bookDAO.selectSearchBook(vo);
     }
 
+    @Override
+    public BookVO selectBookDetail(BookVO vo) {
+        return bookDAO.selectBookDetail(vo);
+    }
 
 }

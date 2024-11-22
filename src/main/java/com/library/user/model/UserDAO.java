@@ -3,6 +3,9 @@ package com.library.user.model;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 @Repository
 public class UserDAO{
@@ -21,4 +24,24 @@ public class UserDAO{
     public UserVO selectSearchUser(UserVO vo) {
         return (UserVO) mybatis.selectOne("UserDAO.selectSearchUser", vo);
     }
+
+    public List<UserVO> getUserList(int offset, int size) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("offset", offset);
+        params.put("size", size);
+        return mybatis.selectList("UserDAO.selectUserList", params);
+    }
+
+    public List<UserVO> searchUsers(UserVO searchVO, int offset, int size) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("searchVO", searchVO);
+        params.put("offset", offset);
+        params.put("size", size);
+        return mybatis.selectList("UserDAO.searchUsers", params);
+    }
+
+    public int getTotalSearchResults(UserVO searchVO) {
+        return (int) mybatis.selectOne("UserDAO.getTotalSearchResults", searchVO);
+    }
+
 }

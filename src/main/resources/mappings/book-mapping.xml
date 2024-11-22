@@ -72,6 +72,62 @@
         )
     </update>
 
+    <select id="selectBook" parameterType="Book" resultType="Book">
+        SELECT
+        bookCode,
+        bookName,
+        bookStatus,
+        bookPage,
+        bookImageSrc,
+        bookPublisher,
+        bookPublishDate,
+        bookAuthor,
+        bookPrice,
+        bookCategory,
+        bookLocation,
+        bookDecription,
+        bookQuantity
+        FROM Book
+        WHERE bookCode = #{bookCode}
+    </select>
+
+    <update id="updateBook" parameterType="Book">
+        UPDATE Book
+        SET
+        bookName = #{bookName},
+        bookStatus = #{bookStatus},
+        bookPage = #{bookPage},
+        bookImageSrc = #{bookImageSrc},
+        bookPublisher = #{bookPublisher},
+        bookPublishDate = #{bookPublishDate},
+        bookAuthor = #{bookAuthor},
+        bookPrice = #{bookPrice},
+        bookCategory = #{bookCategory},
+        bookLocation = #{bookLocation},
+        bookDecription = #{bookDecription},
+        bookQuantity = #{bookQuantity}
+        WHERE bookCode = #{bookCode}
+    </update>
+
+    <select id="selectBookDetail" parameterType="Book" resultType="Book">
+        SELECT
+        bookCode,
+        bookName,
+        bookStatus,
+        bookPage,
+        bookImageSrc,
+        bookPublisher,
+        bookPublishDate,
+        bookAuthor,
+        bookPrice,
+        bookCategory,
+        bookLocation,
+        bookDecription,
+        bookQuantity
+        FROM Book
+        WHERE bookCode = #{bookCode}
+    </select>
+
     <select id="selectBookTotal" resultType="int">
         SELECT COUNT(bookCode) AS totalBooks
         FROM Book;

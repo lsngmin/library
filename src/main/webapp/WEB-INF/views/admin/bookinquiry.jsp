@@ -308,6 +308,76 @@
       border: 1px solid #ddd;
       color: #333;
     }
+
+    /* textarea 스타일 */
+    .form-group textarea {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      resize: none;
+      height: 100px;  /* 높이 조정 */
+      background-color: white;
+    }
+
+    /* 이미지 업로드 컨테이너 스타일 */
+    .image-upload-container {
+      width: 100%;
+      height: 100px;  /* textarea와 동일한 높이 */
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background-color: white;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* 이미지 업로드 컨테이너 내부의 텍스트 스타일 수정 */
+    .image-upload-container p {
+      margin: 0;
+      font-size: 12px;
+      color: #666;
+    }
+
+    .image-upload-container:hover {
+      border-color: #aaa;
+    }
+
+    .image-preview {
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      display: none;
+      border-radius: 4px;
+    }
+
+    .upload-label {
+      padding: 6px 12px;
+      background-color: #f8f9fa;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .file-info {
+      margin: 0;
+      font-size: 12px;
+      color: #666;
+    }
+
+    .upload-label:hover {
+      background-color: #e9ecef;
+    }
+
+    .upload-input {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -429,6 +499,22 @@
           <label for="bookStatus">도서상태</label>
           <input type="text" id="bookStatus" name="bookStatus">
         </div>
+        <!-- 책 소개 필드 추가 -->
+        <div class="form-group">
+          <label for="bookDescription">책 소개</label>
+          <textarea id="bookDescription" name="bookDescription" placeholder="책에 대한 소개를 입력하세요..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>도서 이미지</label>
+          <div class="image-upload-container">
+            <img id="imagePreview" class="image-preview" alt="도서 이미지 미리보기">
+            <label for="bookImage" class="upload-label">
+              이미지 선택
+              <input type="file" id="bookImage" name="bookImage" class="upload-input" accept="image/*">
+            </label>
+            <p class="file-info">지원: JPG, PNG, GIF (최대 5MB)</p>
+          </div>
+        </div>
       </div>
       <div class="button-group">
         <button type="submit" class="modal-btn submit-btn">수정</button>
@@ -442,69 +528,136 @@
   const modal = document.getElementById('editModal');
   const closeBtn = document.querySelector('.close');
 
-  // 수정 버튼 클릭 시 모달 표시
-  document.querySelectorAll('.edit-btn').forEach(btn => {
-    btn.onclick = function(e) {
-      e.preventDefault();
-      const bookData = this.closest('.book-data');
-      const bookInfo = {
-        bookCode: bookData.children[0].textContent,
-        bookName: bookData.children[1].textContent,
-        author: bookData.children[2].textContent,
-        publisher: bookData.children[3].textContent,
-        pubYear: bookData.children[4].textContent
-      };
-      populateForm(bookInfo);
-      modal.style.display = 'block';
-    }
-  });
-
-  // 모달 닫기
+  // 모달 닫기 기능 추가
   closeBtn.onclick = () => modal.style.display = 'none';
   window.onclick = (e) => {
     if (e.target === modal) modal.style.display = 'none';
   }
 
-  // 폼 데이터 채우기
-  function populateForm(data) {
-    document.getElementById('bookName').value = data.bookName;
-    document.getElementById('regNumber').value = data.bookCode;
-    document.getElementById('author').value = data.author;
-    document.getElementById('publisher').value = data.publisher;
-    document.getElementById('pubYear').value = data.pubYear;
-  }
+  // 수정 버튼 클릭 시 모달 표시
+  document.querySelectorAll('.edit-btn').forEach(btn => {
+    btn.onclick = function(e) {
+      e.preventDefault();
+      const bookData = this.closest('.book-data');
+      const bookCode = bookData.querySelector('.data-cell:first-child').textContent.trim();
+
+      console.log('조회할 도서 코드:', bookCode);
+
+      // URL에서 공백 제거 및 인코딩
+      const encodedBookCode = encodeURIComponent(bookCode.trim());
+      const url = `/admin/books/get/${encodedBookCode}`;
+
+      console.log('요청 URL:', url);
+
+      fetch(url, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      })
+              .then(response => {
+                console.log('응답 상태:', response.status);
+                if (!response.ok) {
+                  throw new Error('서버 응답 오류: ' + response.status);
+                }
+                return response.json();
+              })
+              .then(data => {
+                console.log('받은 데이터:', data);
+
+                if (!data || typeof data !== 'object') {
+                  throw new Error('유효하지 않은 데이터 형식');
+                }
+
+                // 폼에 데이터 채우기
+                const setFieldValue = (id, value) => {
+                  const element = document.getElementById(id);
+                  if (element) {
+                    element.value = value || '';
+                  }
+                };
+
+                setFieldValue('bookName', data.bookName);
+                setFieldValue('regNumber', data.bookCode);
+                setFieldValue('author', data.bookAuthor);
+                setFieldValue('publisher', data.bookPublisher);
+                setFieldValue('pubYear', data.bookPublishDate);
+                setFieldValue('price', data.bookPrice);
+                setFieldValue('bookPage', data.bookPage);
+                setFieldValue('bookLocation', data.bookLocation);
+                setFieldValue('category', data.bookCategory);
+                setFieldValue('bookStatus', data.bookStatus);
+                setFieldValue('bookDescription', data.bookDecription);
+
+                // 이미지 미리보기 처리
+                const preview = document.getElementById('imagePreview');
+                if (preview && data.bookImageSrc) {
+                  preview.src = `/resources${data.bookImageSrc}`;
+                  preview.style.display = 'block';
+                } else if (preview) {
+                  preview.style.display = 'none';
+                }
+
+                modal.style.display = 'block';
+              })
+              .catch(error => {
+                console.error('에러 발생:', error);
+                alert('도서 정보를 불러오는데 실패했습니다: ' + error.message);
+              });
+    };
+  });
 
   // 폼 제출 처리
   document.getElementById('editBookForm').onsubmit = function(e) {
     e.preventDefault();
-    const formData = {
-      bookName: document.getElementById('bookName').value,
-      regNumber: document.getElementById('regNumber').value,
-      author: document.getElementById('author').value,
-      price: document.getElementById('price').value,
-      publisher: document.getElementById('publisher').value,
-      bookPage: document.getElementById('bookPage').value,
-      pubYear: document.getElementById('pubYear').value,
-      bookLocation: document.getElementById('bookLocation').value,
-      category: document.getElementById('category').value,
-      bookStatus: document.getElementById('bookStatus').value
-    };
+    const formData = new FormData();
 
-    // TODO: API로 데이터 전송
-    // fetch('/api/books/update', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(formData)
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //   if(data.success) {
-    //     modal.style.display = 'none';
-    //     // 필요시 페이지 새로고침 또는 데이터 업데이트
-    //     location.reload();
-    //   }
-    // });
+    formData.append('bookCode', document.getElementById('regNumber').value);
+    formData.append('bookName', document.getElementById('bookName').value);
+    formData.append('bookAuthor', document.getElementById('author').value);
+    formData.append('bookPrice', document.getElementById('price').value);
+    formData.append('bookPublisher', document.getElementById('publisher').value);
+    formData.append('bookPage', document.getElementById('bookPage').value);
+    formData.append('bookPublishDate', document.getElementById('pubYear').value);
+    formData.append('bookLocation', document.getElementById('bookLocation').value);
+    formData.append('bookCategory', document.getElementById('category').value);
+    formData.append('bookStatus', document.getElementById('bookStatus').value);
+    formData.append('bookDecription', document.getElementById('bookDecription').value);
+    formData.append('bookQuantity', '1');
+
+    const fileInput = document.getElementById('bookImageSrc');
+    if (fileInput.files.length > 0) {
+      formData.append('bookImageSrc', fileInput.files[0]);
+    }
+
+    // 전송 데이터 확인
+    console.log('전송할 데이터:');
+    for (let pair of formData.entries()) {
+      console.log(pair[0] + ': ' + pair[1]);
+    }
+
+    fetch('/admin/books/update', {
+      method: 'POST',
+      body: formData
+    })
+            .then(response => {
+              console.log('서버 응답:', response);
+              return response.json();
+            })
+            .then(data => {
+              console.log('응답 데이터:', data);
+              if (data.success) {
+                alert(data.message);
+                modal.style.display = 'none';
+                location.reload();
+              } else {
+                alert(data.message);
+              }
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              alert('도서 정보 수정 중 오류가 발생했습니다.');
+            });
   };
 </script>

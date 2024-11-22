@@ -17,5 +17,6 @@ public interface BookService {
 
     int selectTotalBook();
     BookVO selectSearchBook(BookVO vo);
+    BookVO selectBookDetail(BookVO vo);
 
 }

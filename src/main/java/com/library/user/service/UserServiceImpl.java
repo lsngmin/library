@@ -3,6 +3,7 @@ package com.library.user.service;
 import com.library.user.model.UserDAO;
 import com.library.user.model.UserVO;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -27,4 +28,20 @@ public class UserServiceImpl implements UserService {
     public UserVO SelectSearchUser(UserVO vo) {
         return userDAO.selectSearchUser(vo);
     }
+
+    @Override
+    public List<UserVO> getUserList(int page, int size) {
+        return userDAO.getUserList((page - 1) * size, size);
+    }
+
+    @Override
+    public List<UserVO> searchUsers(UserVO searchVO, int page, int size) {
+        return userDAO.searchUsers(searchVO, (page - 1) * size, size);
+    }
+
+    @Override
+    public int getTotalSearchResults(UserVO searchVO) {
+        return userDAO.getTotalSearchResults(searchVO);
+    }
+
 }
