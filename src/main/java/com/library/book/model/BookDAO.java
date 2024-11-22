@@ -51,4 +51,8 @@ public class BookDAO {
         return (BookVO) mybatis.selectOne("BookDAO.selectSearchBook", vo);
     }
 
+    public BookVO selectBookDetail(BookVO vo) {
+        return mybatis.selectOne("BookDAO.selectBookDetail", vo);
+    }
+
 }

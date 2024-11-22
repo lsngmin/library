@@ -15,6 +15,25 @@
     <select id="selectSearchUser" resultType="User">
         select * from User where userId=#{userId};
     </select>
+    <select id="selectUserList" resultType="User">
+        SELECT * FROM User
+        ORDER BY userId
+        LIMIT #{offset}, #{size}
+    </select>
+
+    <select id="searchUsers" resultType="User">
+        SELECT * FROM User
+        WHERE userId LIKE CONCAT('%', #{searchVO.userId}, '%')
+        OR name LIKE CONCAT('%', #{searchVO.name}, '%')
+        ORDER BY userId
+        LIMIT #{offset}, #{size}
+    </select>
+
+    <select id="getTotalSearchResults" resultType="int">
+        SELECT COUNT(userId) FROM User
+        WHERE userId LIKE CONCAT('%', #{userId}, '%')
+        OR name LIKE CONCAT('%', #{name}, '%')
+    </select>
     <update id="updateOverDueDate" parameterType="User">
         UPDATE User
         SET OverDueDate = 0

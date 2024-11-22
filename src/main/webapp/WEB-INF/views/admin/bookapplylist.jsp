@@ -129,7 +129,39 @@
 
     /* 도서 상세 정보 스타일 */
     .book-details {
+      display: none; /* 기본적으로 숨김 */
       margin-bottom: 30px;
+      background-color: #ffffff; /* 배경색을 하얀색으로 변경 */
+      padding: 20px;
+      border-radius: 8px;
+      /* border: 1px solid #e9ecef; 이 줄을 제거하거나 주석 처리 */
+    }
+    .book-details.active {
+      display: block;
+    }
+    /* 화살표 크기와 스타일 통일 */
+    .detail-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      padding: 0;
+      transition: transform 0.2s ease;
+      line-height: 1; /* 이거 추가 */
+      width: 20px; /* 이거 추가 */
+      height: 20px; /* 이거 추가 */
+    }
+
+    .detail-button::before {
+      content: "∨"; /* 기본 아래 화살표 */
+      display: block;
+      font-size: 20px;
+    }
+
+    .detail-button.active::before {
+      content: "∧"; /* 활성화 시 위 화살표 */
+      display: block;
+      font-size: 20px;
     }
     .book-details h4 {
       font-size: 16px;
@@ -164,8 +196,21 @@
       font-size: 14px;
       width: 100%;
     }
+    /* 코드 입력 필드 텍스트 색상 변경 */
     .form-group input[readonly] {
+      text-align: left;
       background-color: #f8f9fa;
+      color: #1a73e8; /* 파란색으로 변경 */
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      text-align: left;  /* 모든 입력 필드 왼쪽 정렬 */
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      width: 100%;
     }
 
     /* 테이블 스타일 */
@@ -174,11 +219,25 @@
       border-collapse: collapse;
       margin-top: 20px;
     }
+    /* 기존의 th, td 스타일은 유지 */
     th, td {
       padding: 12px;
-      text-align: left;
+      text-align: left; /* 기본적으로 왼쪽 정렬 유지 */
       border-bottom: 1px solid #eee;
       font-size: 14px;
+    }
+
+    /* 코드열은 왼쪽 정렬 유지하고 싶다면 */
+    td.book-code {
+      text-align: left;
+    }
+    /* 신청자료명도 왼쪽 정렬 유지하고 싶다면 */
+    td:nth-child(4) {
+      text-align: left;
+    }
+    /* 신청자도 왼쪽 정렬 유지하고 싶다면 */
+    td:nth-child(5) {
+      text-align: left;
     }
     th {
       font-weight: normal;
@@ -190,17 +249,20 @@
       width: 40px;
       text-align: center;
     }
+    /* 처리상태 열 가운데 정렬 (6번째 열) */
+    th:nth-child(6),
+    td:nth-child(6) {
+      text-align: center;
+    }
+    /* 상세보기 열 가운데 정렬 (7번째 열) */
+    th:nth-child(7),
+    td:nth-child(7) {
+      text-align: center;
+    }
     .book-code {
       color: #1a73e8;
     }
-    .detail-button {
-      background: none;
-      border: none;
-      color: #1a73e8;
-      cursor: pointer;
-      font-size: 18px;
-      padding: 0;
-    }
+
     input[type="checkbox"] {
       width: 16px;
       height: 16px;
@@ -269,6 +331,7 @@
 </div>
 
 <div class="content-wrapper">
+  <!-- 희망도서 신청 목록 섹션 -->
   <div class="content-section">
     <h3 class="section-title">희망도서 신청 목록</h3>
     <p class="section-subtitle">희망도서 반려시 사유를 비고란에 입력해 주세요</p>
@@ -277,7 +340,8 @@
       <input type="text" placeholder="도서 코드 또는 도서명을 입력해 주세요">
     </div>
 
-    <div class="book-details">
+    <!-- 숨겨질 도서 상세 정보 -->
+    <div class="book-details" id="hope-book-details">
       <h4>도서 상세 정보</h4>
       <div class="form-container">
         <div class="form-row">
@@ -326,7 +390,7 @@
     <table>
       <thead>
       <tr>
-        <th><input type="checkbox" id="select-all" onclick="toggleCheckboxes(this)"></th>
+        <th><input type="checkbox" id="select-all-hope" onclick="toggleCheckboxes(this)"></th>
         <th>코드</th>
         <th>날짜</th>
         <th>신청자료명</th>
@@ -343,7 +407,7 @@
         <td>자연사</td>
         <td>이승민</td>
         <td>접수중</td>
-        <td><button class="detail-button">⌃</button></td>
+        <td><button class="detail-button"></button></td>
       </tr>
       <tr>
         <td><input type="checkbox" class="select-item"></td>
@@ -352,7 +416,7 @@
         <td>수학의 힘</td>
         <td>맹정재</td>
         <td>검토중</td>
-        <td><button class="detail-button">⌃</button></td>
+        <td><button class="detail-button"></button></td>
       </tr>
       <tr>
         <td><input type="checkbox" class="select-item"></td>
@@ -361,11 +425,12 @@
         <td>지식의 최전선</td>
         <td>원종호</td>
         <td>처리완료</td>
-        <td><button class="detail-button">⌄</button></td>
+        <td><button class="detail-button"></button></td>
       </tr>
       </tbody>
     </table>
   </div>
+  <!-- 도서 기증 신청 목록 섹션 -->
   <div class="content-section">
     <h3 class="section-title">도서 기증 신청 목록</h3>
     <p class="section-subtitle">기증 도서의 상태를 확인 후 처리해 주세요</p>
@@ -463,7 +528,7 @@
         <td>생명의 아름다움</td>
         <td>김민수</td>
         <td>접수중</td>
-        <td><button class="detail-button">⌃</button></td>
+        <td><button class="detail-button"></button></td>
       </tr>
       <tr>
         <td><input type="checkbox" class="select-item"></td>
@@ -472,7 +537,7 @@
         <td>자연과학의 기초</td>
         <td>박수현</td>
         <td>검토중</td>
-        <td><button class="detail-button">⌃</button></td>
+        <td><button class="detail-button"></button></td>
       </tr>
       <tr>
         <td><input type="checkbox" class="select-item"></td>
@@ -481,7 +546,7 @@
         <td>문학과 철학</td>
         <td>이수영</td>
         <td>처리완료</td>
-        <td><button class="detail-button">⌄</button></td>
+        <td><button class="detail-button"></button></td>
       </tr>
       </tbody>
     </table>
@@ -490,11 +555,83 @@
 </body>
 </html>
 <script>
-  function toggleCheckboxes(source) {
-    // 모든 체크박스를 선택/해제하는 함수
-    const checkboxes = document.querySelectorAll('.select-item');
-    checkboxes.forEach(checkbox => {
-      checkbox.checked = source.checked;
+  document.addEventListener('DOMContentLoaded', function() {
+    // 희망도서와 기증도서 섹션의 모든 상세보기 버튼에 이벤트 리스너 추가
+    const sections = document.querySelectorAll('.content-section');
+
+    sections.forEach(section => {
+      const detailButtons = section.querySelectorAll('.detail-button');
+      const bookDetails = section.querySelector('.book-details');
+      let activeRow = null;
+
+      detailButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+          const row = this.closest('tr');
+
+          // 이미 열려있는 행이 있고, 그것이 현재 클릭한 행과 다르다면
+          if (activeRow && activeRow !== row) {
+            // 이전에 활성화된 버튼의 상태를 초기화
+            const prevButton = activeRow.querySelector('.detail-button');
+            prevButton.classList.remove('active');
+          }
+
+          // 현재 버튼의 상태를 토글
+          this.classList.toggle('active');
+
+          // 상세 정보 표시 여부 토글
+          if (this.classList.contains('active')) {
+            bookDetails.classList.add('active');
+            activeRow = row;
+
+            // 클릭된 행의 데이터를 가져와서 상세 정보 필드 업데이트
+            const code = row.querySelector('.book-code').textContent;
+            const bookName = row.cells[3].textContent;
+            const applicant = row.cells[4].textContent;
+
+            // 상세 정보 필드 업데이트
+            const inputs = bookDetails.querySelectorAll('input');
+            inputs[0].value = code; // 코드
+            inputs[1].value = bookName; // 도서명
+            inputs[4].value = applicant; // 신청자
+          } else {
+            bookDetails.classList.remove('active');
+            activeRow = null;
+          }
+        });
+      });
     });
+
+    // 전체 선택 체크박스 기능
+    function toggleCheckboxes(source) {
+      const table = source.closest('table');
+      const checkboxes = table.querySelectorAll('.select-item');
+      checkboxes.forEach(checkbox => {
+        checkbox.checked = source.checked;
+      });
+    }
+
+    // 각 섹션의 전체 선택 체크박스에 이벤트 리스너 추가
+    document.querySelectorAll('input[type="checkbox"][id^="select-all"]').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        toggleCheckboxes(this);
+      });
+    });
+  });
+
+  // 상세보기 버튼 클릭 이벤트 핸들러
+  function toggleDetails(button) {
+    const row = button.closest('tr');
+    const section = button.closest('.content-section');
+    const details = section.querySelector('.book-details');
+
+    // 버튼 상태 토글
+    button.classList.toggle('active');
+
+    // 상세 정보 표시/숨김
+    if (button.classList.contains('active')) {
+      details.style.display = 'block';
+    } else {
+      details.style.display = 'none';
+    }
   }
 </script>
