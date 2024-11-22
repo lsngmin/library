@@ -4,156 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <title>강릉대학교 통합도서관</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background: #FFF;
-            color: #333333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            position: relative;
-        }
-
-        .login-form {
-            background: white;
-            padding: 32px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            width: 350px; /* Increased width of the form */
-            text-align: center;
-        }
-
-        .login-form input {
-            width: 100%;
-            padding: 15px; /* Increased padding for larger input boxes */
-            margin: 10px 0;
-            border: 1px solid #E0E0E0;
-            border-radius: 4px;
-            font-size: 16px; /* Increased font size for better readability */
-        }
-
-        .login-form button {
-            width: 100%;
-            padding: 15px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .login-form button:hover {
-            background-color: #45a049;
-        }
-
-        /* 섹션 스타일 수정 */
-        .section-container {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 32px;
-        }
-
-        .section-title {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 12px;
-        }
-
-        /* 사이드 네비게이션 */
-        .side-nav {
-            width: 250px;
-            height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 0;
-            background: #FFF;
-            padding: 20px;
-            border-right: 1px solid #E0E0E0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-            font-weight: 700;
-            font-size: 18px;
-            color: #333;
-        }
-
-        .logo img {
-            width: 24px;
-            height: 24px;
-            margin-right: 8px;
-        }
-
-        .nav-item {
-            padding: 15px;
-            margin-bottom: 5px;
-            cursor: pointer;
-            border: 1px solid transparent;
-            border-radius: 4px;
-            font-size: 14px;
-            color: #666666;
-        }
-
-        .nav-item.active {
-            background: white;
-            border: 1px solid #E0E0E0;
-            color: #333333;
-        }
-
-        .main-content {
-            margin-left: 250px;
-            padding: 40px;
-        }
-
-        /* 헤더 스타일 수정: 내정보, 로그아웃을 우측 상단으로 이동 */
-        .header {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-        }
-
-        .user-menu {
-            color: #666666;
-            font-size: 14px;
-        }
-
-        .user-menu .separator {
-            margin: 0 10px;
-            color: #E0E0E0;
-        }
-    </style>
+    <script src="wishbookstatus.js"></script>
+    <link rel="stylesheet"  href="/resources/css/wishbookstatus.css?after">
 </head>
 <body>
-<!-- 로그인 폼 -->
-<div class="login-form">
-    <h2>비밀번호 변경</h2>
-    <form action="#" method="post">
-        <input type="text" id="username" name="username" placeholder="아이디" required>
-        <input type="password" id="password" name="password" placeholder="비밀번호" required>
-        <input type="password" id="password1" name="password" placeholder="비밀번호" required>
-        <button type="submit">로그인</button>
-    </form>
-</div>
-
 <div class="side-nav">
     <div class="logo">
-        <img src="logo.png" alt="로고">
+        <img src="img/logoImage.png" alt="로고">
         강릉대학교 통합도서관
     </div>
-    <div class="nav-item">내정보</div>
+    <div class="nav-item active">내정보</div>
     <div class="nav-item">관심도서 목록</div>
     <div class="nav-item">도서기증 신청</div>
-    <div class="nav-item active">비밀번호 변경</div>
+    <div class="nav-item">비밀번호 변경</div>
 </div>
 
 <div class="main-content">
@@ -164,6 +27,77 @@
             <a href="#" style="color: #666666; text-decoration: none;">로그아웃</a>
         </div>
     </div>
+    </header>
+
+
+
+    <main class="content">
+        <h2 class="page-title">희망도서 신청 내역</h2>
+
+        <div class="status-tabs">
+            <button class="status-tab">전체</button>
+            <button class="status-tab active">접수중</button>
+            <button class="status-tab">검토중</button>
+            <button class="status-tab">처리완료</button>
+        </div>
+
+        <div class="info-text">
+            접수중 상태일 때만 취소가 가능합니다.
+        </div>
+
+        <!-- 접수중 상태 -->
+        <div class="status-row">
+            <div class="status-cell">접수중</div>
+            <div class="status-cell">인형의 집</div>
+            <div class="status-cell">안미란</div>
+            <div class="status-cell">민음사</div>
+            <div class="status-cell">2024.10.11</div>
+            <div class="status-cell"><button class="cancel-btn">취소</button></div>
+        </div>
+
+        <div class="status-row">
+            <div class="status-cell">접수중</div>
+            <div class="status-cell">코스모스</div>
+            <div class="status-cell">재레미</div>
+            <div class="status-cell">한빛미디어</div>
+            <div class="status-cell">2024.10.11</div>
+            <div class="status-cell"><button class="cancel-btn">취소</button></div>
+        </div>
+
+        <!-- 검토중 상태 (취소 불가) -->
+        <div class="status-row">
+            <div class="status-cell">검토중</div>
+            <div class="status-cell">버드걸</div>
+            <div class="status-cell">신혜빈</div>
+            <div class="status-cell">문학동네</div>
+            <div class="status-cell">2024.10.09</div>
+            <div class="status-cell"><button class="cancel-btn" disabled>취소</button></div>
+        </div>
+
+        <!-- 처리완료 상태 (취소 불가) -->
+        <div class="status-row">
+            <div class="status-cell">처리완료</div>
+            <div class="status-cell">예쁜아이</div>
+            <div class="status-cell">토리헤이드</div>
+            <div class="status-cell">아름드리미디어</div>
+            <div class="status-cell">2024.10.01</div>
+            <div class="status-cell"><button class="cancel-btn" disabled>취소</button></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#">이용약관</a>
+            <a href="#">개인정보처리방침</a>
+            <a href="#">규정 실정</a>
+            <a href="#">운영체계</a>
+            <a href="#">도서관 안내</a>
+        </div>
+        <p class="copyright">Copyright © 2024 강릉대학교. All rights reserved.</p>
+    </footer>
+
+
 </div>
+
 </body>
 </html>

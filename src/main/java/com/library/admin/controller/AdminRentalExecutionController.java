@@ -2,12 +2,15 @@ package com.library.admin.controller;
 
 import com.library.rental.service.RentalService;
 import com.library.rental.model.RentalVO;
+import com.library.user.model.UserVO;
+import com.library.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
@@ -15,11 +18,24 @@ import java.util.UUID;
 public class AdminRentalExecutionController {
     @Autowired
     private RentalService rentalService;
+    @Autowired
+    private UserService userService;
     @PostMapping("/admin/rentalexecute")
     @ResponseBody
-    public void rentalExecute(@RequestBody Map<String, String> request) {
+    public Map<String, String> rentalExecute(@RequestBody(required = false) Map<String, String> request) {
+        Map<String, String> response = new HashMap<>();
+        if(request.get("name").equals("")|| request.get("bookName").equals("")) {
+            response.put("error" , "사용자 또는 도서 정보가 누락되었습니다.");
+            return response;
+        } else if (request.get("status").equals("불가능") || Integer.parseInt(request.get("rentalAvailable")) <= 0) {
+//            UserVO vo = new UserVO();
+//            vo.setUserId(request.get("userId"));
+//            vo = userService.SelectSearchUser(vo);
+            userService.updateStatus(request.get("userId"));
+            response.put("error", "대출 잔여 수량 또는 연체 여부를 확인해 주세요.");
+            return response;
+        }
         RentalVO rental = new RentalVO();
-
         rental.setRentalBookCode(request.get("bookCode"));
         rental.setRentalUserId(request.get("userId"));
         rental.setRentalStartDate(request.get("rentalStartDate"));
@@ -27,5 +43,9 @@ public class AdminRentalExecutionController {
         rental.setRentalCode(UUID.randomUUID().toString().replace("-", "").substring(0, 4));
 
         rentalService.insertRental(rental);
+        response.put("success", "대출이 성공적으로 실행되었습니다!");
+
+        userService.updateRentalAvailableM(request.get("userId"));
+        return response;
     }
 }

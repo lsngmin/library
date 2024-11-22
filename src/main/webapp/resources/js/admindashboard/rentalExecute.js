@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
     $('#RentalExecute').click(function () {
         executeRental();
@@ -8,6 +9,10 @@ $(document).ready(function() {
         var userId = $('#userId').val();
         var rentalStartDate = $('#rentalStartDate').val();
         var rentalEndDate = $('#rentalEndDate').val();
+        var name = $('#name').val();
+        var bookName = $('#bookName').val();
+        var status = $('#status').val();
+        var rentalAvailable = $('#rentalAvailable').val();
 
         $.ajax({
             type: 'POST',
@@ -17,10 +22,19 @@ $(document).ready(function() {
                 bookCode: bookCode,
                 userId: userId,
                 rentalStartDate: rentalStartDate,
-                rentalEndDate: rentalEndDate
+                rentalEndDate: rentalEndDate,
+                name: name,
+                bookName: bookName,
+                status: status,
+                rentalAvailable:rentalAvailable
             }),
             success: function (response) {
-                alert("대출이 성공적으로 실행되었습니다!");
+                if (response.error) {
+                    alert(response.error);
+                }
+                else {
+                    alert(response.success)
+                }
             },
             error: function () {
                 alert("대출 실행 중 오류가 발생했습니다. 다시 시도해주세요.");

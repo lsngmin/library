@@ -8,12 +8,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Repository
-public class UserDAO{
+public class UserDAO {
     @Autowired
     private SqlSessionTemplate mybatis;
+
     public void inserUser(UserVO vo) {
         mybatis.insert("UserDAO.insertUser", vo);
     }
+
     public UserVO getLoginUser(UserVO vo) {
         return (UserVO) mybatis.selectOne("UserDAO.selectLoginGetUser", vo);
     }
@@ -21,6 +23,7 @@ public class UserDAO{
     public int getTotalUser() {
         return (int) mybatis.selectOne("UserDAO.selectTotalUser");
     }
+
     public UserVO selectSearchUser(UserVO vo) {
         return (UserVO) mybatis.selectOne("UserDAO.selectSearchUser", vo);
     }
@@ -42,6 +45,20 @@ public class UserDAO{
 
     public int getTotalSearchResults(UserVO searchVO) {
         return (int) mybatis.selectOne("UserDAO.getTotalSearchResults", searchVO);
+    }
+
+    public void updateOverDueDate(UserVO vo) {
+        mybatis.update("UserDAO.updateOverDueDate", vo);
+    }
+
+    public void updateRentalAvailableM(String userId) {
+        mybatis.update("UserDAO.updateRentalAvailableM", userId);
+    }
+    public void updateRentalAvailableP(String userId) {
+        mybatis.update("UserDAO.updateRentalAvailableP", userId);
+    }
+    public void updateStatus(String userId) {
+        mybatis.update("UserDAO.updateStatus", userId);
     }
 
 }

@@ -16,7 +16,6 @@ import java.util.Map;
 import java.util.HashMap;
 
 @Controller
-@RequestMapping("/admin")
 public class BookInquiryController {
 
     private final BookService bookService;

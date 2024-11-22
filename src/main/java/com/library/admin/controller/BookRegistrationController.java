@@ -12,7 +12,6 @@ import java.util.Map;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/admin")
 public class BookRegistrationController {
 
     private final BookService bookService;

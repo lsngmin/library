@@ -15,4 +15,11 @@ public interface UserService {
     List<UserVO> searchUsers(UserVO searchVO, int page, int size);
     int getTotalSearchResults(UserVO searchVO);
 
+    public void updateOverDueDate(UserVO vo)
+            ;
+    public void updateRentalAvailableM(String userId);
+    public void updateRentalAvailableP(String userId);
+
+    public void updateStatus(String userId);
+
 }
