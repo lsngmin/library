@@ -28,4 +28,14 @@ public class RentalServiceImpl implements RentalService {
     public void deleteRental(String userId, String bookName) {
         rentalDAO.deleteRental(userId, bookName);
     }
+
+    @Override
+    public int selectRentalExtensionByUserIdAndBookCode(String userId, String bookCode) {
+        return rentalDAO.selectRentalExtensionByUserIdAndBookCode(userId, bookCode);
+    }
+
+    @Override
+    public void updateRentalExtensionByUserIdAndBookCode(String userId, String bookCode) {
+        rentalDAO.updateRentalExtensionByUserIdAndBookCode(userId, bookCode);
+    }
 }

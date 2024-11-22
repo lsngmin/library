@@ -27,5 +27,18 @@ public class RentalDAO {
         params.put("bookName", bookName);
         mybatis.delete("RentalDAO.deleteRental", params);
     }
+    public int selectRentalExtensionByUserIdAndBookCode(String userId, String bookCode) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("userId", userId);
+        params.put("bookCode", bookCode);
+        return mybatis.selectOne("RentalDAO.selectRentalExtensionByUserIdAndBookCode", params);
+    }
+
+    public void updateRentalExtensionByUserIdAndBookCode(String userId, String bookCode) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("userId", userId);
+        params.put("bookCode", bookCode);
+        mybatis.update("RentalDAO.updateRentalExtensionByUserIdAndBookCode", params);
+    }
 }
 

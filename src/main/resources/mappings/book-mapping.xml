@@ -136,5 +136,7 @@
     <select id="selectSearchBook" resultType="Book">
         select bookCode, bookName, bookPublisher, bookAuthor, bookPublishDate from Book where bookCode = #{bookCode};
     </select>
-
+    <select id="selectBookCodeByBookName" resultType="String">
+        select bookCode from Book where bookName=#{bookName};
+    </select>
 </mapper>

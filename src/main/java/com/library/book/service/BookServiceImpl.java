@@ -66,4 +66,9 @@ public class BookServiceImpl implements BookService {
         return bookDAO.selectBookDetail(vo);
     }
 
+    @Override
+    public String selectBookCodeByBookName(String bookName) {
+        return bookDAO.selectBookCodeByBookName(bookName);
+    }
+
 }
