@@ -198,21 +198,37 @@
         <img src="/img/logoImage.png" alt="로고">
         <a href="main">강릉대학교 통합도서관</a>
     </div>
-    <div class="nav-item">통합검색</div>
-    <div class="nav-item">희망도서</div>
-    <div class="nav-item">인기도서</div>
-    <div class="nav-item active">공지사항</div>
-    <div class="nav-item">이용사항</div>
+    <div class="nav-item"><a href="/search" style="text-decoration: none; color: inherit;">통합검색</a></div>
+    <div class="nav-item"><a href="/wishbookapply" style="text-decoration: none; color: inherit;">희망도서</a></div>
+    <div class="nav-item"><a href="/popular" style="text-decoration: none; color: inherit;">인기도서</a></div>
+    <div class="nav-item active"><a href="/notice" style="text-decoration: none; color: inherit;">공지사항</a></div>
+    <div class="nav-item"><a href="/guide" style="text-decoration: none; color: inherit;">이용사항</a></div>
+
 </div>
 
 <div class="main-content">
     <div class="header">
         <div class="title">공지사항</div>
-        <a href="login" class="login">
-            <img src="/img/userImage2.png" alt="로그인 아이콘">
-            로그인
-        </a>
+        <div class="login">
+            <c:choose>
+                <c:when test="${not empty user}">
+                    <!-- 로그인된 상태 -->
+                    <a href="/myInfo" style="display: inline-flex; align-items: center; margin-right: 15px; text-decoration: none; color: black;">
+                        <span>내정보</span>
+                        <img src="/img/userImage2.png" alt="사용자 아이콘" style="width: 20px; height: 20px; margin-left: 5px;">
+                    </a>
+                    <a href="/logout" style="text-decoration: none; color: black; margin-left: 15px;">로그아웃</a>
+                </c:when>
+                <c:otherwise>
+                    <!-- 비로그인 상태 -->
+                    <a href="/login" style="text-decoration: none; color: black;">
+                        로그인
+                    </a>
+                </c:otherwise>
+            </c:choose>
+        </div>
     </div>
+
     <div class="search-bar">
         <div class="categories">
             <button class="active">전체</button>

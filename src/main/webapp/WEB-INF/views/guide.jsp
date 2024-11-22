@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -151,34 +152,50 @@
 <body>
 <div class="side-nav">
     <a href="main" style="text-decoration: none; color: #333;">
-    <div class="logo">
-        <img src="/img/logoImage.png" alt="로고">
-        강릉대학교 통합도서관
-    </div>
+        <div class="logo">
+            <img src="/img/logoImage.png" alt="로고">
+            강릉대학교 통합도서관
+        </div>
     </a>
     <a href="search" class="nav-link">
-    <div class="nav-item">통합검색</div>
+        <div class="nav-item">통합검색</div>
     </a>
-    <a href="hope" class="nav-link">
-    <div class="nav-item">희망도서</div>
+    <a href="wishbookapply" class="nav-link">
+        <div class="nav-item">희망도서</div>
     </a>
     <a href="popular" class="nav-link">
-    <div class="nav-item">인기도서</div>
+        <div class="nav-item">인기도서</div>
     </a>
     <a href="notice" class="nav-link">
-    <div class="nav-item">공지사항</div>
+        <div class="nav-item">공지사항</div>
     </a>
     <a href="guide" class="nav-link">
-    <div class="nav-item active">이용사항</div>
+        <div class="nav-item active">이용사항</div>
     </a>
 </div>
 
-<!-- 로그인 버튼 -->
 <div class="header">
-    <a href="login" class="login">
-        <img src="/img/userImage2.png" alt="로그인 아이콘"> 로그인
-    </a>
+    <div class="login">
+        <c:choose>
+            <c:when test="${user != null}">
+                <!-- 로그인된 상태 -->
+                <a href="/myInfo" style="display: inline-flex; align-items: center; margin-right: 15px; text-decoration: none; color: black;">
+                    <img src="/img/userImage2.png" alt="사용자 아이콘" style="width: 20px; height: 20px; margin-right: 5px;">
+                    <span>내정보</span>
+                </a>
+                <a href="/logout" style="text-decoration: none; color: black; margin-left: 15px;">로그아웃</a>
+            </c:when>
+            <c:otherwise>
+                <!-- 비로그인 상태 -->
+                <a href="/login" style="text-decoration: none; color: black;">
+                    로그인
+                </a>
+            </c:otherwise>
+        </c:choose>
+    </div>
 </div>
+
+
 
 <div class="main-content">
     <!-- 도서관 이용시간 섹션 -->
