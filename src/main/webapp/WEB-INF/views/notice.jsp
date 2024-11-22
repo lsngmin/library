@@ -200,7 +200,7 @@
     </div>
     <div class="nav-item"><a href="/search" style="text-decoration: none; color: inherit;">통합검색</a></div>
     <div class="nav-item"><a href="/wishbookapply" style="text-decoration: none; color: inherit;">희망도서</a></div>
-    <div class="nav-item"><a href="/popular" style="text-decoration: none; color: inherit;">인기도서</a></div>
+    <div class="nav-item"><a href="/interestbookview" style="text-decoration: none; color: inherit;">인기도서</a></div>
     <div class="nav-item active"><a href="/notice" style="text-decoration: none; color: inherit;">공지사항</a></div>
     <div class="nav-item"><a href="/guide" style="text-decoration: none; color: inherit;">이용사항</a></div>
 
