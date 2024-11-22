@@ -25,7 +25,8 @@
         b.bookName,
         b.bookAuthor,
         b.bookPublisher,
-        br.rentalEndDate
+        br.rentalEndDate,
+        br.rentalStartDate
         FROM
         BookRental br
         JOIN

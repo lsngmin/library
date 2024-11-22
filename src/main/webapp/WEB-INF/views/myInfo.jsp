@@ -1,3 +1,6 @@
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.List" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -5,14 +8,16 @@
     <meta charset="UTF-8">
     <title>강릉대학교 통합도서관</title>
     <link rel="stylesheet"  href="/resources/css/myInfo.css">
-    <script src="myInfo.js"></script>
+    <script src="/js/myInfo.js"></script>
 </head>
 <body>
 <div class="side-nav">
-    <div class="logo">
-        <img src="img/logoImage.png" alt="로고">
-        강릉대학교 통합도서관
-    </div>
+    <a href="/main" style="text-decoration: none; color: inherit;">
+        <div class="logo">
+            <img src="img/logoImage.png" alt="로고">
+            강릉대학교 통합도서관
+        </div>
+    </a>
     <div class="nav-item active">내정보</div>
     <div class="nav-item">관심도서 목록</div>
     <div class="nav-item">도서기증 신청</div>
@@ -22,9 +27,9 @@
 <div class="main-content">
     <div class="header">
         <div class="user-menu">
-            <span>내정보</span>
+            <a href="/myInfo" style="color: #666666; text-decoration: none;">내정보</a>
             <span class="separator">|</span>
-            <a href="#" style="color: #666666; text-decoration: none;">로그아웃</a>
+            <a href="/logout" style="color: #666666; text-decoration: none;">로그아웃</a>
         </div>
     </div>
 
@@ -44,27 +49,23 @@
                     </div>
                 </div>
                 <div class="info-row">
-                    <div class="info-col birth-section">
+                    <div class="info-col">
                         <label class="info-label">생년월일</label>
-                        <div class="birth-inputs">
-                            <input type="text" class="info-input birth" value="${user.birth}" readonly>
-                            <input type="text" class="info-input birth" value="99" readonly>
-                            <input type="text" class="info-input birth" value="9999" readonly>
-                        </div>
+                        <input type="text" class="info-input" value="${user.birth}" readonly>
                     </div>
                     <div class="info-col">
                         <label class="info-label">소속대학</label>
-                        <input type="text" class="info-input" value="{user.}" readonly>
+                        <input type="text" class="info-input" value="${user.colleges}" readonly>
                     </div>
                 </div>
                 <div class="info-row">
                     <div class="info-col">
                         <label class="info-label">전화번호</label>
-                        <input type="text" class="info-input" value="${user.phone}" style="color: #FF4444;">
+                        <input type="text" class="info-input" value="${user.phone}">
                     </div>
                     <div class="info-col">
                         <label class="info-label">소속학과</label>
-                        <input type="text" class="info-input" value="소프트웨어학과" readonly>
+                        <input type="text" class="info-input" value="${user.departments}" readonly>
                     </div>
                 </div>
             </div>
@@ -76,8 +77,8 @@
         <div class="section-title">대출 현황</div>
         <div class="card">
             <div class="loan-header">
-                <div class="loan-info-box">대출 잔여 수량: 0권</div>
-                <div class="loan-info-box">연체 경과일: 17일</div>
+                <div class="loan-info-box">대출 잔여 수량: ${user.rentalAvailable}권</div>
+                <div class="loan-info-box">연체 경과일: ${user.overDueDate}일</div>
             </div>
             <div class="loan-notification">
                 <span>해당 도서의 연장 신청이 반영되었습니다.</span>
@@ -85,28 +86,20 @@
             </div>
             <div class="grid-wrapper">
                 <div class="loan-grid">
+                    <%
+                        // 예제 데이터 (Controller에서 세션으로 전달된 데이터)
+                        List<Map<String, Object>> rental = (List<Map<String, Object>>) session.getAttribute("rental");
+                    %>
+                    <c:forEach var="rental" items="${rental}">
                     <div class="book-section">
-                        <div class="book-content">
-                            <div class="book-title">물리학I</div>
-                            <div class="book-date">2024-10-11 ~ 2024-10-25</div>
-                        </div>
-                        <button class="btn-more">더 읽을래요 →</button>
-                    </div>
-                    <div class="book-section">
-                        <div class="book-content">
-                            <div class="book-title">코스모스</div>
-                            <div class="book-date">2024-10-01 ~ 2024-10-15</div>
-                        </div>
-                        <button class="btn-more">더 읽을래요 →</button>
-                    </div>
-                    <div class="book-section overdue">
                         <div class="overdue-label">연체</div>
                         <div class="book-content">
-                            <div class="book-title">미적분 정리집</div>
-                            <div class="book-date">2024-09-10 ~ 2024-09-24</div>
+                            <div class="book-title">${rental.bookName}</div>
+                            <div class="book-date">${rental.rentalStartDate} ~ ${rental.rentalEndDate}</div>
                         </div>
                         <button class="btn-more">더 읽을래요 →</button>
                     </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>
