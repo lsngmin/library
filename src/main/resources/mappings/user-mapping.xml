@@ -59,4 +59,15 @@
         END
         WHERE userId = #{userId};
     </update>
+
+    <update id="updatePassword" parameterType="com.library.user.model.UserVO">
+        UPDATE User
+        SET password = #{password}
+        WHERE userId = #{userId}
+    </update>
+
+    <!-- 수정 -->
+    <select id="getUserForPasswordReset" resultType="com.library.user.model.UserVO">
+        select * from User where userId = #{userId}
+    </select>
 </mapper>

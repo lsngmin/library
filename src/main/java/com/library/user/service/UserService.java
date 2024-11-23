@@ -22,4 +22,7 @@ public interface UserService {
 
     public void updateStatus(String userId);
 
+    void updatePassword(UserVO vo);
+
+    UserVO getUserForPasswordReset(String userId);
 }

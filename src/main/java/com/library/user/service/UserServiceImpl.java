@@ -61,4 +61,13 @@ public class UserServiceImpl implements UserService {
         userDAO.updateStatus(userId);
     }
 
+    @Override
+    public void updatePassword(UserVO vo) {
+        userDAO.updatePassword(vo);
+    }
+
+    @Override
+    public UserVO getUserForPasswordReset(String userId) {
+        return userDAO.getUserForPasswordReset(userId);
+    }
 }
