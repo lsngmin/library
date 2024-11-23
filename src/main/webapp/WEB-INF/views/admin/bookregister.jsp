@@ -151,13 +151,29 @@
       max-width: 400px;
     }
   </style>
+  <script>
+    function validateForm() {
+      const requiredFields = ['bookName', 'bookAuthor', 'bookPublisher', 'bookPublishDate',
+        'bookCategory', 'bookCode', 'bookPrice', 'bookPage', 'bookLocation', 'bookStatus', 'bookQuantity'];
+
+      for (let field of requiredFields) {
+        const value = document.getElementsByName(field)[0].value.trim();
+        if (!value) {
+          alert('모든 정보를 입력해주세요.');
+          document.getElementsByName(field)[0].focus();
+          return false;
+        }
+      }
+      return true;
+    }
+  </script>
 </head>
 <body>
 <div class="top-section">
   <div class="top-nav">
     <div class="nav-buttons">
       <a href="/admin/rl" class="nav-button">홈</a>
-      <a href="/admin/bookregister" class="nav-button">도서 등록</a>
+      <a href="/bookregister" class="nav-button">도서 등록</a>
       <a href="/admin/bookinquiry" class="nav-button">도서 정보</a>
       <a href="#" class="nav-button">학생 정보</a>
       <a href="#" class="nav-button">희망/기증 도서 신청 목록</a>
@@ -184,7 +200,7 @@
     <h3 class="section-title">도서 등록</h3>
     <p class="section-subtitle">도서 정보를 입력해주세요</p>
 
-    <form action="/admin/bookregister" method="post" enctype="multipart/form-data">
+    <form action="/bookregister" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
       <div class="form-group">
         <label>도서명</label>
         <input type="text" class="form-control" name="bookName" placeholder="도서명을 입력해주세요">
