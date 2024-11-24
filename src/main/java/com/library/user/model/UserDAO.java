@@ -61,4 +61,11 @@ public class UserDAO {
         mybatis.update("UserDAO.updateStatus", userId);
     }
 
+    public void updatePassword(UserVO vo) {
+        mybatis.update("UserDAO.updatePassword", vo);
+    }
+
+    public UserVO getUserForPasswordReset(String userId) {
+        return mybatis.selectOne("UserDAO.getUserForPasswordReset", userId);
+    }
 }

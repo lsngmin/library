@@ -4,6 +4,8 @@
 <html>
 <head>
   <title>도서 조회</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/js/bookUpdate.js"></script>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -443,6 +445,7 @@
 </div>
 
 <!-- Edit Modal -->
+<!-- 모달 부분 -->
 <div id="editModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
@@ -455,7 +458,7 @@
         </div>
         <div class="form-group">
           <label for="regNumber">등록번호</label>
-          <input type="text" id="regNumber" name="regNumber">
+          <input type="text" id="regNumber" name="regNumber" readonly>
         </div>
         <div class="form-group">
           <label for="author">저자</label>
@@ -499,10 +502,10 @@
           <label for="bookStatus">도서상태</label>
           <input type="text" id="bookStatus" name="bookStatus">
         </div>
-        <!-- 책 소개 필드 추가 -->
         <div class="form-group">
           <label for="bookDescription">책 소개</label>
-          <textarea id="bookDescription" name="bookDescription" placeholder="책에 대한 소개를 입력하세요..."></textarea>
+          <textarea id="bookDescription" name="bookDescription"
+                    placeholder="책에 대한 소개를 입력하세요..."></textarea>
         </div>
         <div class="form-group">
           <label>도서 이미지</label>
@@ -510,7 +513,8 @@
             <img id="imagePreview" class="image-preview" alt="도서 이미지 미리보기">
             <label for="bookImage" class="upload-label">
               이미지 선택
-              <input type="file" id="bookImage" name="bookImage" class="upload-input" accept="image/*">
+              <input type="file" id="bookImage" name="bookImage"
+                     class="upload-input" accept="image/*">
             </label>
             <p class="file-info">지원: JPG, PNG, GIF (최대 5MB)</p>
           </div>
@@ -523,141 +527,112 @@
     </form>
   </div>
 </div>
-
 <script>
-  const modal = document.getElementById('editModal');
-  const closeBtn = document.querySelector('.close');
+  $(document).ready(function() {
+    // 모달 관련 변수
+    const modal = $('#editModal');
+    const closeBtn = $('.close');
 
-  // 모달 닫기 기능 추가
-  closeBtn.onclick = () => modal.style.display = 'none';
-  window.onclick = (e) => {
-    if (e.target === modal) modal.style.display = 'none';
-  }
+    // 모달 닫기 기능
+    closeBtn.click(function() {
+      modal.css('display', 'none');
+    });
 
-  // 수정 버튼 클릭 시 모달 표시
-  document.querySelectorAll('.edit-btn').forEach(btn => {
-    btn.onclick = function(e) {
+    $(window).click(function(e) {
+      if ($(e.target).is(modal)) {
+        modal.css('display', 'none');
+      }
+    });
+
+    // 수정 버튼 클릭 시 모달 표시
+    $('.edit-btn').click(function(e) {
       e.preventDefault();
-      const bookData = this.closest('.book-data');
-      const bookCode = bookData.querySelector('.data-cell:first-child').textContent.trim();
+      console.log('수정 버튼 클릭됨');  // 디버깅용
+      const bookCode = $(this).closest('.book-data').find('.data-cell:first').text().trim();
+      console.log('bookCode:', bookCode);  // 디버깅용
 
-      console.log('조회할 도서 코드:', bookCode);
+      $.ajax({
+        type: 'GET',
+        url: '/admin/books/get/' + bookCode,
+        contentType: 'application/json',
+        success: function(data) {
+          console.log('받은 데이터:', data);  // 디버깅용
 
-      // URL에서 공백 제거 및 인코딩
-      const encodedBookCode = encodeURIComponent(bookCode.trim());
-      const url = `/admin/books/get/${encodedBookCode}`;
+          $('#bookName').val(data.bookName);
+          $('#regNumber').val(data.bookCode);
+          $('#author').val(data.bookAuthor);
+          $('#publisher').val(data.bookPublisher);
+          $('#pubYear').val(data.bookPublishDate);
+          $('#price').val(data.bookPrice);
+          $('#bookPage').val(data.bookPage);
+          $('#bookLocation').val(data.bookLocation);
+          $('#category').val(data.bookCategory);
+          $('#bookStatus').val(data.bookStatus);
+          $('#bookDescription').val(data.bookDecription);
 
-      console.log('요청 URL:', url);
+          // 이미지 미리보기 처리
+          const preview = $('#imagePreview');
+          if (data.bookImageSrc) {
+            preview.attr('src', '/resources' + data.bookImageSrc)
+                    .css('display', 'block');
+          } else {
+            preview.css('display', 'none');
+          }
 
-      fetch(url, {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          modal.css('display', 'block');  // show() 대신 css 사용
+        },
+        error: function(xhr, status, error) {
+          console.error('Ajax 에러:', error);  // 디버깅용
+          alert("도서 정보를 불러오는데 실패했습니다.");
         }
-      })
-              .then(response => {
-                console.log('응답 상태:', response.status);
-                if (!response.ok) {
-                  throw new Error('서버 응답 오류: ' + response.status);
-                }
-                return response.json();
-              })
-              .then(data => {
-                console.log('받은 데이터:', data);
+      });
+    });
 
-                if (!data || typeof data !== 'object') {
-                  throw new Error('유효하지 않은 데이터 형식');
-                }
+    // 폼 제출 처리
+    $('#editBookForm').submit(function(e) {
+      e.preventDefault();
 
-                // 폼에 데이터 채우기
-                const setFieldValue = (id, value) => {
-                  const element = document.getElementById(id);
-                  if (element) {
-                    element.value = value || '';
-                  }
-                };
+      const formData = new FormData();
+      formData.append('bookCode', $('#regNumber').val());
+      formData.append('bookName', $('#bookName').val());
+      formData.append('bookAuthor', $('#author').val());
+      formData.append('bookPrice', $('#price').val());
+      formData.append('bookPublisher', $('#publisher').val());
+      formData.append('bookPage', $('#bookPage').val());
+      formData.append('bookPublishDate', $('#pubYear').val());
+      formData.append('bookLocation', $('#bookLocation').val());
+      formData.append('bookCategory', $('#category').val());
+      formData.append('bookStatus', $('#bookStatus').val());
+      formData.append('bookDecription', $('#bookDescription').val());
+      formData.append('bookQuantity', '1');
 
-                setFieldValue('bookName', data.bookName);
-                setFieldValue('regNumber', data.bookCode);
-                setFieldValue('author', data.bookAuthor);
-                setFieldValue('publisher', data.bookPublisher);
-                setFieldValue('pubYear', data.bookPublishDate);
-                setFieldValue('price', data.bookPrice);
-                setFieldValue('bookPage', data.bookPage);
-                setFieldValue('bookLocation', data.bookLocation);
-                setFieldValue('category', data.bookCategory);
-                setFieldValue('bookStatus', data.bookStatus);
-                setFieldValue('bookDescription', data.bookDecription);
+      const fileInput = $('#bookImage')[0];
+      if (fileInput.files.length > 0) {
+        formData.append('bookImageSrc', fileInput.files[0]);
+      }
 
-                // 이미지 미리보기 처리
-                const preview = document.getElementById('imagePreview');
-                if (preview && data.bookImageSrc) {
-                  preview.src = `/resources${data.bookImageSrc}`;
-                  preview.style.display = 'block';
-                } else if (preview) {
-                  preview.style.display = 'none';
-                }
-
-                modal.style.display = 'block';
-              })
-              .catch(error => {
-                console.error('에러 발생:', error);
-                alert('도서 정보를 불러오는데 실패했습니다: ' + error.message);
-              });
-    };
+      $.ajax({
+        type: 'POST',
+        url: '/admin/books/update',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(response) {
+          if (response.success) {
+            alert(response.message);
+            modal.hide();
+            location.reload();
+          } else {
+            alert(response.message);
+          }
+        },
+        error: function() {
+          alert("도서 수정 중 오류가 발생했습니다.");
+        }
+      });
+    });
   });
-
-  // 폼 제출 처리
-  document.getElementById('editBookForm').onsubmit = function(e) {
-    e.preventDefault();
-    const formData = new FormData();
-
-    formData.append('bookCode', document.getElementById('regNumber').value);
-    formData.append('bookName', document.getElementById('bookName').value);
-    formData.append('bookAuthor', document.getElementById('author').value);
-    formData.append('bookPrice', document.getElementById('price').value);
-    formData.append('bookPublisher', document.getElementById('publisher').value);
-    formData.append('bookPage', document.getElementById('bookPage').value);
-    formData.append('bookPublishDate', document.getElementById('pubYear').value);
-    formData.append('bookLocation', document.getElementById('bookLocation').value);
-    formData.append('bookCategory', document.getElementById('category').value);
-    formData.append('bookStatus', document.getElementById('bookStatus').value);
-    formData.append('bookDecription', document.getElementById('bookDecription').value);
-    formData.append('bookQuantity', '1');
-
-    const fileInput = document.getElementById('bookImageSrc');
-    if (fileInput.files.length > 0) {
-      formData.append('bookImageSrc', fileInput.files[0]);
-    }
-
-    // 전송 데이터 확인
-    console.log('전송할 데이터:');
-    for (let pair of formData.entries()) {
-      console.log(pair[0] + ': ' + pair[1]);
-    }
-
-    fetch('/admin/books/update', {
-      method: 'POST',
-      body: formData
-    })
-            .then(response => {
-              console.log('서버 응답:', response);
-              return response.json();
-            })
-            .then(data => {
-              console.log('응답 데이터:', data);
-              if (data.success) {
-                alert(data.message);
-                modal.style.display = 'none';
-                location.reload();
-              } else {
-                alert(data.message);
-              }
-            })
-            .catch(error => {
-              console.error('Error:', error);
-              alert('도서 정보 수정 중 오류가 발생했습니다.');
-            });
-  };
 </script>
+
+</body>
+</html>

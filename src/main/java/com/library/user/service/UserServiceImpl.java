@@ -42,8 +42,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int getTotalSearchResults(UserVO searchVO) {
-        return userDAO.getTotalSearchResults(searchVO);
-    }
+        return userDAO.getTotalSearchResults(searchVO);}
 
     public void updateOverDueDate(UserVO vo) {
         userDAO.updateOverDueDate(vo);
@@ -63,4 +62,16 @@ public class UserServiceImpl implements UserService {
     public void updateStatus(String userId) {
         userDAO.updateStatus(userId);
     }
+
+    @Override
+    public void updatePassword(UserVO vo) {
+        userDAO.updatePassword(vo);
+    }
+
+    @Override
+    public UserVO getUserForPasswordReset(String userId) {
+        return userDAO.getUserForPasswordReset(userId);
+    }
+
+
 }

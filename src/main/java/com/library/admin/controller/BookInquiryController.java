@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 @Controller
+@RequestMapping("/admin")
 public class BookInquiryController {
 
     private final BookService bookService;
@@ -32,7 +33,7 @@ public class BookInquiryController {
         return "admin/bookinquiry";
     }
 
-    @GetMapping("/books/get/{bookCode}")
+    @GetMapping("/books/get/{bookCode}")  // URL이 /admin/books/get/{bookCode}가 됨
     @ResponseBody
     public ResponseEntity<?> getBookDetail(@PathVariable String bookCode) {
         try {
@@ -77,7 +78,7 @@ public class BookInquiryController {
         }
     }
 
-    @PostMapping("/books/update")
+    @PostMapping("/books/update")  // URL이 /admin/books/update가 됨
     @ResponseBody
     public ResponseEntity<?> updateBook(
             @RequestParam(value = "bookImageSrc", required = false) MultipartFile file,

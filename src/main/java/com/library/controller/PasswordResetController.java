@@ -2,38 +2,61 @@ package com.library.controller;
 
 import com.library.user.service.UserService;
 import com.library.user.model.UserVO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Controller
 public class PasswordResetController {
-    private UserService userService;
-    public void setUserService(UserService userService) {
+    private final UserService userService;
+
+    @Autowired
+    public PasswordResetController(UserService userService) {
         this.userService = userService;
     }
+
     @GetMapping("/resetpassword")
-    public String passwordReset(@ModelAttribute("user") UserVO vo) {
+    public String passwordReset() {
         return "resetpassword";
     }
-    @PostMapping("/resetpassword")
-    public String processPasswordReset(UserVO vo, Model model) {
-        if(vo.getUserId() == null || vo.getUserId().equals("")) {
-            throw new IllegalArgumentException("아이디는 반드시 입력해야 합니다,");
+
+    @PostMapping("/resetpassword/process")
+    @ResponseBody
+    public Map<String, Object> processPasswordReset(@RequestBody UserVO vo) {
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            if(vo.getUserId() == null || vo.getUserId().isEmpty() ||
+                    vo.getBirth() == null || !vo.getBirth().matches("\\d{4}-\\d{2}-\\d{2}")) {
+                response.put("success", false);
+                return response;
+            }
+
+            // SelectSearchUser 메서드를 사용
+            UserVO user = userService.SelectSearchUser(vo);  // 대문자 S에 주의!
+
+            if (user != null && vo.getBirth().equals(user.getBirth())) {
+                String tempPassword = UUID.randomUUID().toString().substring(0, 8);
+                user.setPassword(tempPassword);
+                userService.updatePassword(user);
+
+                response.put("success", true);
+                response.put("tempPassword", tempPassword);
+            } else {
+                response.put("success", false);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.put("success", false);
+            response.put("message", e.getMessage());
         }
-        UserVO user = userService.getLoginUser(vo);
-        String tempPassword = UUID.randomUUID().toString().substring(0, 8);
-        if (user != null && vo.getBirth().equals(user.getBirth())) {
-            model.addAttribute("validationResult", true);
-            model.addAttribute("tempPassword", tempPassword); // 임시 비밀번호
-            return "validationPage";
-        } else {
-            model.addAttribute("validationResult", false);
-            return "validationPage";
-        }
+
+        return response;
     }
 }
