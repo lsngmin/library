@@ -5,32 +5,12 @@
     <meta charset="UTF-8">
     <title>강릉대학교 통합도서관</title>
     <script src="wishbookstatus.js"></script>
-    <link rel="stylesheet"  href="/resources/css/wishbookstatus.css?after">
+    <link rel="stylesheet"  href="/resources/css/myinfo/wishbookstatus.css?after">
 </head>
 <body>
-<div class="side-nav">
-    <div class="logo">
-        <img src="img/logoImage.png" alt="로고">
-        강릉대학교 통합도서관
-    </div>
-    <div class="nav-item active">내정보</div>
-    <div class="nav-item">관심도서 목록</div>
-    <div class="nav-item">도서기증 신청</div>
-    <div class="nav-item">비밀번호 변경</div>
-</div>
-
+<jsp:include page="myinfoNavBar.jsp"/>
 <div class="main-content">
-    <div class="header">
-        <div class="user-menu">
-            <span>내정보</span>
-            <span class="separator">|</span>
-            <a href="#" style="color: #666666; text-decoration: none;">로그아웃</a>
-        </div>
-    </div>
-    </header>
-
-
-
+    <jsp:include page="myinfoHeader.jsp"/>
     <main class="content">
         <h2 class="page-title">희망도서 신청 내역</h2>
 
@@ -85,16 +65,7 @@
         </div>
     </main>
 
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="#">이용약관</a>
-            <a href="#">개인정보처리방침</a>
-            <a href="#">규정 실정</a>
-            <a href="#">운영체계</a>
-            <a href="#">도서관 안내</a>
-        </div>
-        <p class="copyright">Copyright © 2024 강릉대학교. All rights reserved.</p>
-    </footer>
+
 
 
 </div>

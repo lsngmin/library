@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class PasswordchangeController {
     @GetMapping("/passwordchange")
     public String passwordchange() {
-        return "passwordchange";
+        return "myinfo/passwordchange";
     }
 }
 

@@ -21,6 +21,6 @@
 
             // 로그인 상태이면 사용자 정보를 모델에 추가
             model.addAttribute("user", user);
-            return "donation"; // JSP 페이지 이름
+            return "myinfo/donation"; // JSP 페이지 이름
         }
     }

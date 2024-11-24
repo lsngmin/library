@@ -6,6 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class wishbookController {
     @GetMapping("/wishbookstatus")
     public String wishbookstatus() {
-        return "wishbookstatus";
+        return "/myinfo/wishbookstatus";
     }
 }

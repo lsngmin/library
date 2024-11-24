@@ -1,0 +1,121 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #FFF;
+    color: #333333;
+}
+.main-content {
+    margin-left: 270px;
+    padding: 40px;
+}
+.section-title {
+    font-size: 26px;
+    margin-bottom: 30px;
+}
+.donation-info, .form-section {
+    background: #f8f8ff;
+    padding: 40px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+}
+.donation-info h3 {
+    font-size: 22px;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    line-height: 1.6; /* 줄 간격 추가 */
+}
+.donation-info ul {
+    margin-left: 40px;
+    list-style-type: disc;
+    margin-bottom: 30px; /* 리스트 아래 간격 더 넓게 */
+    line-height: 1.8; /* 리스트 항목 간 간격 */
+}
+.procedure img {
+    width: 60%;
+    height: auto;
+    display: block;
+    margin: 40px auto;
+    border-radius: 8px;
+}
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.form-group label {
+    width: 150px;
+    font-weight: bold;
+}
+.form-group input {
+    flex: 1;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+.button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 180px;
+    margin-top: 20px;
+}
+.button:hover {
+    background-color: #0056b3;
+}
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    table-layout: fixed;
+}
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 18px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap; /* 줄바꿈 방지 */
+    overflow: hidden; /* 넘치는 내용 숨기기 */
+}
+.table th {
+    background-color: #f0f0f0;
+}
+.table th:nth-child(1) { width: 15%; }  /* 접수 상태 */
+.table th:nth-child(2) { width: 25%; }  /* 도서명 */
+.table th:nth-child(3) { width: 20%; }  /* 저자 */
+.table th:nth-child(4) { width: 20%; }  /* 출판사 */
+.table th:nth-child(5) { width: 15%; }  /* 신청일자 */
+.table th:nth-child(6) { width: 10%; }  /* 취소 */
+.notice {
+    color: #ff4d4d;
+    margin-bottom: 20px;
+}
+.cancel-btn {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap; /* 버튼 내 줄바꿈 방지 */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cancel-btn:hover {
+    background-color: #ff4d4d;
+    transform: translateY(-2px);
+}
+
+.cancel-btn:active {
+    background-color: #cc0000;
+    transform: translateY(0);
+}
+
+.slide-out {
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}

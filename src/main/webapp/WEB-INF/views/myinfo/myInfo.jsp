@@ -1,41 +1,21 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.List" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>강릉대학교 통합도서관</title>
-    <link rel="stylesheet"  href="/resources/css/myInfo.css">
+    <link rel="stylesheet" href="/resources/css/myinfo/myInfo.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="/js/myinfo/myInfo.js"></script>
     <script src="/js/myinfo/rentalExtension.js"></script>
-
 </head>
 <body>
-<div class="side-nav">
-    <a href="/main" style="text-decoration: none; color: inherit;">
-        <div class="logo">
-            <img src="img/logoImage.png" alt="로고">
-            강릉대학교 통합도서관
-        </div>
-    </a>
-    <div class="nav-item active">내정보</div>
-    <div class="nav-item">관심도서 목록</div>
-    <div class="nav-item">도서기증 신청</div>
-    <div class="nav-item">비밀번호 변경</div>
-</div>
-
+<jsp:include page="myinfoNavBar.jsp"/>
 <div class="main-content">
-    <div class="header">
-        <div class="user-menu">
-            <a href="/myInfo" style="color: #666666; text-decoration: none;">내정보</a>
-            <span class="separator">|</span>
-            <a href="/logout" style="color: #666666; text-decoration: none;">로그아웃</a>
-        </div>
-    </div>
-
+    <jsp:include page="myinfoHeader.jsp"/>
     <!-- 사용자 정보 섹션 -->
     <div class="section-container">
         <div class="section-title">사용자 정보</div>
@@ -94,14 +74,14 @@
                         List<Map<String, Object>> rental = (List<Map<String, Object>>) session.getAttribute("rental");
                     %>
                     <c:forEach var="rental" items="${rental}">
-                    <div class="book-section">
-                        <div class="overdue-label">연체</div>
-                        <div class="book-content">
-                            <div class="book-title">${rental.bookName}</div>
-                            <div class="book-date">${rental.rentalStartDate} ~ ${rental.rentalEndDate}</div>
+                        <div class="book-section">
+                            <div class="overdue-label">연체</div>
+                            <div class="book-content">
+                                <div class="book-title">${rental.bookName}</div>
+                                <div class="book-date">${rental.rentalStartDate} ~ ${rental.rentalEndDate}</div>
+                            </div>
+                            <button class="btn-more" data-bookname="${rental.bookName}">더 읽을래요 →</button>
                         </div>
-                        <button class="btn-more" data-bookname="${rental.bookName}">더 읽을래요 →</button>
-                    </div>
                     </c:forEach>
                 </div>
             </div>
@@ -132,8 +112,13 @@
                             <div class="book-date">2024-10-11 ~ 2024-10-25</div>
                         </div>
                         <div style="display: flex; gap: 8px; margin-top: auto;">
-                            <button class="btn-more" style="margin-left: 0; flex: 1; background: #4CAF50; color: white; border: none;">관심도서담기</button>
-                            <button class="btn-more" style="flex: 1; background: #9E9E9E; color: white; border: none;">도서 상세보기</button>
+                            <button class="btn-more"
+                                    style="margin-left: 0; flex: 1; background: #4CAF50; color: white; border: none;">
+                                관심도서담기
+                            </button>
+                            <button class="btn-more" style="flex: 1; background: #9E9E9E; color: white; border: none;">
+                                도서 상세보기
+                            </button>
                         </div>
                     </div>
                     <div class="book-section">
@@ -142,8 +127,13 @@
                             <div class="book-date">2024-10-11 ~ 2024-10-25</div>
                         </div>
                         <div style="display: flex; gap: 8px; margin-top: auto;">
-                            <button class="btn-more" style="margin-left: 0; flex: 1; background: #4CAF50; color: white; border: none;">관심도서담기</button>
-                            <button class="btn-more" style="flex: 1; background: #9E9E9E; color: white; border: none;">도서 상세보기</button>
+                            <button class="btn-more"
+                                    style="margin-left: 0; flex: 1; background: #4CAF50; color: white; border: none;">
+                                관심도서담기
+                            </button>
+                            <button class="btn-more" style="flex: 1; background: #9E9E9E; color: white; border: none;">
+                                도서 상세보기
+                            </button>
                         </div>
                     </div>
                 </div>

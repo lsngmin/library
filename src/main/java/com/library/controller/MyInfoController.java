@@ -31,6 +31,6 @@ public class MyInfoController {
         vo.setRentalUserId(user.getUserId());
         List<Map<String, Object>> rental = rentalService.selectRentalList(vo);
         session.setAttribute("rental", rental);
-        return "myInfo"; // 내 정보 뷰
+        return "myinfo/myInfo"; // 내 정보 뷰
     }
 }

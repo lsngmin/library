@@ -20,72 +20,11 @@ body {
     margin-bottom: 12px;
 }
 
-/* 사이드 네비게이션 */
-.side-nav {
-    width: 250px;
-    height: 100vh;
-    position: fixed;
-    left: 0;
-    top: 0;
-    background: #FFF;
-    padding: 20px;
-    border-right: 1px solid #E0E0E0;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    margin-bottom: 30px;
-    font-weight: 700;
-    font-size: 18px;
-    color: #333;
-}
-
-.logo img {
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
-}
-
-.nav-item {
-    padding: 15px;
-    margin-bottom: 5px;
-    cursor: pointer;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    font-size: 14px;
-    color: #666666;
-}
-
-.nav-item.active {
-    background: white;
-    border: 1px solid #E0E0E0;
-    color: #333333;
-}
-
 /* 메인 컨텐츠 */
 .main-content {
     margin-left: 250px;
     padding: 40px;
 }
-
-.header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
-.user-menu {
-    color: #666666;
-    font-size: 14px;
-}
-
-.user-menu .separator {
-    margin: 0 10px;
-    color: #E0E0E0;
-}
-
 /* 카드 스타일 */
 .card {
     background: white;
