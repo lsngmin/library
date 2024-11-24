@@ -43,4 +43,13 @@
         JOIN Book b ON br.rentalBookCode = b.bookCode
         WHERE br.rentalUserId = #{userId} AND b.bookName = #{bookName};
     </delete>
+
+    <select id="selectRentalExtensionByUserIdAndBookCode" parameterType="map" resultType="int">
+        select rentalExtension from BookRental where rentalUserId = #{userId} and rentalBookCode = #{bookCode};
+    </select>
+    <update id="updateRentalExtensionByUserIdAndBookCode" parameterType="map">
+        UPDATE BookRental
+        SET rentalExtension = 1
+        where rentalUserId = #{userId} and rentalBookCode = #{bookCode};
+    </update>
 </mapper>

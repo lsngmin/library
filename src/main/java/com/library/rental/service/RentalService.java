@@ -10,5 +10,6 @@ public interface RentalService {
     public void insertRental(RentalVO vo);
     public List<Map<String, Object>> selectRentalList(RentalVO vo);
     public void deleteRental(String userId, String bookName);
-
+    public int selectRentalExtensionByUserIdAndBookCode(String userId, String bookCode);
+    public void updateRentalExtensionByUserIdAndBookCode(String userId, String bookCode);
 }

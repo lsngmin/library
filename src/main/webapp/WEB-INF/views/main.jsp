@@ -57,7 +57,7 @@
             <img src="/img/noticeImage.png" alt="공지사항 아이콘">
             <p>공지사항</p>
         </a>
-        <a href="popular" class="menu-item">
+        <a href="interestbookview" class="menu-item">
             <img src="/img/popularImage.png" alt="인기도서 아이콘">
             <p>인기도서</p>
         </a>

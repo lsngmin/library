@@ -8,7 +8,10 @@
     <meta charset="UTF-8">
     <title>강릉대학교 통합도서관</title>
     <link rel="stylesheet"  href="/resources/css/myInfo.css">
-    <script src="/js/myInfo.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/myinfo/myInfo.js"></script>
+    <script src="/js/myinfo/rentalExtension.js"></script>
+
 </head>
 <body>
 <div class="side-nav">
@@ -45,7 +48,7 @@
                     </div>
                     <div class="info-col">
                         <label class="info-label">학번</label>
-                        <input type="text" class="info-input" value="${user.userId}" readonly>
+                        <input type="text" class="info-input" id="ExtensionuserId" value="${user.userId}" readonly>
                     </div>
                 </div>
                 <div class="info-row">
@@ -81,7 +84,7 @@
                 <div class="loan-info-box">연체 경과일: ${user.overDueDate}일</div>
             </div>
             <div class="loan-notification">
-                <span>해당 도서의 연장 신청이 반영되었습니다.</span>
+                <span id="rentalExtensionMessage"></span>
                 <button class="notification-close" onclick="closeNotification()">✕</button>
             </div>
             <div class="grid-wrapper">
@@ -97,7 +100,7 @@
                             <div class="book-title">${rental.bookName}</div>
                             <div class="book-date">${rental.rentalStartDate} ~ ${rental.rentalEndDate}</div>
                         </div>
-                        <button class="btn-more">더 읽을래요 →</button>
+                        <button class="btn-more" data-bookname="${rental.bookName}">더 읽을래요 →</button>
                     </div>
                     </c:forEach>
                 </div>

@@ -16,6 +16,7 @@ public class UserServiceImpl implements UserService {
     public void insertUser(UserVO vo) {
         userDAO.inserUser(vo);
     }
+
     public UserVO getLoginUser(UserVO vo) {
         return userDAO.getLoginUser(vo);
     }
@@ -42,6 +43,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public int getTotalSearchResults(UserVO searchVO) {
         return userDAO.getTotalSearchResults(searchVO);}
+
     public void updateOverDueDate(UserVO vo) {
         userDAO.updateOverDueDate(vo);
     }
@@ -70,4 +72,6 @@ public class UserServiceImpl implements UserService {
     public UserVO getUserForPasswordReset(String userId) {
         return userDAO.getUserForPasswordReset(userId);
     }
+
+
 }

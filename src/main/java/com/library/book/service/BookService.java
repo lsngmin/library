@@ -19,4 +19,6 @@ public interface BookService {
     BookVO selectSearchBook(BookVO vo);
     BookVO selectBookDetail(BookVO vo);
 
+    String selectBookCodeByBookName(String bookName);
+
 }

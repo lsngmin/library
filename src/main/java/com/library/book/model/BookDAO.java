@@ -55,4 +55,7 @@ public class BookDAO {
         return mybatis.selectOne("BookDAO.selectBookDetail", vo);
     }
 
+    public String selectBookCodeByBookName(String bookName) {
+        return mybatis.selectOne("BookDAO.selectBookCodeByBookName", bookName);
+    }
 }

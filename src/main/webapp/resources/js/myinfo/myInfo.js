@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.btn-more').forEach(btn => {
         btn.addEventListener('click', function () {
             const notification = document.querySelector('.loan-notification');
+
             // 기존 타이머가 있다면 제거
             if (this.notificationTimer) {
                 clearTimeout(this.notificationTimer);

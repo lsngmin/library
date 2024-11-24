@@ -4,7 +4,7 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>강릉대학교 통합도서관 - 도서 기증 신청</title>
+    <title>강릉대학교 통합도서관</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -192,18 +192,41 @@
         <a href="main" class="title">강릉대학교 통합도서관</a>
     </div>
     <div class="header-right">
-        <a href="/myInfo">내정보</a>
-        <a href="/logout">로그아웃</a>
+        <c:choose>
+            <c:when test="${user != null}">
+                <!-- 로그인된 상태 -->
+                <a href="/myInfo" style="display: flex; align-items: center; margin-right: 15px; text-decoration: none; color: #333;">
+                    <img src="/img/userImage2.png" alt="유저 아이콘" style="width: 18px; height: 18px; margin-right: 5px;">
+                    내정보
+                </a>
+                <a href="/logout" style="text-decoration: none; color: #333;">로그아웃</a>
+            </c:when>
+            <c:otherwise>
+                <!-- 비로그인 상태 -->
+                <a href="/login" style="text-decoration: none; color: #333;">로그인</a>
+            </c:otherwise>
+        </c:choose>
     </div>
 </div>
 
 <div class="side-nav">
-    <div class="nav-item">내정보</div>
-    <div class="nav-item">관심도서 목록</div>
-    <div class="nav-item">희망도서 신청 내역</div>
-    <div class="nav-item active">도서기증 신청</div>
-    <div class="nav-item">비밀번호 변경</div>
+    <a href="myInfo" style="text-decoration: none; color: inherit;">
+        <div class="nav-item">내정보</div>
+    </a>
+    <a href="#" style="text-decoration: none; color: inherit;">
+        <div class="nav-item">관심도서 목록</div>
+    </a>
+    <a href="wishbookstatus" style="text-decoration: none; color: inherit;">
+        <div class="nav-item">희망도서 신청 내역</div>
+    </a>
+    <a href="donation" style="text-decoration: none; color: inherit;">
+        <div class="nav-item active">도서기증 신청</div>
+    </a>
+    <a href="passwordchange" style="text-decoration: none; color: inherit;">
+        <div class="nav-item">비밀번호 변경</div>
+    </a>
 </div>
+
 
 <div class="main-content">
     <h2 class="section-title">기증 신청</h2>
