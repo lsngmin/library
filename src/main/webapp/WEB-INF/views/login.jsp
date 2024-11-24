@@ -203,7 +203,7 @@
         }
     </style>
     <link rel="stylesheet"  href="/resources/css/login.css">
-    <script src="login.js"></script>
+    <script src="/js/login.js"></script>
 
 </head>
 <body>

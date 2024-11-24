@@ -71,4 +71,14 @@
         select * from User where userId = #{userId}
     </select>
 
+    <select id="selectPasswordByUserId" resultType="String">
+        select password from User where userId = #{userId};
+    </select>
+
+    <update id="updatePasswordByUserId" parameterType="map">
+        UPDATE User
+        SET password = #{password}
+        WHERE userId = #{userId}
+    </update>
+
 </mapper>

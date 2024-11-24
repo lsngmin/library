@@ -73,5 +73,15 @@ public class UserServiceImpl implements UserService {
         return userDAO.getUserForPasswordReset(userId);
     }
 
+    @Override
+    public String selectPasswordByUserId(String userId) {
+        return userDAO.selectPasswordByUserId(userId);
+    }
+
+    @Override
+    public void updatePasswordByUserId(String userId, String password) {
+        userDAO.updatePasswordByUserId(userId,password);
+    }
+
 
 }
