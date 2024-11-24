@@ -163,7 +163,7 @@
     <a href="wishbookapply" class="nav-link">
         <div class="nav-item">희망도서</div>
     </a>
-    <a href="popular" class="nav-link">
+    <a href="interestbookview" class="nav-link">
         <div class="nav-item">인기도서</div>
     </a>
     <a href="notice" class="nav-link">
