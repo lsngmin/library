@@ -31,6 +31,7 @@ public class MyInfoRentalExtensionController {
             response.put("msg", "해당 도서의 연장이 이미 반영되었습니다.");
         } else {
             rentalService.updateRentalExtensionByUserIdAndBookCode(userId, bookCode);
+
             response.put("msg", "해당 도서의 연장 신청이 반영되었습니다.");
         }
         return response;

@@ -44,7 +44,6 @@ public class AdminRentalExecutionController {
 
         rentalService.insertRental(rental);
         response.put("success", "대출이 성공적으로 실행되었습니다!");
-
         userService.updateRentalAvailableM(request.get("userId"));
         return response;
     }

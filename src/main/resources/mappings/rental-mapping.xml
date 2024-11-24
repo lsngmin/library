@@ -49,7 +49,9 @@
     </select>
     <update id="updateRentalExtensionByUserIdAndBookCode" parameterType="map">
         UPDATE BookRental
-        SET rentalExtension = 1
-        where rentalUserId = #{userId} and rentalBookCode = #{bookCode};
+        SET rentalExtension = 1,
+        rentalEndDate = DATE_FORMAT(DATE_ADD(STR_TO_DATE(rentalEndDate, '%Y-%m-%d'), INTERVAL 14 DAY), '%Y-%m-%d')
+        WHERE rentalUserId = #{userId}
+        AND rentalBookCode = #{bookCode};
     </update>
 </mapper>

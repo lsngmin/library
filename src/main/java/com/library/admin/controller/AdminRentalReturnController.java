@@ -2,6 +2,7 @@ package com.library.admin.controller;
 
 import com.library.rental.model.RentalDAO;
 import com.library.rental.service.RentalService;
+import com.library.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,17 +19,22 @@ import java.util.Map;
 public class AdminRentalReturnController {
     @Autowired
     private RentalService rentalService;
+    @Autowired
+    private UserService userService;
+
     @PostMapping("/admin/rentalReturn")
     public Map<String, String> rentalReturn(@RequestBody List<Map<String, String>> request) {
         Map<String, String> response = new HashMap<>();
+        String userIds = "";
         try {
             for(Map<String, String> book : request) {
                 String userId = book.get("userId");
+                userIds = book.get("userId");
                 String bookName = book.get("bookName");
                 rentalService.deleteRental(userId, bookName);
             }
             response.put("success", "반납이 성공적으로 실행되었습니다.");
-            System.out.println(response);
+            userService.updateRentalAvailableP(userIds);
             return response;
         } catch (Exception e) {
             response.put("error", "반납 중 에러가 발생했습니다.");

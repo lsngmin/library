@@ -70,4 +70,5 @@
     <select id="getUserForPasswordReset" resultType="com.library.user.model.UserVO">
         select * from User where userId = #{userId}
     </select>
+
 </mapper>
