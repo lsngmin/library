@@ -13,6 +13,15 @@ public class DonationBookVO{
     private String donationBookPubliher;
     private String donationBookPublishDate;
     private String donationReason;
+    private String donationBookAuthor;
+
+    public String getDonationBookAuthor() {
+        return donationBookAuthor;
+    }
+
+    public void setDonationBookAuthor(String donationBookAuthor) {
+        this.donationBookAuthor = donationBookAuthor;
+    }
 
     // Getters and Setters
     public String getDonationCode() {

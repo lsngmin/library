@@ -10,11 +10,11 @@
         INSERT INTO DonationBook
         (donationCode, donationStatus, donationDate, donationUserId, donationUserName,
         donationUserPhone, donationUserEmail, donationCategory, donationBookName,
-        donationBookPubliher, donationBookPublishDate, donationReason)
+        donationBookPubliher, donationReason, donationBookAuthor)
         VALUES
         (#{donationCode}, #{donationStatus}, #{donationDate}, #{donationUserId}, #{donationUserName},
         #{donationUserPhone}, #{donationUserEmail}, #{donationCategory}, #{donationBookName},
-        #{donationBookPubliher}, #{donationBookPublishDate}, #{donationReason})
+        #{donationBookPubliher}, #{donationReason}, #{donationBookAuthor})
     </insert>
 
     <!-- Retrieve DonationBook by donationCode -->

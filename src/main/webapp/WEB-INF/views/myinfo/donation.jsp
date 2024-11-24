@@ -36,7 +36,7 @@
     <div class="form-section">
         <h3>기증 신청서</h3>
         <p class="notice">* 필수 입력 항목입니다</p>
-        <form action="submitDonation" method="post"> <!-- 수정된 부분: 하나의 form으로 통합 -->
+        <form action="/submitDonation" method="post"> <!-- 수정된 부분: 하나의 form으로 통합 -->
             <!-- 기증자 정보 -->
             <div class="form-group"><label>이름*</label><input type="text" name="donationUserName" required></div>
             <div class="form-group"><label>연락처*</label><input type="text" name="donationUserPhone" required></div>
@@ -85,6 +85,10 @@
         </table>
     </div>
 </div>
+<c:if test="${not empty success}">
+    <input type="hidden" id="successMessage" value="${success}" />
+</c:if>
+
 <script>
     function deleteRow(button) {
         const row = button.parentElement.parentElement;
@@ -94,6 +98,18 @@
             alert("신청 내역이 취소되었습니다.");
         }, 600); // 0.6초 후 삭제
     }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const successMessageElement = document.getElementById("successMessage");
+
+        if (successMessageElement) {
+            const message = successMessageElement.value;
+            alert(message); // 성공 메시지를 알림으로 표시
+
+            // 알림 후 리다이렉트
+            window.location.href = "/donation"; // 원하는 리다이렉트 경로로 변경하세요
+        }
+    });
 </script>
 </body>
 </html>
