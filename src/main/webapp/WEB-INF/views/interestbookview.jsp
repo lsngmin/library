@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -6,6 +7,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>강릉대학교 통합도서관</title>
     <link rel="stylesheet"  href="/resources/css/interestbookview.css?after">
+    <style>
+        /* 이미지 크기 조정 */
+        .login-container img {
+            width: 24px;
+            height: 24px;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #fff;
+            display: flex;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #f8f8f8;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            box-sizing: border-box;
+            z-index: 1001;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 250px;
+            height: calc(100vh - 60px);
+            background: #fff;
+            border-right: 1px solid #e0e0e0;
+            padding: 20px 0;
+            box-sizing: border-box;
+            z-index: 1000;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .sidebar .nav-item {
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            text-align: left;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            color: #666;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar .nav-item:hover {
+            color: #007bff;
+        }
+
+        .sidebar .nav-item.active {
+            border: 1px solid #e0e0e0;
+            background: #f9f9f9;
+            color: #333;
+        }
+
+
+        .main-container {
+            margin: 0 auto; /* 중앙 정렬 */
+            padding: 20px;
+            width: calc(100% - 300px); /* 네비게이션 바 너비 제외 */
+            max-width: 1000px; /* 최대 콘텐츠 너비 */
+            background: #fff;
+            box-sizing: border-box;
+            min-height: calc(100vh - 60px); /* 헤더 높이 제외 */
+            margin-left: 450px; /* 기존보다 더 오른쪽으로 이동 */
+            margin-right: 50px; /* 오른쪽 여백 */
+            padding-top: 80px; /* 헤더 아래 공간 확보 */
+        }
+
+
+    </style>
 </head>
 <body>
 <header>
@@ -14,21 +101,39 @@
         <h1 class="header-title"><a href="main">강릉대학교 통합도서관</a></h1>
     </div>
     <div class="login-container">
-        <img src="img/userImage.png" alt="사용자 아이콘">
-        <a href="login">로그인</a>
+        <c:choose>
+            <c:when test="${not empty sessionScope.user}">
+                <!-- 로그인 상태 -->
+                <img src="img/userImage2.png" alt="사용자 아이콘">
+                <a href="myInfo">내정보</a>
+                <a href="logout" style="margin-left: 10px;">로그아웃</a>
+            </c:when>
+            <c:otherwise>
+                <!-- 비로그인 상태 -->
+                <img src="img/userImage.png" alt="사용자 아이콘">
+                <a href="login">로그인</a>
+            </c:otherwise>
+        </c:choose>
     </div>
 </header>
 
 <div class="main-container">
     <aside class="sidebar">
-        <div class="sidebar-title">자료검색</div>
-        <ul>
-            <li><a href="#">통합검색</a></li>
-            <li><a href="#">희망도서</a></li>
-            <li class="active"><a href="#">인기도서</a></li>
-            <li><a href="#">공지사항</a></li>
-            <li><a href="#">이용사항</a></li>
-        </ul>
+        <a href="search">
+            <div class="nav-item">통합검색</div>
+        </a>
+        <a href="wishbookapply">
+            <div class="nav-item">희망도서</div>
+        </a>
+        <a href="interestbookview">
+            <div class="nav-item active">인기도서</div>
+        </a>
+        <a href="notice">
+            <div class="nav-item">공지사항</div>
+        </a>
+        <a href="guide">
+            <div class="nav-item">이용사항</div>
+        </a>
     </aside>
 
     <div class="content">
