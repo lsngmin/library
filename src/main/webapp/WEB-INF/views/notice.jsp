@@ -4,6 +4,7 @@
 <%@ page import="com.library.noticeBoard.model.NoticeBoardVO" %>
 <%@ page import="org.springframework.web.context.WebApplicationContext" %>
 <%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
+<%@ page import="com.library.noticeBoard.service.NoticeBoardService" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -193,6 +194,12 @@
     </style>
 </head>
 <body>
+<%
+    WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(application);
+    NoticeBoardService noticeBoardService = context.getBean("noticeBoardServiceImpl", NoticeBoardService.class);
+    List<NoticeBoardVO> noticeList = noticeBoardService.getAllNoticeBoards();
+    request.setAttribute("noticeList", noticeList);
+%>
 <div class="side-nav">
     <div class="logo">
         <img src="/img/logoImage.png" alt="로고">
