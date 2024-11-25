@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class DonationBookServiceImpl implements DonationBookService {
@@ -36,5 +37,10 @@ public class DonationBookServiceImpl implements DonationBookService {
     @Override
     public List<DonationBookVO> getAllDonationBooks() {
         return donationBookDAO.getAllDonationBooks();
+    }
+
+    @Override
+    public List<Map<String, Object>> selectAllByUserId(String userId) {
+        return donationBookDAO.selectAllByUserId(userId);
     }
 }

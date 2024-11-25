@@ -7,15 +7,14 @@
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.stereotype.Controller;
     import org.springframework.ui.Model;
-    import org.springframework.web.bind.annotation.GetMapping;
-    import org.springframework.web.bind.annotation.PostMapping;
-    import org.springframework.web.bind.annotation.RequestParam;
-    import org.springframework.web.bind.annotation.SessionAttribute;
+    import org.springframework.web.bind.annotation.*;
     import org.springframework.web.servlet.ModelAndView;
 
     import javax.servlet.http.HttpSession;
     import java.text.SimpleDateFormat;
     import java.util.Date;
+    import java.util.List;
+    import java.util.Map;
     import java.util.UUID;
 
     @Controller
@@ -34,6 +33,10 @@
 
             // 로그인 상태이면 사용자 정보를 모델에 추가
             model.addAttribute("user", user);
+
+            //기증신청현황 가져오기
+            List<Map<String, Object>> list = donationBookService.selectAllByUserId(user.getUserId());
+            model.addAttribute("DonationList", list);
             return "myinfo/donation"; // JSP 페이지 이름
         }
         @PostMapping("/submitDonation")
@@ -56,9 +59,10 @@
                 donationBook.setDonationUserEmail(donationUserEmail);
                 donationBook.setDonationCategory(donationCategory);
                 donationBook.setDonationBookName(donationBookName);
-                donationBook.setDonationBookPubliher(donationBookPublisher);
+                donationBook.setDonationBookPublisher(donationBookPublisher);
                 donationBook.setDonationReason(donationReason);
                 donationBook.setDonationBookAuthor(donationBookAuthor);
+                donationBook.setDonationStatus("접수완료");
 
                 Date now = new Date();
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -78,16 +82,16 @@
                 mav.addObject("success", e);
                 return mav;
             }
+        }
 
-
-
-
-
-
-
-
-
-            //완료시
-
+        @PostMapping("/canceldonation")
+        public ModelAndView cancelDonation(@SessionAttribute("userId") String userId,
+                                           @RequestBody Map<String, String> request) {
+            donationBookService.deleteDonationBook(request.get("code"));
+            System.out.println("Success!");
+            ModelAndView modelAndView = new ModelAndView();
+            modelAndView.setViewName("/myinfo/donation");
+            modelAndView.addObject("msg", "신청 내역이 취소되었습니다!!");
+            return modelAndView;
         }
     }

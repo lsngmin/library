@@ -10,11 +10,11 @@
         INSERT INTO DonationBook
         (donationCode, donationStatus, donationDate, donationUserId, donationUserName,
         donationUserPhone, donationUserEmail, donationCategory, donationBookName,
-        donationBookPubliher, donationReason, donationBookAuthor)
+        donationBookPublisher, donationReason, donationBookAuthor)
         VALUES
         (#{donationCode}, #{donationStatus}, #{donationDate}, #{donationUserId}, #{donationUserName},
         #{donationUserPhone}, #{donationUserEmail}, #{donationCategory}, #{donationBookName},
-        #{donationBookPubliher}, #{donationReason}, #{donationBookAuthor})
+        #{donationBookPublisher}, #{donationReason}, #{donationBookAuthor})
     </insert>
 
     <!-- Retrieve DonationBook by donationCode -->
@@ -33,7 +33,7 @@
         donationUserEmail = #{donationUserEmail},
         donationCategory = #{donationCategory},
         donationBookName = #{donationBookName},
-        donationBookPubliher = #{donationBookPubliher},
+        donationBookPublisher = #{donationBookPublisher},
         donationBookPublishDate = #{donationBookPublishDate},
         donationReason = #{donationReason}
         WHERE donationCode = #{donationCode}
@@ -49,4 +49,7 @@
         SELECT * FROM DonationBook
     </select>
 
+    <select id="selectAllByUserId" resultType="Map" parameterType="String">
+        select * from DonationBook where donationUserId = #{userId};
+    </select>
 </mapper>

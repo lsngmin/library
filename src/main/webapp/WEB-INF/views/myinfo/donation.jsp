@@ -69,15 +69,15 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="donation" items="${donationList}"> <!-- 수정된 부분 -->
+            <c:forEach var="donation" items="${DonationList}"> <!-- 수정된 부분 -->
                 <tr>
-                    <td>접수 완료</td>
+                    <td>${donation.donationStatus}</td>
                     <td>${donation.donationBookName}</td>
                     <td>${donation.donationBookAuthor}</td>
                     <td>${donation.donationBookPublisher}</td>
                     <td>${donation.donationDate}</td>
                     <td>
-                        <button class="cancel-btn" onclick="deleteRow(this)">취소</button>
+                        <button class="cancel-btn" data-bookName="${donation.donationCode}" onclick="deleteRow(this)">취소</button>
                     </td>
                 </tr>
             </c:forEach>
@@ -92,11 +92,31 @@
 <script>
     function deleteRow(button) {
         const row = button.parentElement.parentElement;
-        row.classList.add("slide-out"); // 슬라이드 아웃 애니메이션 추가
-        setTimeout(() => {
-            row.remove(); // 애니메이션 후 행 삭제
-            alert("신청 내역이 취소되었습니다.");
-        }, 600); // 0.6초 후 삭제
+
+        // 서버로 POST 요청 보내기
+        fetch('/canceldonation', {
+            method: 'POST',  // POST 메서드 사용
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ code: button.getAttribute('data-bookName') }) // body 속성을 사용하여 데이터 전송
+        })
+            .then(response => {
+                if (response.ok) {
+                    // 슬라이드 아웃 애니메이션 추가
+                    row.classList.add("slide-out");
+                    setTimeout(() => {
+                        row.remove(); // 애니메이션 후 행 삭제
+                        alert("신청 내역이 취소되었습니다.");
+                    }, 600); // 0.6초 후 삭제
+                } else {
+                    alert("신청 내역 취소 중 오류가 발생했습니다.");
+                }
+            })
+            .catch(error => {
+                console.error('에러 발생:', error);
+                alert("서버와의 연결 중 오류가 발생했습니다.");
+            });
     }
 
     document.addEventListener("DOMContentLoaded", () => {
