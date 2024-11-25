@@ -58,6 +58,8 @@ header {
     gap: 20px;
     max-width: 1200px;
     margin: 20px auto;
+    flex: 1;
+    width: 100%;
 }
 
 .sidebar {
@@ -172,6 +174,8 @@ header {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    min-width: 0;
+    width: 900px;
 }
 
 .result-item {
