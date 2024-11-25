@@ -77,7 +77,9 @@
                     <td>${donation.donationBookPublisher}</td>
                     <td>${donation.donationDate}</td>
                     <td>
-                        <button class="cancel-btn" data-bookName="${donation.donationCode}" onclick="deleteRow(this)">취소</button>
+                        <c:if test="${donation.donationStatus == '접수완료'}">
+                            <button class="cancel-btn" data-bookName="${donation.donationCode}" onclick="deleteRow(this)">취소</button>
+                        </c:if>
                     </td>
                 </tr>
             </c:forEach>
