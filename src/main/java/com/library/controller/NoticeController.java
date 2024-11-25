@@ -14,6 +14,6 @@ public class NoticeController {
         // 세션에서 사용자 정보 가져오기
         UserVO user = (UserVO) session.getAttribute("user");
         model.addAttribute("user", user); // 사용자 정보 전달
-        return "notice";
+        return "library/notice";
     }
 }

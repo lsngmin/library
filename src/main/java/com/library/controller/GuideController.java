@@ -15,6 +15,6 @@ public class GuideController {
         UserVO user = (UserVO) session.getAttribute("user");
         // 사용자 정보를 모델에 추가하여 뷰로 전달
         model.addAttribute("user", user);
-        return "guide";
+        return "library/guide";
     }
 }

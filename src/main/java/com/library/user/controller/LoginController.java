@@ -32,7 +32,7 @@ public class LoginController {
                 }
             }
         }
-        return "login";
+        return "library/login";
     }
     //로그인 처리
     @PostMapping(value = "/login")
@@ -42,7 +42,7 @@ public class LoginController {
 
         if(vo.getUserId() == null || vo.getUserId().equals("") || vo.getPassword() == null || vo.getPassword().equals("")) {
             model.addAttribute("errorMessage", "아이디 또는 비밀번호가 입력되지 않았습니다.");
-            return "login";
+            return "library/login";
         }
         UserVO user = userService.getLoginUser(vo);
 
@@ -62,7 +62,7 @@ public class LoginController {
             }
             return "redirect:/main";
         } else {
-            return "login";
+            return "library/login";
         }
     }
     @PostMapping("/loginAjax")

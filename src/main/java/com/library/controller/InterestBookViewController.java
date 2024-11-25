@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class InterestBookViewController {
     @GetMapping("/interestbookview")
     public String interestbookview() {
-        return "interestbookview";
+        return "library/interestbookview";
     }
 }

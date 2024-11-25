@@ -17,6 +17,6 @@ public class WishbookapplyController {
             return "redirect:/login";
         }
         model.addAttribute("user", user);
-        return "wishbookapply";
+        return "library/wishbookapply";
     }
 }

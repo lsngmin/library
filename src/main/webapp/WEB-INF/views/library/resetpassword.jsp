@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>강릉대학교 통합도서관</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="/resources/css/restpassword.css">
+    <link rel="stylesheet" href="/resources/css/library/restpassword.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>

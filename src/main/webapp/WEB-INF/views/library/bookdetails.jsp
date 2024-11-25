@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>강릉대학교 통합도서관</title>
-    <link rel="stylesheet"  href="/resources/css/booketails.css"> <!-- 외부 CSS 파일 링크 -->
+    <link rel="stylesheet"  href="/resources/css/library/booketails.css"> <!-- 외부 CSS 파일 링크 -->
 </head>
 <body>
 <header>

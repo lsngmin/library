@@ -14,13 +14,13 @@ public class MainController {
     public String getStartMainPage(HttpSession session, Model model) {
         UserVO user = (UserVO) session.getAttribute("user");
         model.addAttribute("user", user);
-        return "main";
+        return "library/main";
     }
 
     @GetMapping("/main")
     public String getMainPage(HttpSession session, Model model) {
         UserVO user = (UserVO) session.getAttribute("user");
         model.addAttribute("user", user);
-        return "main";
+        return "library/main";
     }
 }
