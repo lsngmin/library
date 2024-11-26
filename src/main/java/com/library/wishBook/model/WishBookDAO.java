@@ -36,4 +36,8 @@ public class WishBookDAO {
     public List<WishBookVO> getAllBookWishes() {
         return mybatis.selectList("WishBookDAO.getAllBookWishes");
     }
+
+    public List<WishBookVO> getWishBooksByUserId(String userId) {
+        return mybatis.selectList("WishBookDAO.getWishBooksByUserId", userId);
+    }
 }

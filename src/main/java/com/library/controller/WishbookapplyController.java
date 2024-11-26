@@ -50,7 +50,7 @@ public class WishbookapplyController {
 
             WishBookVO wishBook = new WishBookVO();
             wishBook.setWishCode(UUID.randomUUID().toString().replace("-", "").substring(0, 4));
-            wishBook.setWishStatus("신청완료");
+            wishBook.setWishStatus("접수중");
             wishBook.setWishUserId(user.getUserId());
             wishBook.setWishBookName(new String(bookTitle.getBytes("8859_1"), "UTF-8"));
             wishBook.setWishBookPublisher(new String(publisher.getBytes("8859_1"), "UTF-8"));

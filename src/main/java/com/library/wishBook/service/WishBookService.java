@@ -14,4 +14,6 @@ public interface WishBookService {
     void deleteBookWish(String wishCode);
 
     List<WishBookVO> getAllBookWishes();
+
+    List<WishBookVO> getWishBooksByUserId(String userId);
 }

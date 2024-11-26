@@ -51,4 +51,11 @@
         ORDER BY wishCode DESC
     </select>
 
+    <select id="getWishBooksByUserId" parameterType="string" resultType="com.library.wishBook.model.WishBookVO">
+        SELECT *
+        FROM BookWishList
+        WHERE wishUserId = #{userId}
+        ORDER BY wishCode DESC
+    </select>
+
 </mapper>
