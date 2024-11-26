@@ -15,6 +15,7 @@
         <typeAlias alias="Rental" type="com.library.rental.model.RentalVO"/>
         <typeAlias alias="Donation" type="com.library.donationBook.model.DonationBookVO"/>
         <typeAlias alias="Notice" type="com.library.noticeBoard.model.NoticeBoardVO"/>
+        <typeAlias alias="WishBook" type="com.library.wishBook.model.WishBookVO"/>
     </typeAliases>
 
     <environments default="development">
@@ -36,5 +37,6 @@
         <mapper resource="mappings/rental-mapping.xml"/>
         <mapper resource="mappings/donationBook-mapping.xml"/>
         <mapper resource="mappings/noticeBoard-mapping.xml"/>
+        <mapper resource="mappings/wishBook-mapping.xml"/>
     </mappers>
 </configuration>
