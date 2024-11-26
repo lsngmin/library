@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -347,41 +348,37 @@
         <div class="form-row">
           <div class="form-group">
             <label>코드</label>
-            <input type="text" value="#AHGA68" readonly>
+            <input type="text" name="code" readonly>
           </div>
           <div class="form-group">
             <label>도서명</label>
-            <input type="text" value="자연사">
+            <input type="text" name="bookName">
           </div>
           <div class="form-group">
             <label>저자</label>
-            <input type="text" value="이승민">
+            <input type="text" name="author">
           </div>
           <div class="form-group">
             <label>출판사</label>
-            <input type="text" value="한빛미디어">
+            <input type="text" name="publisher">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label>발행년도</label>
-            <input type="text" value="2024">
+            <input type="text" name="publishYear">
           </div>
           <div class="form-group">
             <label>가격</label>
-            <input type="text" value="65,000">
+            <input type="text" name="price">
           </div>
           <div class="form-group">
             <label>처리상태</label>
-            <select>
-              <option selected>접수중</option>
-              <option>검토중</option>
-              <option>처리완료</option>
+            <select name="status" onchange="updateStatus(document.querySelector('input[name=\'code\']').value, this.value)">
+              <option value="접수중">접수중</option>
+              <option value="검토중">검토중</option>
+              <option value="처리완료">처리완료</option>
             </select>
-          </div>
-          <div class="form-group">
-            <label>비고</label>
-            <input type="text" placeholder="...">
           </div>
         </div>
       </div>
@@ -400,33 +397,22 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td><input type="checkbox" class="select-item"></td>
-        <td class="book-code">#AHGA68</td>
-        <td>2024-05-12</td>
-        <td>자연사</td>
-        <td>이승민</td>
-        <td>접수중</td>
-        <td><button class="detail-button"></button></td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="select-item"></td>
-        <td class="book-code">#AHGA68</td>
-        <td>2024-06-21</td>
-        <td>수학의 힘</td>
-        <td>맹정재</td>
-        <td>검토중</td>
-        <td><button class="detail-button"></button></td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="select-item"></td>
-        <td class="book-code">#AHGA68</td>
-        <td>2024-09-30</td>
-        <td>지식의 최전선</td>
-        <td>원종호</td>
-        <td>처리완료</td>
-        <td><button class="detail-button"></button></td>
-      </tr>
+      <c:forEach items="${wishBookList}" var="wishBook">
+        <tr>
+          <td><input type="checkbox" class="select-item"></td>
+          <td class="book-code">${wishBook.wishCode}</td>
+          <td>${wishBook.wishBookPublishDate}</td>
+          <td>${wishBook.wishBookName}</td>
+          <td>${wishBook.wishUserName}</td>
+          <td>${wishBook.wishStatus}</td>
+          <td>
+            <button type="button"
+                    class="detail-button"
+                    onclick="showWishBookDetails('${wishBook.wishCode}')">
+            </button>
+          </td>
+        </tr>
+      </c:forEach>
       </tbody>
     </table>
   </div>
@@ -555,52 +541,8 @@
 </body>
 </html>
 <script>
+  // 기존 DOMContentLoaded 이벤트 핸들러는 제거하고 아래와 같이 수정
   document.addEventListener('DOMContentLoaded', function() {
-    // 희망도서와 기증도서 섹션의 모든 상세보기 버튼에 이벤트 리스너 추가
-    const sections = document.querySelectorAll('.content-section');
-
-    sections.forEach(section => {
-      const detailButtons = section.querySelectorAll('.detail-button');
-      const bookDetails = section.querySelector('.book-details');
-      let activeRow = null;
-
-      detailButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-          const row = this.closest('tr');
-
-          // 이미 열려있는 행이 있고, 그것이 현재 클릭한 행과 다르다면
-          if (activeRow && activeRow !== row) {
-            // 이전에 활성화된 버튼의 상태를 초기화
-            const prevButton = activeRow.querySelector('.detail-button');
-            prevButton.classList.remove('active');
-          }
-
-          // 현재 버튼의 상태를 토글
-          this.classList.toggle('active');
-
-          // 상세 정보 표시 여부 토글
-          if (this.classList.contains('active')) {
-            bookDetails.classList.add('active');
-            activeRow = row;
-
-            // 클릭된 행의 데이터를 가져와서 상세 정보 필드 업데이트
-            const code = row.querySelector('.book-code').textContent;
-            const bookName = row.cells[3].textContent;
-            const applicant = row.cells[4].textContent;
-
-            // 상세 정보 필드 업데이트
-            const inputs = bookDetails.querySelectorAll('input');
-            inputs[0].value = code; // 코드
-            inputs[1].value = bookName; // 도서명
-            inputs[4].value = applicant; // 신청자
-          } else {
-            bookDetails.classList.remove('active');
-            activeRow = null;
-          }
-        });
-      });
-    });
-
     // 전체 선택 체크박스 기능
     function toggleCheckboxes(source) {
       const table = source.closest('table');
@@ -618,6 +560,23 @@
     });
   });
 
+    // 전체 선택 체크박스 기능
+    function toggleCheckboxes(source) {
+      const table = source.closest('table');
+      const checkboxes = table.querySelectorAll('.select-item');
+      checkboxes.forEach(checkbox => {
+        checkbox.checked = source.checked;
+      });
+    }
+
+    // 각 섹션의 전체 선택 체크박스에 이벤트 리스너 추가
+    document.querySelectorAll('input[type="checkbox"][id^="select-all"]').forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        toggleCheckboxes(this);
+      });
+    });
+
+
   // 상세보기 버튼 클릭 이벤트 핸들러
   function toggleDetails(button) {
     const row = button.closest('tr');
@@ -632,6 +591,129 @@
       details.style.display = 'block';
     } else {
       details.style.display = 'none';
+    }
+  }
+
+  // 희망도서 상세정보 표시 함수
+  function showWishBookDetails(wishCode) {
+    console.log("WishCode received:", wishCode);
+
+    const detailsDiv = document.getElementById('hope-book-details');
+    const button = event.currentTarget;
+
+    button.classList.toggle('active');
+
+    if (button.classList.contains('active')) {
+      detailsDiv.classList.add('active');
+
+      // 전체 URL을 콘솔에 출력
+      const fullUrl = window.location.origin + '/admin/getWishBookDetails/' + wishCode;
+      console.log("Full request URL:", fullUrl);
+
+      fetch(fullUrl)  // 전체 URL 사용
+              .then(response => {
+                console.log("Response received:", response);
+                if (!response.ok) {
+                  throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+              })
+              .then(data => {
+                console.log("Data received:", data);
+
+                // 상세 정보 필드 찾기
+                const codeField = document.querySelector('#hope-book-details input[name="code"]');
+                const bookNameField = document.querySelector('#hope-book-details input[name="bookName"]');
+                const authorField = document.querySelector('#hope-book-details input[name="author"]');
+                const publisherField = document.querySelector('#hope-book-details input[name="publisher"]');
+                const publishYearField = document.querySelector('#hope-book-details input[name="publishYear"]');
+                const priceField = document.querySelector('#hope-book-details input[name="price"]');
+                const statusField = document.querySelector('#hope-book-details select[name="status"]');
+
+                // 값 설정
+                if(codeField) codeField.value = data.wishCode || '';
+                if(bookNameField) bookNameField.value = data.wishBookName || '';
+                if(authorField) authorField.value = data.wishBookAuthor || '';
+                if(publisherField) publisherField.value = data.wishBookPublisher || '';
+                if(publishYearField) publishYearField.value = data.wishBookPublishDate || '';
+                if(priceField) priceField.value = data.wishBookPrice || '';
+                if(statusField) statusField.value = data.wishStatus || '';
+              })
+              .catch(error => {
+                console.error('Error details:', error);
+                console.error('Error stack:', error.stack);
+                alert('데이터를 가져오는데 실패했습니다. 자세한 내용은 콘솔을 확인해주세요.');
+              });
+    } else {
+      detailsDiv.classList.remove('active');
+    }
+  }
+
+    // 현재 버튼의 active 상태를 토글
+    button.classList.toggle('active');
+
+    // 상세 정보 div의 표시 상태를 토글
+    if (button.classList.contains('active')) {
+      detailsDiv.classList.add('active');
+
+      // AJAX 요청
+      fetch(`/admin/getWishBookDetails/${wishCode}`)
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                }
+                return response.json();
+              })
+              .then(data => {
+                console.log("Received data:", data);
+
+                // 입력 필드 업데이트
+                document.querySelector('input[name="code"]').value = data.wishCode || '';
+                document.querySelector('input[name="bookName"]').value = data.wishBookName || '';
+                document.querySelector('input[name="author"]').value = data.wishBookAuthor || '';
+                document.querySelector('input[name="publisher"]').value = data.wishBookPublisher || '';
+                document.querySelector('input[name="publishYear"]').value = data.wishBookPublishDate || '';
+                document.querySelector('input[name="price"]').value = data.wishBookPrice || '';
+                document.querySelector('select[name="status"]').value = data.wishStatus || '접수중';
+              })
+              .catch(error => {
+                console.error('Error:', error);
+                alert('데이터를 가져오는데 실패했습니다.');
+              });
+    } else {
+      detailsDiv.classList.remove('active');
+    }
+
+  function updateStatus(wishCode, newStatus) {
+    if(confirm('처리상태를 변경하시겠습니까?')) {
+      fetch('/admin/updateWishBookStatus', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          wishCode: wishCode,
+          status: newStatus
+        })
+      })
+              .then(response => response.json())
+              .then(data => {
+                if(data.success) {
+                  alert('상태가 변경되었습니다.');
+                  // 테이블의 상태 표시도 업데이트
+                  const row = document.querySelector(`tr[data-wishcode="${wishCode}"]`);
+                  if(row) {
+                    const statusCell = row.querySelector('td:nth-child(6)');
+                    if(statusCell) statusCell.textContent = newStatus;
+                  }
+                } else {
+                  alert('상태 변경에 실패했습니다.');
+                }
+              })
+              .catch(error => {
+                console.error('Error:', error);
+                alert('상태 변경 중 오류가 발생했습니다.');
+              });
     }
   }
 </script>
