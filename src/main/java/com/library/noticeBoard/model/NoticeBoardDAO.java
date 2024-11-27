@@ -36,4 +36,8 @@ public class NoticeBoardDAO {
     public List<NoticeBoardVO> getAllNoticeBoards() {
         return mybatis.selectList("NoticeBoardDAO.getAllNoticeBoards");
     }
+    public void incrementViewCount(String cnt) {
+        mybatis.update("NoticeBoardDAO.incrementViewCount", cnt);
+    }
+
 }

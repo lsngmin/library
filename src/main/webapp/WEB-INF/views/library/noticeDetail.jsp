@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="java.util.List" %>
 <%@ page import="com.library.noticeBoard.model.NoticeBoardVO" %>
 <%@ page import="org.springframework.web.context.WebApplicationContext" %>
 <%@ page import="org.springframework.web.context.support.WebApplicationContextUtils" %>
@@ -10,7 +8,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>강릉대학교 통합도서관</title>
+    <title>강릉대학교 통합도서관 - 공지사항 상세</title>
     <style>
         * {
             margin: 0;
@@ -192,16 +190,98 @@
             background: #007BFF;
             color: white;
         }
+        /* 공지사항 상세 */
+        .notice-detail {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            height: 500px;
+        }
+        .notice-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .notice-detail h2 {
+            text-align: center; /* 제목 중앙 정렬 */
+            font-size: 28px;
+            margin-bottom: 20px; /* 제목 아래 간격 */
+        }
+        .notice-meta {
+            display: flex;
+            justify-content: flex-start; /* 항목들을 양 끝에 배치 */
+            font-size: 16px;
+            margin-bottom: 20px;
+            gap: 30px;
+        }
+        .notice-meta div {
+            padding-right: 30px; /* Space between the text and the vertical line */
+            position: relative; /* For positioning the pseudo-elements */
+        }
+
+
+        .notice-detail div {
+            margin-bottom: 20px; /* 각 항목 사이 간격 */
+            font-size: 16px;
+        }
+        .notice-meta div:not(:last-child)::after {
+            content: ''; /* Empty content for the pseudo-element */
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            border-right: 2px solid #E0E0E0; /* Add a vertical line with desired color */
+        }
+
+        .notice-detail hr {
+            margin: 20px 0; /* 내용과 내용 사이 구분선 간격 */
+        }
+
+        .notice-detail a {
+            display: inline-block;
+            margin-top: 30px;
+            font-size: 25px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .notice-detail a:hover {
+            text-decoration: underline;
+        }
+        .back-to-list-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            margin-top: 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007BFF;
+            text-decoration: none;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .back-to-list-btn:hover {
+            background-color: #0056b3; /* 버튼에 마우스를 올리면 색이 변함 */
+            text-decoration: underline;
+        }
+        .notice-content {
+            font-size: 25px; /* 글자 크기를 20px로 설정 */
+            border-right: 1px
+        }
     </style>
 </head>
 <body>
 <%
+    String cnt = request.getParameter("cnt");  // 공지사항의 cnt 파라미터를 받는다.
     WebApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(application);
     NoticeBoardService noticeBoardService = context.getBean("noticeBoardServiceImpl", NoticeBoardService.class);
-    List<NoticeBoardVO> noticeList = noticeBoardService.getAllNoticeBoards();
-    request.setAttribute("noticeList", noticeList);
-
+    NoticeBoardVO notice = noticeBoardService.getNoticeBoardByCnt(cnt);  // cnt로 공지사항 정보를 조회
 %>
+
 <div class="side-nav">
     <div class="logo">
         <img src="/img/logoImage.png" alt="로고">
@@ -217,71 +297,34 @@
 
 <div class="main-content">
     <div class="header">
-        <div class="title">공지사항</div>
+        <div class="title">공지사항 상세</div>
         <div class="login">
             <c:choose>
                 <c:when test="${not empty user}">
-                    <!-- 로그인된 상태 -->
-                    <a href="/myInfo" style="display: inline-flex; align-items: center; margin-right: 15px; text-decoration: none; color: black;">
-                        <span>내정보</span>
-                        <img src="/img/userImage2.png" alt="사용자 아이콘" style="width: 20px; height: 20px; margin-left: 5px;">
-                    </a>
-                    <a href="/logout" style="text-decoration: none; color: black; margin-left: 15px;">로그아웃</a>
+                    <a href="/myInfo">내정보</a>
+                    <a href="/logout">로그아웃</a>
                 </c:when>
                 <c:otherwise>
-                    <!-- 비로그인 상태 -->
-                    <a href="/login" style="text-decoration: none; color: black;">
-                        로그인
-                    </a>
+                    <a href="/login">로그인</a>
                 </c:otherwise>
             </c:choose>
         </div>
     </div>
 
-    <div class="search-bar">
-        <div class="categories">
-            <button class="active">전체</button>
-            <button>일반공지</button>
-            <button>학술공지</button>
-            <button>미분류</button>
-        </div>
-        <div>
-            <input type="text" placeholder="검색어를 입력해주세요">
-            <button>검색</button>
-        </div>
+    <div class="notice-detail">
+        <h2>${notice.title}</h2>
+            <div class="notice-meta">
+                <div>작성자: ${notice.writer}</div>
+                <div>작성일: ${notice.date}</div>
+                <div>분류: ${notice.category}</div>
+            </div>
+        <hr />
+        <div>내용:</div>
+        <div class="notice-content">${notice.content}</div>
     </div>
 
-    <div class="table-container">
-        <table class="notice-table">
-            <thead>
-            <tr>
-                <th>NO.</th>
-                <th>분류</th>
-                <th>제목</th>
-                <th>글쓴이</th>
-                <th>작성일</th>
-                <th>조회수</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="notice" items="${noticeList}">
-                <tr>
-
-                    <td><a href="/noticeDetail?cnt=${notice.cnt}">${notice.title}</a></td> <!-- 상세 페이지로 링크 -->
-
-
-                    <td>${notice.cnt}</td>
-                    <td>${notice.category}</td>
-                    <td>${notice.title}</td>
-                    <td>${notice.writer}</td>
-                    <td>${notice.date}</td>
-
-                    <td>조회수 없음</td> <!-- 조회수 데이터가 없다면 임시 표시 -->
-
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
+    <div>
+        <a href="/notice" class="back-to-list-btn">목록</a>
     </div>
 </div>
 </body>
