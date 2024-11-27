@@ -39,8 +39,9 @@
 * 2024-09-10 ~ 2024-12-03 (84일)
 * 기획 1주 / 기능 요구서 2주 / 와이어 프레임 및 목업 4주 / 클래스 다이어그램 1주 / 시퀀스 다이어그램 및 개발 5주
 
-## 배포 링크
-### principal-corri-lsngmin-e51bfba8.koyeb.app/
+## 빌드 및 배포
+* Maven(war) 빌드, AWS LightSail(Tomcat) 배포
+### [접속가능 :o:](http://bit.ly/3B1tlWk)
 
 ## 프로젝트 구조
 
