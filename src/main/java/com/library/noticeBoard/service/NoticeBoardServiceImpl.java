@@ -1,4 +1,5 @@
 package com.library.noticeBoard.service;
+
 import com.library.noticeBoard.model.NoticeBoardDAO;
 import com.library.noticeBoard.model.NoticeBoardVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,9 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
     @Override
     public List<NoticeBoardVO> getAllNoticeBoards() {
         return noticeBoardDAO.getAllNoticeBoards();
+    }
+    @Override
+    public void incrementViewCount(String cnt) {
+        noticeBoardDAO.incrementViewCount(cnt);
     }
 }
