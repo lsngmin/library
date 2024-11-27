@@ -91,6 +91,16 @@
             padding-top: 80px; /* 헤더 아래 공간 확보 */
         }
 
+        .book-category {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+        }
+        .active-category { /* 선택된 카테고리 강조 스타일 추가 */
+            background-color: #007bff;
+            color: #fff;
+            border: 1px solid #0056b3;
+        }
 
     </style>
 </head>
@@ -152,70 +162,32 @@
         <section class="category-container">
             <h3>카테고리</h3>
             <div class="category-buttons">
-                <button><a href="#">전체</a></button>
-                <button><a href="#">문학</a></button>
-                <button><a href="#">과학</a></button>
-                <button><a href="#">예술</a></button>
-                <button><a href="#">기술</a></button>
-                <button><a href="#">역사</a></button>
-                <button><a href="#">언어학</a></button>
-                <button><a href="#">사회과학</a></button>
-                <button><a href="#">자연과학</a></button>
-                <button><a href="#">기술과학</a></button>
+                <!-- 카테고리 필터링 버튼 -->
+                <a href="/interestbookview?category=전체"><button>전체</button></a>
+                <a href="/interestbookview?category=문학"><button>문학</button></a>
+                <a href="/interestbookview?category=과학"><button>과학</button></a>
+                <a href="/interestbookview?category=예술"><button>예술</button></a>
+                <a href="/interestbookview?category=기술"><button>기술</button></a>
+                <a href="/interestbookview?category=역사"><button>역사</button></a>
+                <a href="/interestbookview?category=언어학"><button>언어학</button></a>
+                <a href="/interestbookview?category=사회과학"><button>사회과학</button></a>
+                <a href="/interestbookview?category=자연과학"><button>자연과학</button></a>
+                <a href="/interestbookview?category=기술과학"><button>기술과학</button></a>
             </div>
         </section>
 
         <!-- 책 이미지와 책 제목을 하나의 컨테이너 안에 나열 -->
         <section class="books-container">
-            <div class="book-item">
-                <div class="loan-count">대출: 36회</div>
-                <img src="/img/Book1.png" alt="해커스 토익 기출 보카">
-                <h4>해커스 토익 기출 보카</h4>
-                <button class="favorite-btn">관심도서</button>
-            </div>
-            <div class="book-item">
-                <div class="loan-count">대출: 35회</div>
-                <img src="/img/Book2.png" alt="(ETS TOEIC) 토익 정기시험 기출문제집 1000 RC.4">
-                <h4>(ETS TOEIC) 토익 정기시험 기출문제집 1000 RC.4</h4>
-                <button class="favorite-btn">관심도서</button>
-            </div>
-            <div class="book-item">
-                <div class="loan-count">대출: 35회</div>
-                <img src="/img/Book3.5.png" alt="채식주의자: 한강 연작소설">
-                <h4>채식주의자: 한강 연작소설</h4>
-                <button class="favorite-btn">관심도서</button>
-
-            </div>
-            <div class="book-item">
-                <div class="loan-count">대출: 35회</div>
-                <img src="/img/Book4.png" alt="(ETS TOEIC) 토익 정기시험 기출문제집 : 1000 LC4">
-                <h4>(ETS TOEIC) 토익 정기시험 기출문제집 : 1000 LC4</h4>
-                <button class="favorite-btn">관심도서</button>
-            </div>
-            <div class="book-item">
-                <div class="loan-count">대출: 32회</div>
-                <img src="/img/Book5.png" alt="엔트로피">
-                <h4>엔트로피</h4>
-                <button class="favorite-btn">관심도서</button>
-            </div>
-            <div class="book-item">
-                <div class="loan-count">대출: 30회</div>
-                <img src="/img/Book6.png" alt="난장이가 쏘아올린 작은공: 조세희 소설집">
-                <h4>난장이가 쏘아올린 작은공: 조세희 소설집</h4>
-                <button class="favorite-btn">관심도서</button>
-            </div>
-            <div class="book-item">
-                <div class="loan-count">대출: 30회</div>
-                <img src="/img/Boook7.png" alt="모순: 양귀자 소설">
-                <h4>모순: 양귀자 소설</h4>
-                <button class="favorite-btn">관심도서</button>
-            </div>
-            <div class="book-item">
-                <div class="loan-count">대출: 28회</div>
-                <img src="/img/Book8.png" alt="오픽노잼 : 스크립트 없이 오픽 쌉가능">
-                <h4>오픽노잼 : 스크립트 없이 오픽 쌉가능</h4>
-                <button class="favorite-btn">관심도서</button>
-            </div>
+            <c:forEach var="book" items="${books}">
+                <div class="book-item">
+                    <div class="loan-count">대출: ${book.borrowCount}회</div>
+                    <img src="${book.bookImageSrc}" alt="${book.bookName}">
+                    <h4>${book.bookName}</h4>
+                    <!-- 카테고리 출력 -->
+                    <p class="book-category">카테고리: ${book.bookCategory}</p>
+                    <button class="favorite-btn">관심도서</button>
+                </div>
+            </c:forEach>
         </section>
     </div>
 </div>
