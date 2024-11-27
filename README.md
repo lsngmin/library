@@ -19,6 +19,8 @@
 <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white"/>
 <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"/>
 
+### draw.io
+
 ## :construction_worker: Worker
 
 <a href="https://github.com/lsngmin/library/graphs/contributors">
@@ -35,7 +37,10 @@
 ## 개발 기간
 * 학부 재학중 전공 수업 3시간에서 진행한 기획부터 설계 그리고 개발까지 완료한 프로젝트 입니다.
 * 2024-09-10 ~ 2024-12-03 (84일)
-* 기획 1주, 기능 요구서 작성 2주, 와이어 프레임 및 목업 디자인 4주, 클래스 다이어그램 작성 1주, 시퀀스 다이어그램 및 개발 5주
+* 기획 1주 / 기능 요구서 2주 / 와이어 프레임 및 목업 4주 / 클래스 다이어그램 1주 / 시퀀스 다이어그램 및 개발 5주
+
+## 배포 링크
+### principal-corri-lsngmin-e51bfba8.koyeb.app/
 
 ## 프로젝트 구조
 
@@ -91,83 +96,6 @@ library
 │                  ├─admin
 │                  ├─library
 │                  └─myinfo
-└─target
-    ├─classes
-    │  ├─com
-    │  │  └─library
-    │  │      ├─admin
-    │  │      │  ├─controller
-    │  │      │  └─model
-    │  │      ├─book
-    │  │      │  ├─exception
-    │  │      │  ├─model
-    │  │      │  └─service
-    │  │      ├─controller
-    │  │      ├─donationBook
-    │  │      │  ├─model
-    │  │      │  └─service
-    │  │      ├─noticeBoard
-    │  │      │  ├─model
-    │  │      │  └─service
-    │  │      ├─rental
-    │  │      │  ├─model
-    │  │      │  └─service
-    │  │      ├─user
-    │  │      │  ├─controller
-    │  │      │  ├─model
-    │  │      │  └─service
-    │  │      └─wishBook
-    │  │          ├─model
-    │  │          └─service
-    │  └─mappings
-    ├─generated-sources
-    │  └─annotations
-    └─library
-        ├─META-INF
-        ├─resources
-        │  ├─css
-        │  │  ├─admindashboard
-        │  │  ├─login
-        │  │  └─myinfo
-        │  ├─img
-        │  │  └─admindashboard
-        │  └─js
-        │      ├─admindashboard
-        │      ├─login
-        │      └─myinfo
-        └─WEB-INF
-            ├─classes
-            │  ├─com
-            │  │  └─library
-            │  │      ├─admin
-            │  │      │  ├─controller
-            │  │      │  └─model
-            │  │      ├─book
-            │  │      │  ├─exception
-            │  │      │  ├─model
-            │  │      │  └─service
-            │  │      ├─controller
-            │  │      ├─donationBook
-            │  │      │  ├─model
-            │  │      │  └─service
-            │  │      ├─noticeBoard
-            │  │      │  ├─model
-            │  │      │  └─service
-            │  │      ├─rental
-            │  │      │  ├─model
-            │  │      │  └─service
-            │  │      ├─user
-            │  │      │  ├─controller
-            │  │      │  ├─model
-            │  │      │  └─service
-            │  │      └─wishBook
-            │  │          ├─model
-            │  │          └─service
-            │  └─mappings
-            ├─lib
-            └─views
-                ├─admin
-                └─myinfo
                 
 ```
 
