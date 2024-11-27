@@ -14,6 +14,7 @@ public class BookVO {
     private String bookStatus;
     private String bookPage;
     private String bookImageSrc;
+    private int borrowCount;
 
 
     public String getBookCode() {
@@ -121,4 +122,11 @@ public class BookVO {
         this.bookImageSrc = bookImageSrc;
     }
 
+    public int getBorrowCount() {
+        return borrowCount;
+    }
+
+    public void setBorrowCount(int borrowCount) {
+        this.borrowCount = borrowCount;
+    }
 }
