@@ -68,4 +68,13 @@ public class UserDAO {
     public UserVO getUserForPasswordReset(String userId) {
         return mybatis.selectOne("UserDAO.getUserForPasswordReset", userId);
     }
+    public String selectPasswordByUserId(String userId) {
+        return mybatis.selectOne("UserDAO.selectPasswordByUserId", userId);
+    }
+    public void updatePasswordByUserId(String userId, String password) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("userId", userId);
+        params.put("password", password);
+        mybatis.update("UserDAO.updatePasswordByUserId", params);
+    }
 }

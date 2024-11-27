@@ -25,4 +25,7 @@ public interface UserService {
     void updatePassword(UserVO vo);
 
     UserVO getUserForPasswordReset(String userId);
+    String selectPasswordByUserId(String userId);
+    void updatePasswordByUserId(String userId, String password);
+
 }

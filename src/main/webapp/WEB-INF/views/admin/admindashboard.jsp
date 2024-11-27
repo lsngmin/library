@@ -15,70 +15,45 @@
   <script src="/js/admindashboard/rentalList.js"></script>
   <script src="/js/admindashboard/clearOverDue.js"></script>
 
-
-
-
-
-
 </head>
 <body>
-<nav class="main-nav">
-  <ul class="left">
-    <li><a href="/admindashboard"><img src="/img/admindashboard/home_icon.png" alt="홈 아이콘" class="logout_icon">&nbsp홈</a></li>
-    <li><a href="/bookregister"><img src="/img/admindashboard/bookregi_icon.png" alt="도서등록 아이콘" class="logout_icon">&nbsp도서 등록</a></li>
-    <li><a href="/bookinquiry"><img src="/img/admindashboard/bookinfo_icon.png" alt="도서 정보 아이콘" class="logout_icon">&nbsp도서 정보</a></li>
-    <li><a href="#"><img src="/img/admindashboard/userinfo_icon.png" alt="학생 정보 아이콘" class="logout_icon">&nbsp학생 정보</a></li>
-    <li><a href="#"><img src="/img/admindashboard/status_icon.png" alt="희망/기종 도서 신청 아이콘" class="logout_icon">&nbsp희망/기종 도서 신청 목록</a></li>
-  </ul>
-  <ul class="right">
-    <li><a href="#"><img src="/img/admindashboard/gotolib_icon.png" alt="홈 아이콘" class="logout_icon">&nbsp도서관 바로가기</a></li>
-    <li><a href="/admin/logout"><img src="/img/admindashboard/logout_icon.png" alt="홈 아이콘" class="logout_icon">&nbsp로그아웃</a></li>
-  </ul>
-</nav>
-
-<div class="header-container">
-  <div class="header-title">강릉대학교 통합도서관 관리 시스템</div>
-  <div class="search-container">
-    <input type="text" class="search-input" placeholder="학생 정보 또는 도서 정보를 입력하세요...">
-    <span class="search-icon"><img src="/img/admindashboard/search_icon.png" alt="홈 아이콘" class="logout_icon"></span>  <!-- 검색 아이콘을 입력 박스 안에 위치시키기 -->
-  </div>
-</div>
+<jsp:include page="adminHeader.jsp"/>
 <div class="main-container">
-<div class="info-box-container">
-  <div class="info-box">
-    <div class="icon"><img src="/img/admindashboard/currentBook_icon.png" alt="아이콘" class="info_icon"></div>
-    <div class="details">
-      <div class="title">현재까지 등록된 도서</div>
-      <div class="number">${totalBookCount}</div>
+  <div class="info-box-container">
+    <div class="info-box">
+      <div class="icon"><img src="/img/admindashboard/currentBook_icon.png" alt="아이콘" class="info_icon"></div>
+      <div class="details">
+        <div class="title">현재까지 등록된 도서</div>
+        <div class="number">${totalBookCount}</div>
+      </div>
+    </div>
+    <div class="info-box">
+      <div class="icon"><img src="/img/admindashboard/wishBook_icon.png" alt="아이콘" class="info_icon"></div>
+      <div class="details">
+        <div class="title">희망도서 신청 건 수</div>
+        <div class="number">1,234</div>
+      </div>
+    </div>
+    <div class="info-box">
+      <div class="icon"><img src="/img/admindashboard/userTotal_icon.png" alt="아이콘" class="info_icon"></div>
+      <div class="details">
+        <div class="title">도서관 총 이용자 수</div>
+        <div class="number">${totalUserCount}</div>
+      </div>
+    </div>
+    <div class="info-box">
+      <div class="icon"><img src="/img/admindashboard/rentalBook_icon.png" alt="아이콘" class="info_icon"></div>
+      <div class="details">
+        <div class="title">대여 진행중인 도서 수</div>
+        <div class="number">89</div>
+      </div>
     </div>
   </div>
-  <div class="info-box">
-    <div class="icon"><img src="/img/admindashboard/wishBook_icon.png" alt="아이콘" class="info_icon"></div>
-    <div class="details">
-      <div class="title">희망도서 신청 건 수</div>
-      <div class="number">1,234</div>
+  <div class="loan-container">
+    <div class="loan-header">
+      <h2>도서 대여</h2>
+      <p>사용자의 학번과 도서 등록코드를 입력해 주세요</p>
     </div>
-  </div>
-  <div class="info-box">
-    <div class="icon"><img src="/img/admindashboard/userTotal_icon.png" alt="아이콘" class="info_icon"></div>
-    <div class="details">
-      <div class="title">도서관 총 이용자 수</div>
-      <div class="number">${totalUserCount}</div>
-    </div>
-  </div>
-  <div class="info-box">
-    <div class="icon"><img src="/img/admindashboard/rentalBook_icon.png" alt="아이콘" class="info_icon"></div>
-    <div class="details">
-      <div class="title">대여 진행중인 도서 수</div>
-      <div class="number">89</div>
-    </div>
-  </div>
-</div>
-<div class="loan-container">
-  <div class="loan-header">
-    <h2>도서 대여</h2>
-    <p>사용자의 학번과 도서 등록코드를 입력해 주세요</p>
-  </div>
 
     <div class="form-group">
       <label for="userId">학번</label>
@@ -146,78 +121,78 @@
         <input type="text" id="rentalEndDate" value="" disabled>
       </div>
     </div>
-  <div class="form-group">
-    <button class="btn-submit" id="RentalExecute">대출 실행</button>
-  </div>
-</div>
-
-<div class="container">
-  <div class="book-return-section">
-    <h2>도서 반납</h2>
-    <p>사용자의 학번 입력 후 반납할 도서를 체크해 주세요</p>
     <div class="form-group">
-      <label for="return-userId">학번</label>
-      <input type="text" id="return-userId" placeholder="ex> 20131122">
+      <button class="btn-submit" id="RentalExecute">대출 실행</button>
     </div>
-    <div class="inline-group">
-      <div class="form-group">
-        <label for="return-name">이름</label>
-        <input type="text" id="return-name" value="" disabled>
-      </div>
-      <div class="form-group">
-        <label for="return-colleges">단과대학</label>
-        <input type="text" id="return-colleges" value="" disabled>
-      </div>
-      <div class="form-group">
-        <label for="return-departments">학과</label>
-        <input type="text" id="return-departments" value="" disabled>
-      </div>
-    </div>
-    <table class="book-table" id="rentalTable">
-      <thead>
-      <tr>
-        <th></th>
-        <th>도서명</th>
-        <th>저자</th>
-        <th>출판사</th>
-        <th>기한</th>
-        <th>연체</th>
-      </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
-    <div class="warning-message">
-      <p>반납 실행 전 책을 다시 확인해 주시고 반납해 주시기 바랍니다.</p>
-    </div>
-    <button class="btn-submit" id="returnBooksButton">반납 실행</button>
   </div>
 
-  <div class="overdue-clear-section">
-    <h2>연체 해제</h2>
-    <div class="form-group">
-      <label for="overdue-student-id">학번</label>
-      <input type="text" id="overdue-student-id" placeholder="ex> 20131122">
+  <div class="container">
+    <div class="book-return-section">
+      <h2>도서 반납</h2>
+      <p>사용자의 학번 입력 후 반납할 도서를 체크해 주세요</p>
+      <div class="form-group">
+        <label for="return-userId">학번</label>
+        <input type="text" id="return-userId" placeholder="ex> 20131122">
+      </div>
+      <div class="inline-group">
+        <div class="form-group">
+          <label for="return-name">이름</label>
+          <input type="text" id="return-name" value="" disabled>
+        </div>
+        <div class="form-group">
+          <label for="return-colleges">단과대학</label>
+          <input type="text" id="return-colleges" value="" disabled>
+        </div>
+        <div class="form-group">
+          <label for="return-departments">학과</label>
+          <input type="text" id="return-departments" value="" disabled>
+        </div>
+      </div>
+      <table class="book-table" id="rentalTable">
+        <thead>
+        <tr>
+          <th></th>
+          <th>도서명</th>
+          <th>저자</th>
+          <th>출판사</th>
+          <th>기한</th>
+          <th>연체</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      <div class="warning-message">
+        <p>반납 실행 전 책을 다시 확인해 주시고 반납해 주시기 바랍니다.</p>
+      </div>
+      <button class="btn-submit" id="returnBooksButton">반납 실행</button>
     </div>
-    <div class="form-group">
-      <label for="reason">사유</label>
-      <select id="reasons">
-        <option value="천재지변">천재지변</option>
-        <option value="개인사유">개인사유</option>
-        <option value="기타">기타</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="notes">비고</label>
-      <textarea id="notes" rows="3" placeholder="..."></textarea>
-    </div>
-    <button class="btn-submit" id="clear-over-due-button">제출하기</button>
 
-    <div class="status-message success" display>연체가 해제 되었습니다.</div>
-    <div class="status-message warning">학번을 확인해 주세요.</div>
-    <div class="status-message error">연체중이 아닙니다.</div>
+    <div class="overdue-clear-section">
+      <h2>연체 해제</h2>
+      <div class="form-group">
+        <label for="overdue-student-id">학번</label>
+        <input type="text" id="overdue-student-id" placeholder="ex> 20131122">
+      </div>
+      <div class="form-group">
+        <label for="reason">사유</label>
+        <select id="reasons">
+          <option value="천재지변">천재지변</option>
+          <option value="개인사유">개인사유</option>
+          <option value="기타">기타</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="notes">비고</label>
+        <textarea id="notes" rows="3" placeholder="..."></textarea>
+      </div>
+      <button class="btn-submit" id="clear-over-due-button">제출하기</button>
+
+      <div class="status-message success" display>연체가 해제 되었습니다.</div>
+      <div class="status-message warning">학번을 확인해 주세요.</div>
+      <div class="status-message error">연체중이 아닙니다.</div>
+    </div>
   </div>
-</div>
 </div>
 </body>
 </html>
