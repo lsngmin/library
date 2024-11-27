@@ -103,8 +103,15 @@ library
 ![클래스 다이어그램](https://github.com/user-attachments/assets/9287ef19-7222-48a4-83f3-4d8fde6d6a7a)
 
 ## 시퀀스 다이어그램
-![image](https://github.com/user-attachments/assets/f73e393b-620f-4083-bdbc-19af8a8c7177)
-
-
+<details>
+  <summary>사용자</summary>
+  
+![스크린샷 2024-11-28 013618](https://github.com/user-attachments/assets/ee8caadd-a2d5-46ac-8c9b-6061464e9223)
+  
+   
+</details>
+<details>
+  <summary>관리자</summary>
+</details>
 <img src="https://capsule-render.vercel.app/api?type=waving&color=a6a6df&height=150&section=footer" />
 
