@@ -14,26 +14,30 @@ public class WishBookDAO {
 
     // Insert a book wish
     public void insertBookWish(WishBookVO vo) {
-        mybatis.insert("BookWishListDAO.insertBookWish", vo);
+        mybatis.insert("WishBookDAO.insertBookWish", vo);
     }
 
     // Get a book wish by wishCode
     public WishBookVO getBookWishByCode(String wishCode) {
-        return mybatis.selectOne("BookWishListDAO.getBookWishByCode", wishCode);
+        return mybatis.selectOne("WishBookDAO.getBookWishByCode", wishCode);
     }
 
     // Update a book wish
     public void updateBookWish(WishBookVO vo) {
-        mybatis.update("BookWishListDAO.updateBookWish", vo);
+        mybatis.update("WishBookDAO.updateBookWish", vo);
     }
 
     // Delete a book wish
     public void deleteBookWish(String wishCode) {
-        mybatis.delete("BookWishListDAO.deleteBookWish", wishCode);
+        mybatis.delete("WishBookDAO.deleteBookWish", wishCode);
     }
 
     // Get all book wishes
     public List<WishBookVO> getAllBookWishes() {
-        return mybatis.selectList("BookWishListDAO.getAllBookWishes");
+        return mybatis.selectList("WishBookDAO.getAllBookWishes");
+    }
+
+    public List<WishBookVO> getWishBooksByUserId(String userId) {
+        return mybatis.selectList("WishBookDAO.getWishBooksByUserId", userId);
     }
 }

@@ -266,7 +266,7 @@
         <h2>희망도서 신청</h2>
         <section class="request-container">
             <p style="color: red; font-weight: bold; font-size: 16px; margin-top: 0;">*표시는 필수 입력 사항입니다.</p>
-            <form method="post" action="requestBook.jsp" id="requestForm">
+            <form method="post" action="requestBook" id="requestForm">
                 <div class="form-group">
                     <label for="book-title">신청자료명(<span class="required">*</span>)</label>
                     <input type="text" id="book-title" name="book-title">
@@ -301,7 +301,7 @@
 
                 <div class="phone-buttons">
                     <button type="submit">신청</button>
-                    <button type="reset">취소</button>
+                    <button type="button" onclick="location.href='main'">취소</button>
                 </div>
             </form>
         </section>
@@ -370,6 +370,10 @@
             event.preventDefault();
         }
     });
+    document.getElementById('cancelButton').addEventListener('click', function() {
+        window.location.href = 'main';
+    });
 </script>
 </body>
 </html>
+

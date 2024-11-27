@@ -202,8 +202,8 @@
             text-decoration: underline; /* 필요하면 마우스를 올렸을 때만 밑줄 표시 */
         }
     </style>
-    <link rel="stylesheet"  href="/resources/css/login.css">
-    <script src="login.js"></script>
+    <link rel="stylesheet"  href="/resources/css/library/login.css">
+    <script src="/js/library/login.js"></script>
 
 </head>
 <body>

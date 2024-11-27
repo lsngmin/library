@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class DonationBookDAO {
@@ -35,5 +36,9 @@ public class DonationBookDAO {
     // Retrieve All DonationBooks
     public List<DonationBookVO> getAllDonationBooks() {
         return mybatis.selectList("DonationBookDAO.getAllDonationBooks");
+    }
+
+    public List<Map<String, Object>> selectAllByUserId(String userId) {
+        return mybatis.selectList("DonationBookDAO.selectAllByUserId", userId);
     }
 }

@@ -37,4 +37,9 @@ public class WishBookServiceImpl implements WishBookService {
     public List<WishBookVO> getAllBookWishes() {
         return bookWishListDAO.getAllBookWishes();
     }
+
+    @Override
+    public List<WishBookVO> getWishBooksByUserId(String userId) {
+        return bookWishListDAO.getWishBooksByUserId(userId);  // bookWishListDAO로 수정
+    }
 }

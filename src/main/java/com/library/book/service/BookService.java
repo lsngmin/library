@@ -21,4 +21,9 @@ public interface BookService {
 
     String selectBookCodeByBookName(String bookName);
 
+    void incrementBorrowCount(String bookCode);
+
+    List<BookVO> getBooksByCategory(String category);
+
+
 }

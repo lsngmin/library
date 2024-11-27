@@ -39,4 +39,5 @@ public class NoticeBoardDAO {
     public void incrementViewCount(String cnt) {
         mybatis.update("NoticeBoardDAO.incrementViewCount", cnt);
     }
+
 }

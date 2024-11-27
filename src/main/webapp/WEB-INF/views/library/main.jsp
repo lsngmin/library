@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>강릉대학교 통합도서관</title>
-    <link rel="stylesheet"  href="/resources/css/main.css">
+    <link rel="stylesheet"  href="/resources/css/library/main.css">
 </head>
 <body>
 <header>
@@ -37,8 +37,15 @@
 <div class="main-content">
     <h1>꿈을 열어주는 책, 꿈을 이루어주는 도서관</h1>
     <div class="search-bar">
-        <input type="text" placeholder="원하시는 도서를 검색해주세요">
-        <img src="/img/searchImage.png" alt="검색 아이콘" onclick="alert('검색 기능은 준비 중입니다!')"> <!-- 검색 아이콘 -->
+        <input
+                type="text"
+                id="searchInput"
+                placeholder="원하시는 도서를 검색해주세요"
+                onkeydown="handleSearch(event)">
+        <img
+                src="/img/searchImage.png"
+                alt="검색 아이콘"
+                onclick="alert('검색 기능은 준비 중입니다!')"> <!-- 검색 아이콘 -->
     </div>
     <div class="menu-container">
         <a href="guide" class="menu-item">
@@ -64,4 +71,12 @@
     </div>
 </div>
 </body>
+<script>
+    function handleSearch(event) {
+        if (event.key === "Enter") {
+            alert('검색 기능은 준비 중입니다!');
+            // 여기에 실제 검색 기능을 연결하려면, alert를 대체하여 검색 로직을 구현하세요.
+        }
+    }
+</script>
 </html>

@@ -10,9 +10,18 @@ public class DonationBookVO{
     private String donationUserEmail;
     private String donationCategory;
     private String donationBookName;
-    private String donationBookPubliher;
+    private String donationBookPublisher;
     private String donationBookPublishDate;
     private String donationReason;
+    private String donationBookAuthor;
+
+    public String getDonationBookAuthor() {
+        return donationBookAuthor;
+    }
+
+    public void setDonationBookAuthor(String donationBookAuthor) {
+        this.donationBookAuthor = donationBookAuthor;
+    }
 
     // Getters and Setters
     public String getDonationCode() {
@@ -87,12 +96,12 @@ public class DonationBookVO{
         this.donationBookName = donationBookName;
     }
 
-    public String getDonationBookPubliher() {
-        return donationBookPubliher;
+    public String getDonationBookPublisher() {
+        return donationBookPublisher;
     }
 
-    public void setDonationBookPubliher(String donationBookPubliher) {
-        this.donationBookPubliher = donationBookPubliher;
+    public void setDonationBookPublisher(String donationBookPublisher) {
+        this.donationBookPublisher = donationBookPublisher;
     }
 
     public String getDonationBookPublishDate() {
