@@ -417,125 +417,109 @@
     </table>
   </div>
   <!-- 도서 기증 신청 목록 섹션 -->
+  <!-- 도서 기증 신청 목록 섹션 -->
   <div class="content-section">
     <h3 class="section-title">도서 기증 신청 목록</h3>
     <p class="section-subtitle">기증 도서의 상태를 확인 후 처리해 주세요</p>
 
-    <!-- 검색 박스 -->
     <div class="search-box">
       <input type="text" placeholder="기증 코드 또는 도서명을 입력해 주세요">
     </div>
 
-    <!-- 도서 상세 정보 -->
-    <div class="book-details">
-      <h4>기증 도서 상세 정보</h4>
-      <div class="form-container">
-        <div class="form-row five-column-row"> <!-- 5개 항목을 한 줄로 배치 -->
-          <div class="form-group">
-            <label>코드</label>
-            <input type="text" value="#DNTR01" readonly>
+    <!-- 기증도서 신청 목록 섹션 -->
+    <div class="content-section">
+      <h3 class="section-title">도서 기증 신청 목록</h3>
+      <p class="section-subtitle">기증 도서의 상태를 확인 후 처리해 주세요</p>
+
+      <!-- 검색 박스 -->
+      <div class="search-box">
+        <input type="text" id="donationSearch" placeholder="기증 코드 또는 도서명을 입력해 주세요">
+      </div>
+
+      <!-- 기증도서 상세 정보 -->
+      <div class="book-details" id="donation-book-details">
+        <h4>기증 도서 상세 정보</h4>
+        <div class="form-container">
+          <div class="form-row">
+            <div class="form-group">
+              <label>코드</label>
+              <input type="text" name="donationCode" readonly>
+            </div>
+            <div class="form-group">
+              <label>도서명</label>
+              <input type="text" name="donationBookName">
+            </div>
+            <div class="form-group">
+              <label>저자</label>
+              <input type="text" name="donationBookAuthor">
+            </div>
+            <div class="form-group">
+              <label>출판사</label>
+              <input type="text" name="donationBookPublisher">
+            </div>
           </div>
-          <div class="form-group">
-            <label>도서명</label>
-            <input type="text" value="생명의 아름다움">
+          <div class="form-row">
+            <div class="form-group">
+              <label>신청자</label>
+              <input type="text" name="donationUserName">
+            </div>
+            <div class="form-group">
+              <label>연락처</label>
+              <input type="text" name="donationUserPhone">
+            </div>
+            <div class="form-group">
+              <label>이메일</label>
+              <input type="email" name="donationUserEmail">
+            </div>
+            <div class="form-group">
+              <label>기증 사유</label>
+              <textarea name="donationReason" rows="3"></textarea>
+            </div>
           </div>
-          <div class="form-group">
-            <label>저자</label>
-            <input type="text" value="이민정">
-          </div>
-          <div class="form-group">
-            <label>출판사</label>
-            <input type="text" value="청림출판">
-          </div>
-          <div class="form-group">
-            <label>발행년도</label>
-            <input type="text" value="2023">
-          </div>
-        </div>
-        <!-- 나머지 form-row들은 그대로 유지 -->
-        <div class="form-row">
-          <div class="form-group">
-            <label>신청자</label>
-            <input type="text" value="김민수">
-          </div>
-          <div class="form-group">
-            <label>연락처</label>
-            <input type="text" value="010-1234-5678">
-          </div>
-          <div class="form-group">
-            <label>이메일</label>
-            <input type="email" value="minsoo.kim@example.com">
-          </div>
-          <div class="form-group">
-            <label>기증 사유</label>
-            <textarea rows="3" placeholder="기증 사유를 입력하세요">개인 소장 도서 기증</textarea>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>처리상태</label>
-            <select>
-              <option selected>접수중</option>
-              <option>검토중</option>
-              <option>반려</option>
-              <option>기증완료</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>비고</label>
-            <textarea rows="3" placeholder="비고 입력란"></textarea>
-          </div>
-          <div class="form-group">
-            <label>신청 날짜</label>
-            <input type="date" value="2024-11-19">
+          <div class="form-row">
+            <div class="form-group">
+              <label>처리상태</label>
+              <select name="donationStatus" onchange="updateDonationStatus()">
+                <option value="접수완료">접수완료</option>
+                <option value="검토중">검토중</option>
+                <option value="반려">반려</option>
+                <option value="기증완료">기증완료</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- 도서 기증 목록 테이블 -->
-    <table>
-      <thead>
-      <tr>
-        <th><input type="checkbox" id="select-all" onclick="toggleCheckboxes(this)"></th>
-        <th>코드</th>
-        <th>날짜</th>
-        <th>기증자료명</th>
-        <th>신청자</th>
-        <th>처리상태</th>
-        <th>상세보기</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td><input type="checkbox" class="select-item"></td>
-        <td class="book-code">#DNTR01</td>
-        <td>2024-03-01</td>
-        <td>생명의 아름다움</td>
-        <td>김민수</td>
-        <td>접수중</td>
-        <td><button class="detail-button"></button></td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="select-item"></td>
-        <td class="book-code">#DNTR02</td>
-        <td>2024-05-10</td>
-        <td>자연과학의 기초</td>
-        <td>박수현</td>
-        <td>검토중</td>
-        <td><button class="detail-button"></button></td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="select-item"></td>
-        <td class="book-code">#DNTR03</td>
-        <td>2024-07-20</td>
-        <td>문학과 철학</td>
-        <td>이수영</td>
-        <td>처리완료</td>
-        <td><button class="detail-button"></button></td>
-      </tr>
-      </tbody>
-    </table>
+      <!-- 기증도서 목록 테이블 -->
+      <table>
+        <thead>
+        <tr>
+          <th><input type="checkbox" id="donation-select-all"></th>
+          <th>코드</th>
+          <th>날짜</th>
+          <th>기증자료명</th>
+          <th>기증자</th>
+          <th>처리상태</th>
+          <th>상세보기</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${donationList}" var="donation">
+          <tr>
+            <td><input type="checkbox" class="donation-select-item"></td>
+            <td class="book-code">${donation.donationCode}</td>
+            <td>${donation.donationDate}</td>
+            <td>${donation.donationBookName}</td>
+            <td>${donation.donationUserName}</td>
+            <td>${donation.donationStatus}</td>
+            <td>
+              <button type="button" class="detail-button" onclick="showDonationDetails('${donation.donationCode}')"></button>
+            </td>
+          </tr>
+        </c:forEach>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 </body>
@@ -649,40 +633,7 @@
     }
   }
 
-    // 현재 버튼의 active 상태를 토글
-    button.classList.toggle('active');
 
-    // 상세 정보 div의 표시 상태를 토글
-    if (button.classList.contains('active')) {
-      detailsDiv.classList.add('active');
-
-      // AJAX 요청
-      fetch(`/admin/getWishBookDetails/${wishCode}`)
-              .then(response => {
-                if (!response.ok) {
-                  throw new Error('Network response was not ok');
-                }
-                return response.json();
-              })
-              .then(data => {
-                console.log("Received data:", data);
-
-                // 입력 필드 업데이트
-                document.querySelector('input[name="code"]').value = data.wishCode || '';
-                document.querySelector('input[name="bookName"]').value = data.wishBookName || '';
-                document.querySelector('input[name="author"]').value = data.wishBookAuthor || '';
-                document.querySelector('input[name="publisher"]').value = data.wishBookPublisher || '';
-                document.querySelector('input[name="publishYear"]').value = data.wishBookPublishDate || '';
-                document.querySelector('input[name="price"]').value = data.wishBookPrice || '';
-                document.querySelector('select[name="status"]').value = data.wishStatus || '접수중';
-              })
-              .catch(error => {
-                console.error('Error:', error);
-                alert('데이터를 가져오는데 실패했습니다.');
-              });
-    } else {
-      detailsDiv.classList.remove('active');
-    }
 
   function updateStatus(wishCode, newStatus) {
     if(confirm('처리상태를 변경하시겠습니까?')) {
@@ -716,4 +667,67 @@
               });
     }
   }
+
+  // 기증도서 상세 정보 표시
+  function showDonationDetails(donationCode) {
+    const button = event.currentTarget;
+    button.classList.toggle('active');
+
+    const detailsDiv = document.getElementById('donation-book-details');
+    if (button.classList.contains('active')) {
+      fetch('/admin/getDonationBookDetails/' + donationCode)
+              .then(response => response.json())
+              .then(data => {
+                document.querySelector('input[name="donationCode"]').value = data.donationCode;
+                document.querySelector('input[name="donationBookName"]').value = data.donationBookName;
+                document.querySelector('input[name="donationBookAuthor"]').value = data.donationBookAuthor;
+                document.querySelector('input[name="donationBookPublisher"]').value = data.donationBookPublisher;
+                document.querySelector('input[name="donationUserName"]').value = data.donationUserName;
+                document.querySelector('input[name="donationUserPhone"]').value = data.donationUserPhone;
+                document.querySelector('input[name="donationUserEmail"]').value = data.donationUserEmail;
+                document.querySelector('textarea[name="donationReason"]').value = data.donationReason;
+                document.querySelector('select[name="donationStatus"]').value = data.donationStatus;
+
+                detailsDiv.style.display = 'block';
+              })
+              .catch(error => {
+                console.error('Error:', error);
+                alert('상세 정보를 불러오는데 실패했습니다.');
+              });
+    } else {
+      detailsDiv.style.display = 'none';
+    }
+  }
+
+  function updateDonationStatus() {
+    const donationCode = document.querySelector('input[name="donationCode"]').value;
+    const newStatus = document.querySelector('select[name="donationStatus"]').value;
+
+    if(confirm('처리상태를 변경하시겠습니까?')) {
+      fetch('/admin/updateDonationBookStatus', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          donationCode: donationCode,
+          status: newStatus
+        })
+      })
+              .then(response => response.json())
+              .then(data => {
+                if(data.success) {
+                  alert('상태가 변경되었습니다.');
+                  location.reload(); // 페이지 새로고침
+                } else {
+                  alert('상태 변경에 실패했습니다.');
+                }
+              })
+              .catch(error => {
+                console.error('Error:', error);
+                alert('상태 변경 중 오류가 발생했습니다.');
+              });
+    }
+  }
+
 </script>
