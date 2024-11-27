@@ -1,7 +1,7 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=a6a6df&height=150&section=header" />
 <div align="center">
   
-# 도서관리 시스템 프로젝트
+# 도서관리 시스템 프로젝트 README
   
 ## :star: Skills :star:
 
@@ -26,11 +26,16 @@
 </a>
 </div>
 
+## 프로젝트 설명
+* 도서관 내의 비치된 책의 정보와 대출가능여부를 알 수 있는 홈페이지 입니다.
+* 도서관 관리자가 사용자와 책의 코드 만으로 쉽게 대출과 반납이 가능합니다.
+* 관심도서 기능과 희망, 기증 도서 신청 기능을 통해 도서관 사용자의 니즈를 알 수 있습니다.
+* 연체 해제, 책 정보 등록, 수정 기능을 사용할 수 있습니다.
+
 ## 프로젝트 구조
-폴더 PATH의 목록입니다.
-볼륨 일련 번호는 8085-4DEE입니다.
-C:.
-├─.idea
+
+```bash
+library
 ├─src
 │  └─main
 │      ├─java
@@ -158,7 +163,8 @@ C:.
             └─views
                 ├─admin
                 └─myinfo
-
+                
+```
 
 ![클래스 다이어그램](https://github.com/user-attachments/assets/9287ef19-7222-48a4-83f3-4d8fde6d6a7a)
 
