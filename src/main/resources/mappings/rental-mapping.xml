@@ -22,11 +22,13 @@
     </insert>
     <select id="selectRentalList" parameterType="Rental" resultType="map">
         SELECT
+        br.rentalCode,
         b.bookName,
         b.bookAuthor,
         b.bookPublisher,
         br.rentalEndDate,
-        br.rentalStartDate
+        br.rentalStartDate,
+        br.rentalExtension
         FROM
         BookRental br
         JOIN
