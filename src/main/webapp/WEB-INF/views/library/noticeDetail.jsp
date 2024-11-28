@@ -157,7 +157,7 @@
         }
 
         .notice-table {
-            width: 100%;
+            width: 10%;
             border-collapse: collapse;
         }
 
@@ -172,6 +172,10 @@
             background: #F7F7F7;
             font-weight: bold;
         }
+        .notice-detail {
+            width: 90%;
+        }
+
 
         .pagination {
             margin-top: 20px;
@@ -272,6 +276,40 @@
             font-size: 25px; /* 글자 크기를 20px로 설정 */
             border-right: 1px
         }
+        a {
+            text-decoration: none; /* 밑줄 제거 */
+            color: black; /* 기본 색상 */
+        }
+
+        /* 방문한 링크 색상 고정 */
+        a:visited {
+            color: black;
+        }
+
+        /* 마우스 올렸을 때 색상 고정 */
+        a:hover {
+            color: black;
+        }
+
+        /* 클릭한 상태에서도 색상 고정 */
+        a:active {
+            color: black;
+        }
+        .button-container {
+            display: flex; /* 플렉스박스 사용 */
+            justify-content: flex-end; /* 내용물을 오른쪽으로 정렬 */
+            margin-top: 20px; /* 필요에 따라 여백 추가 */
+        }
+
+        .list-button {
+            padding: 10px 40px; /* 버튼 크기 조절 */
+            background-color: #007BFF; /* 버튼 배경색 */
+            color: white; /* 텍스트 색상 */
+            border: none; /* 테두리 제거 */
+            border-radius: 4px; /* 모서리 둥글게 */
+            cursor: pointer; /* 커서 포인터 */
+            margin-right: 160px; /* 살짝 왼쪽으로 이동 */
+        }
     </style>
 </head>
 <body>
@@ -323,8 +361,8 @@
         <div class="notice-content">${notice.content}</div>
     </div>
 
-    <div>
-        <a href="/notice" class="back-to-list-btn">목록</a>
+    <div class="button-container">
+        <button class="list-button">목록</button>
     </div>
 </div>
 </body>
