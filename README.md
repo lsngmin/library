@@ -145,12 +145,63 @@ library
 <div align="center">
 
 ![image](https://github.com/user-attachments/assets/9d94c103-1daf-4da6-ae1b-fdd0c91a82dd)
-  
+
+![image](https://github.com/user-attachments/assets/bc217428-72e9-4661-b5be-e516cb218583)
+
 </div>
 
+### 4. 관심도서 목록
+
+<div align="center">
+
+![image](https://github.com/user-attachments/assets/7e6b86c1-bcc9-4ab7-9f68-5558973f5a7c)
+
+</div>
+
+### 5. 통합 검색, 상세 보기
+
+<div align="center">
+
+![image](https://github.com/user-attachments/assets/fef4a5ba-ef09-465f-aa68-a787e68b4c58)
+
+![image](https://github.com/user-attachments/assets/766528a6-6faf-4532-b3ca-9c021501468a)
+
+</div>
 </details>
 <details>
   <summary>관리자</summary>
+
+### 1. 대시보드 정보 출력, 대출실행 프로세스
+
+<div align="center">
+  
+![image](https://github.com/user-attachments/assets/78fa804c-c14a-4a0d-bf2d-4221b31c4a48)
+
+</div>
+
+### 2. 반납 실행 프로세스
+
+<div align="center">
+
+![image](https://github.com/user-attachments/assets/315b4180-6fd9-4101-983e-7d1803fc4271)
+
+</div>
+
+### 3. 연체 해제 프로세스
+
+<div align="center">
+
+![image](https://github.com/user-attachments/assets/11e37e00-4621-453f-80d4-8c369a07baab)
+
+</div>
+
+### 4. 희망도서 신청 현황
+
+<div align="center">
+
+![image](https://github.com/user-attachments/assets/0dbd8458-7756-4697-b221-e329a7d3062f)
+
+</div>
 </details>
 
 ## 노션 작업 테이블
