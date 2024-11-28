@@ -37,7 +37,8 @@
 
     <!-- Retrieve All NoticeBoards -->
     <select id="getAllNoticeBoards" resultType="com.library.noticeBoard.model.NoticeBoardVO">
-        SELECT * FROM NoticeBoard
+        SELECT cnt, category, title, writer, writerId, content, date
+        FROM NoticeBoard
     </select>
 
 </mapper>

@@ -15,34 +15,9 @@
   <script src="/js/admindashboard/rentalList.js"></script>
   <script src="/js/admindashboard/clearOverDue.js"></script>
 
-
-
-
-
-
 </head>
 <body>
-<nav class="main-nav">
-  <ul class="left">
-    <li><a href="/admindashboard"><img src="/img/admindashboard/home_icon.png" alt="홈 아이콘" class="logout_icon">&nbsp홈</a></li>
-    <li><a href="/bookregister"><img src="/img/admindashboard/bookregi_icon.png" alt="도서등록 아이콘" class="logout_icon">&nbsp도서 등록</a></li>
-    <li><a href="/bookinquiry"><img src="/img/admindashboard/bookinfo_icon.png" alt="도서 정보 아이콘" class="logout_icon">&nbsp도서 정보</a></li>
-    <li><a href="#"><img src="/img/admindashboard/userinfo_icon.png" alt="학생 정보 아이콘" class="logout_icon">&nbsp학생 정보</a></li>
-    <li><a href="#"><img src="/img/admindashboard/status_icon.png" alt="희망/기종 도서 신청 아이콘" class="logout_icon">&nbsp희망/기종 도서 신청 목록</a></li>
-  </ul>
-  <ul class="right">
-    <li><a href="#"><img src="/img/admindashboard/gotolib_icon.png" alt="홈 아이콘" class="logout_icon">&nbsp도서관 바로가기</a></li>
-    <li><a href="/admin/logout"><img src="/img/admindashboard/logout_icon.png" alt="홈 아이콘" class="logout_icon">&nbsp로그아웃</a></li>
-  </ul>
-</nav>
-
-<div class="header-container">
-  <div class="header-title">강릉대학교 통합도서관 관리 시스템</div>
-  <div class="search-container">
-    <input type="text" class="search-input" placeholder="학생 정보 또는 도서 정보를 입력하세요...">
-    <span class="search-icon"><img src="/img/admindashboard/search_icon.png" alt="홈 아이콘" class="logout_icon"></span>  <!-- 검색 아이콘을 입력 박스 안에 위치시키기 -->
-  </div>
-</div>
+<jsp:include page="adminHeader.jsp"/>
 <div class="main-container">
 <div class="info-box-container">
   <div class="info-box">
@@ -219,5 +194,49 @@
   </div>
 </div>
 </div>
+<script>
+  $(document).ready(function () {
+    $("#RentalExecute").click(function () {
+      const userId = $("#userId").val().trim();
+      const bookCode = $("#bookCode").val().trim();
+
+      if (!userId || !bookCode) {
+        alert("학번과 도서 코드를 입력해 주세요.");
+        return;
+      }
+
+      // 버튼 비활성화
+      $("#RentalExecute").prop("disabled", true);
+
+      const requestData = {
+        userId: userId,
+        bookCode: bookCode
+      };
+
+      $.ajax({
+        url: "/admin/rentalexecute",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(requestData),
+        success: function (response) {
+          if (response.success) {
+            alert(response.success);
+            location.reload();
+          } else if (response.error) {
+            alert(response.error);
+          }
+        },
+        error: function (xhr, status, error) {
+          alert("대출 실행 중 오류가 발생했습니다.");
+        },
+        complete: function () {
+          // 요청 완료 후 버튼 활성화
+          $("#RentalExecute").prop("disabled", false);
+        }
+      });
+    });
+  });
+
+</script>
 </body>
 </html>

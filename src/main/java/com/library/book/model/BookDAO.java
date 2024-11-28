@@ -58,4 +58,13 @@ public class BookDAO {
     public String selectBookCodeByBookName(String bookName) {
         return mybatis.selectOne("BookDAO.selectBookCodeByBookName", bookName);
     }
+    // borrowCount 증가 메서드
+    public void incrementBorrowCount(String bookCode) {
+        mybatis.update("BookDAO.incrementBorrowCount", bookCode);
+    }
+
+    public List<BookVO> getBooksByCategory(String category) {
+        return mybatis.selectList("BookDAO.getBooksByCategory", category);
+    }
+
 }

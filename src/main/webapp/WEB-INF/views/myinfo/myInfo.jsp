@@ -1,5 +1,7 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.time.LocalDate" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
@@ -61,7 +63,7 @@
         <div class="card">
             <div class="loan-header">
                 <div class="loan-info-box">대출 잔여 수량: ${user.rentalAvailable}권</div>
-                <div class="loan-info-box">연체 경과일: ${user.overDueDate}일</div>
+<%--                <div class="loan-info-box">연체 경과일: ${user.overDueDate}일</div>--%>
             </div>
             <div class="loan-notification">
                 <span id="rentalExtensionMessage"></span>
@@ -70,18 +72,33 @@
             <div class="grid-wrapper">
                 <div class="loan-grid">
                     <%
-                        // 예제 데이터 (Controller에서 세션으로 전달된 데이터)
                         List<Map<String, Object>> rental = (List<Map<String, Object>>) session.getAttribute("rental");
                     %>
                     <c:forEach var="rental" items="${rental}">
+                        <%
+                            if (rental != null) {
+                                LocalDate currentDate = LocalDate.now();
+                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+                                for (Map<String, Object> rentalItem : rental) {
+                                    String rentalEndDateString = (String) rentalItem.get("rentalEndDate");
+                                    LocalDate rentalEndDate = LocalDate.parse(rentalEndDateString, formatter);
+                                    boolean isOverdue = rentalEndDate.isBefore(currentDate);
+                        %>
                         <div class="book-section">
+                            <% if (isOverdue) { %>
                             <div class="overdue-label">연체</div>
-                            <div class="book-content">
+                            <% } %>
+                                <div class="book-content">
                                 <div class="book-title">${rental.bookName}</div>
                                 <div class="book-date">${rental.rentalStartDate} ~ ${rental.rentalEndDate}</div>
                             </div>
                             <button class="btn-more" data-bookname="${rental.bookName}">더 읽을래요 →</button>
                         </div>
+                        <%
+                                }
+                            }
+                        %>
                     </c:forEach>
                 </div>
             </div>

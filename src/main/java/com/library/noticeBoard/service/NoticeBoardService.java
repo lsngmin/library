@@ -10,5 +10,7 @@ public interface NoticeBoardService {
     void updateNoticeBoard(NoticeBoardVO vo);
     void deleteNoticeBoard(String cnt);
     List<NoticeBoardVO> getAllNoticeBoards();
+
     void incrementViewCount(String cnt); // 조회수 증가 메서드 추가
+
 }

@@ -21,6 +21,7 @@ public class NoticeController {
         UserVO user = (UserVO) session.getAttribute("user");
         model.addAttribute("user", user); // 사용자 정보 전달
         return "library/notice";
+
     }
     @GetMapping("/noticeDetail")
     public String noticeDetail(String cnt, Model model) {

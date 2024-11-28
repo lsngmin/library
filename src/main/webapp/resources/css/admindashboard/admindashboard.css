@@ -10,95 +10,11 @@ body {
     background-color: #F5F5F5;
 }
 
-.main-nav {
-    background-color: #000;
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 40px;
-}
-
-.main-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
-}
-
-.main-nav ul.left {
-    display: flex;
-}
-
-.main-nav ul.right {
-    display: flex;
-}
-
-.main-nav ul li {
-    padding: 8px 10px;
-}
-
-.main-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 10px;
-    display: flex;
-    align-items: center;
-}
-
-.main-nav ul li a:hover {
-    background-color: #575757;
-    border-radius: 4px;
-}
-
 .icon-home, .icon-book-register, .icon-book-info, .icon-student-info, .icon-wishlist, .icon-library, .icon-logout {
     margin-right: 6px;
 }
 
-.logout_icon {
-    width: 12px;
-    height: 12px;
-}
 
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #ffffff;
-}
-
-.header-title {
-    font-size: 16px;
-    font-weight: bold;
-    margin-left: 10px;
-}
-
-.search-container {
-    position: relative;
-    width: 300px;
-    padding-right: 10px;
-}
-
-.search-input {
-    width: 100%;
-    padding: 8px 40px 8px 10px;
-    font-size: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.search-icon {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 16px;
-    color: #aaa;
-    cursor: pointer;
-    padding-right: 10px;
-}
 .info-box-container {
     max-width: 1060px;
     width: 100%;

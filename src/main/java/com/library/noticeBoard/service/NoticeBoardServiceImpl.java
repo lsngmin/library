@@ -37,8 +37,10 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
     public List<NoticeBoardVO> getAllNoticeBoards() {
         return noticeBoardDAO.getAllNoticeBoards();
     }
+
     @Override
     public void incrementViewCount(String cnt) {
         noticeBoardDAO.incrementViewCount(cnt);
     }
+
 }

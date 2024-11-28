@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="WishBookDAO">
 
@@ -48,6 +48,13 @@
     <select id="getAllBookWishes" resultType="com.library.wishBook.model.WishBookVO">
         SELECT *
         FROM BookWishList
+        ORDER BY wishCode DESC
+    </select>
+
+    <select id="getWishBooksByUserId" parameterType="string" resultType="com.library.wishBook.model.WishBookVO">
+        SELECT *
+        FROM BookWishList
+        WHERE wishUserId = #{userId}
         ORDER BY wishCode DESC
     </select>
 

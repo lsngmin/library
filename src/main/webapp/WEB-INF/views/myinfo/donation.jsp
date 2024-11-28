@@ -36,7 +36,7 @@
     <div class="form-section">
         <h3>기증 신청서</h3>
         <p class="notice">* 필수 입력 항목입니다</p>
-        <form action="submitDonation" method="post"> <!-- 수정된 부분: 하나의 form으로 통합 -->
+        <form action="/submitDonation" method="post"> <!-- 수정된 부분: 하나의 form으로 통합 -->
             <!-- 기증자 정보 -->
             <div class="form-group"><label>이름*</label><input type="text" name="donationUserName" required></div>
             <div class="form-group"><label>연락처*</label><input type="text" name="donationUserPhone" required></div>
@@ -69,15 +69,17 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="donation" items="${donationList}"> <!-- 수정된 부분 -->
+            <c:forEach var="donation" items="${DonationList}"> <!-- 수정된 부분 -->
                 <tr>
-                    <td>접수 완료</td>
+                    <td>${donation.donationStatus}</td>
                     <td>${donation.donationBookName}</td>
                     <td>${donation.donationBookAuthor}</td>
                     <td>${donation.donationBookPublisher}</td>
                     <td>${donation.donationDate}</td>
                     <td>
-                        <button class="cancel-btn" onclick="deleteRow(this)">취소</button>
+                        <c:if test="${donation.donationStatus == '접수완료'}">
+                            <button class="cancel-btn" data-bookName="${donation.donationCode}" onclick="deleteRow(this)">취소</button>
+                        </c:if>
                     </td>
                 </tr>
             </c:forEach>
@@ -85,15 +87,51 @@
         </table>
     </div>
 </div>
+<c:if test="${not empty success}">
+    <input type="hidden" id="successMessage" value="${success}" />
+</c:if>
+
 <script>
     function deleteRow(button) {
         const row = button.parentElement.parentElement;
-        row.classList.add("slide-out"); // 슬라이드 아웃 애니메이션 추가
-        setTimeout(() => {
-            row.remove(); // 애니메이션 후 행 삭제
-            alert("신청 내역이 취소되었습니다.");
-        }, 600); // 0.6초 후 삭제
+
+        // 서버로 POST 요청 보내기
+        fetch('/canceldonation', {
+            method: 'POST',  // POST 메서드 사용
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ code: button.getAttribute('data-bookName') }) // body 속성을 사용하여 데이터 전송
+        })
+            .then(response => {
+                if (response.ok) {
+                    // 슬라이드 아웃 애니메이션 추가
+                    row.classList.add("slide-out");
+                    setTimeout(() => {
+                        row.remove(); // 애니메이션 후 행 삭제
+                        alert("신청 내역이 취소되었습니다.");
+                    }, 600); // 0.6초 후 삭제
+                } else {
+                    alert("신청 내역 취소 중 오류가 발생했습니다.");
+                }
+            })
+            .catch(error => {
+                console.error('에러 발생:', error);
+                alert("서버와의 연결 중 오류가 발생했습니다.");
+            });
     }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const successMessageElement = document.getElementById("successMessage");
+
+        if (successMessageElement) {
+            const message = successMessageElement.value;
+            alert(message); // 성공 메시지를 알림으로 표시
+
+            // 알림 후 리다이렉트
+            window.location.href = "/donation"; // 원하는 리다이렉트 경로로 변경하세요
+        }
+    });
 </script>
 </body>
 </html>

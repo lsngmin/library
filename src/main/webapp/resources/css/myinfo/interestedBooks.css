@@ -1,0 +1,299 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+body {
+    background: #FFF;
+    color: #333333;
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 40px;
+}
+
+.content {
+    top: 20px;
+    left: 20px;
+    padding: 30px;
+    right: 50px;
+}
+
+.page-title {
+    font-size: 35px;
+    font-weight: bold;
+    margin-top: -10px;
+    margin-bottom: 15px;
+    color: #333333;
+}
+
+.book-count-box {
+    display: inline-block;
+    width: 150px;  /* 이 값을 조절하여 가로 길이 수정 가능 */
+    text-align: center;
+    background-color: darkgrey;
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 20px;  /* 이 값을 조절하여 둥근 정도 수정 가능 */
+    font-size: 14px;
+    color: #666666;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.book-list {
+    margin-top: 20px;
+}
+
+.book-item {
+    display: flex;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.book-image-container {
+    position: relative;
+    width: 120px;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-image-container img {
+    width: 120px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.book-category {
+    background: #f5f5f5;
+    padding: 5px 10px;
+    text-align: center;
+    margin-top: 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #666;
+}
+
+.book-info {
+    flex: 1;
+}
+
+.info-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.book-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.book-right {
+    display: flex;
+    gap: 100px; /* 등록일과 대출가능 사이 간격 증가 */
+    align-items: center;
+    color: #666;
+    font-size: 14px;
+    margin-left: auto; /* 오른쪽 정렬을 위해 수정 */
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 50px; /* 버튼 위치를 아래로 이동 */
+}
+
+.divider {
+    border: none;
+    border-top: 1px dashed #ddd;
+    margin: 10px 0;
+}
+
+.info-middle {
+    display: flex;
+    gap: 40px; /* 간격 조정 */
+    color: #666;
+    font-size: 14px;
+    margin: 15px 0;
+}
+
+.info-middle span {
+    flex: none; /* flex 속성 제거하여 자연스러운 너비 사용 */
+}
+
+.info-bottom {
+    color: #666;
+    font-size: 14px;
+    margin: 15px 0;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.action-btn {
+    padding: 5px 10px;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.action-btn:hover {
+    text-decoration: underline;
+}
+
+.status-label {
+    color: #0066cc;
+    font-size: 14px;
+}
+
+strong {
+    color: #333;
+    font-weight: 500;
+}
+
+.sort-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.sort-select {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #666;
+    background-color: white;
+    cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.sort-select:hover {
+    border-color: #999;
+}
+
+.sort-select:focus {
+    outline: none;
+    border-color: #999;
+}
+
+/* 화살표 스타일 커스터마이징 */
+.sort-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    padding-right: 25px;
+}
+
+/* 전체 삭제 버튼 */
+.delete-all-container {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px 0;
+}
+
+.delete-all-btn {
+    padding: 5px 10px;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.delete-all-btn:hover {
+    text-decoration: underline;
+}
+
+/* 검색 섹션 스타일은 그대로 유지 */
+
+/* 검색 섹션 */
+.search-section {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    background: darkgrey;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.search-select {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #666;
+    background-color: white;
+    cursor: pointer;
+    font-family: 'Noto Sans KR', sans-serif;
+    min-width: 100px;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    padding-right: 25px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #333;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.search-input::placeholder {
+    color: #999;
+}
+
+.search-btn, .reset-btn {
+    padding: 5px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.search-btn {
+    background: #333;
+    color: white;
+}
+
+.reset-btn {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.search-btn:hover {
+    background: #444;
+}
+
+.reset-btn:hover {
+    background: #e5e5e5;
+}

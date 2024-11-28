@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <title>관리자 로그인 - 강릉대학교 통합도서관</title>
-  <link rel="stylesheet"  href="/resources/css/admin.css">
+  <link rel="stylesheet"  href="/resources/css/admindashboard/admin.css">
 </head>
 <body>
 <div class="container">

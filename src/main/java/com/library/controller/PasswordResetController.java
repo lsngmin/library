@@ -4,7 +4,6 @@ import com.library.user.service.UserService;
 import com.library.user.model.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -22,7 +21,7 @@ public class PasswordResetController {
 
     @GetMapping("/resetpassword")
     public String passwordReset() {
-        return "resetpassword";
+        return "library/resetpassword";
     }
 
     @PostMapping("/resetpassword/process")
