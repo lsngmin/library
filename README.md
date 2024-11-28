@@ -43,6 +43,13 @@
 * Maven(war) 빌드, AWS LightSail(Tomcat) 배포
 ### [접속가능 :o:](http://bit.ly/3B1tlWk)
 
+## 기능 요구서
+<img src="https://img.shields.io/badge/Microsoft_Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white"/> [원본 파일 보기](https://github.com/lsngmin/library/blob/cd1ec5c5da5738c9e11684215b19b501e323b184/library-project-%EA%B8%B0%EB%8A%A5%EC%9A%94%EA%B5%AC%EC%84%9C.xlsx)
+
+![image](https://github.com/user-attachments/assets/7efa677a-769f-4f15-8589-bf41c92ba363)
+
+![image](https://github.com/user-attachments/assets/43981a2a-8340-4e52-a67c-9c4bebeb5cdd)
+
 ## 프로젝트 구조
 
 ```bash
@@ -109,7 +116,7 @@ library
 ### 로그인 to 내 정보 조회  
 <div align="center">
 
-![스크린샷 2024-11-28 013618](https://github.com/user-attachments/assets/ee8caadd-a2d5-46ac-8c9b-6061464e9223)
+![image](https://github.com/user-attachments/assets/62485a6c-325d-41bd-89ea-4233324b9baf)
 
 </div>
 
