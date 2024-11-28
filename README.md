@@ -123,19 +123,28 @@ library
 <details>
   <summary>사용자</summary>
   
-### 로그인 to 내 정보 조회  
+### 1. 로그인 to 내 정보 조회  
 <div align="center">
 
-![image](https://github.com/user-attachments/assets/62485a6c-325d-41bd-89ea-4233324b9baf)
+![스크린샷 2024-11-28 013618](https://github.com/user-attachments/assets/db53781a-b8a1-45e5-91eb-a15d28b4d04b)
 
 </div>
 
-### 도서기증
+### 2. 도서기증
 <div align="center">
 
 ![image](https://github.com/user-attachments/assets/16819cb3-470d-4f18-89f4-607fe062eeaa)
 
 </div>
+
+### 3. 희망도서
+
+<div align="center">
+
+![image](https://github.com/user-attachments/assets/9d94c103-1daf-4da6-ae1b-fdd0c91a82dd)
+  
+</div>
+
 </details>
 <details>
   <summary>관리자</summary>
