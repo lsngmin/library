@@ -280,12 +280,26 @@ library
 </div>
 
 
-##TroubleShooting
-  * JPA 관련 설정 오류 :
+## TroubleShooting
+### JPA 관련 설정 오류
 ```
-
-
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'loginController': Unsatisfied dependency expressed through field 'userService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.library.service.UserService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
 ```
+SpringFramework에서 JPA 엔터티를 등록후 Repository 생성 후 컨트롤러에서 Autowired 어노테이션을 이용한 의존성 주입 과정에서 BeanCreateException 에러 발생, 모든 설정을 JAVA CLASS 파일로 구현해서 해봤지만 결과는 동일, SPRING을 사용하는 의미도 퇴색</br></br>
+JPA를 고집해서 사용하고 싶었지만 개발 기간이 촉박하기 때문에 대체제인 Mybatis 프레임워크를 사용.</br></br>
+MYBATIS는 SQL를 직접 제어한다는 점에서 최적하된 쿼리를 작성 가능, 자유로운 통계/분석용 쿼리를 사용할 수 있는 점은 GOOD 하지만</br>
+CRUD 반복적인 작업이 들어가다 보니 팀원들이 많이 힘들어하였다, DB에 종속적이라 추후에 다른 DB로 변경하기 어렵다는 점이 아쉬움.</br>
+
+### Build ~ Deploy 오류
+```
+java.lang.NoClassDefFoundError: org/apache/catalina/LifecycleException
+```
+coyeb 사이트에서 Git 기반 자동 빌드 및 배포하는 사이트 이용할 계획이었으나 로컬에선 아무런 문제가 없었는데 배포 과정 중에 LifecycleException에러 발생
+jar 빌드 방식은 포기하고, war 방식으로 tomcat에 올려 구동 </br>
+war방식은 coyeb에서 지원하지 않는 것으로 보여 AWS EC2에 환경 설정 후 빠르게 배포 성공
+    
+    
+
 
 
 
