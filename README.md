@@ -120,16 +120,25 @@ library
                 
 ```
 ## 클래스 다이어그램
-![클래스 다이어그램](https://github.com/user-attachments/assets/9287ef19-7222-48a4-83f3-4d8fde6d6a7a)
+
+![image](https://github.com/user-attachments/assets/391338c6-1a81-4e57-9529-93f57b5928fc)
+
+
+
 
 ## 시퀀스 다이어그램
 <details>
   <summary>사용자</summary>
   
-### 1. 로그인 to 내 정보 조회  
+### 1. 로그인 to 내 정보 조회 , 임시  비밀번호 발급 , 비밀번호 변
 <div align="center">
 
 ![스크린샷 2024-11-28 013618](https://github.com/user-attachments/assets/db53781a-b8a1-45e5-91eb-a15d28b4d04b)
+
+![image](https://github.com/user-attachments/assets/739cb58d-983d-4372-ba0a-5faae540dd71)
+
+![image](https://github.com/user-attachments/assets/990ad8eb-3495-4021-959d-b670fa22e54b)
+
 
 </div>
 
@@ -213,12 +222,31 @@ library
 
 ### 4. 희망도서 신청 현황
 
+
+
+### 5. 학생 정보 조회
 <div align="center">
+  
+![image](https://github.com/user-attachments/assets/950e9222-9834-4910-97f3-8dfec73770d6)
+
+</div>
+
+### 6. 도서 등록, 수정
+
+![image](https://github.com/user-attachments/assets/71d5b80a-35d8-4bec-ac7b-972383c3913f)
+
+![image](https://github.com/user-attachments/assets/e12b070e-b1e9-4607-ba55-c435290f5da0)
+
+</details>
+
+### 7. 도서 기증 / 희망 신청 현황
+<div align="center">
+
+![image](https://github.com/user-attachments/assets/3cc51bbd-7678-4115-9bf8-2baab24b9330)
 
 ![image](https://github.com/user-attachments/assets/0dbd8458-7756-4697-b221-e329a7d3062f)
 
 </div>
-</details>
 
 ## 노션 작업 테이블
 * 개발 분담을 위해서 노션에서 담당 작업과 마감일 등을 설정하여 사용 했습니다.
