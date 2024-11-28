@@ -46,9 +46,19 @@
 ## 기능 요구서
 <a href="https://github.com/lsngmin/library/blob/cd1ec5c5da5738c9e11684215b19b501e323b184/library-project-%EA%B8%B0%EB%8A%A5%EC%9A%94%EA%B5%AC%EC%84%9C.xlsx" target="_blank">
     <img src="https://img.shields.io/badge/Microsoft_Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white" alt="Microsoft Excel">
-</a>
+</a><details><summary>상세보기</summary>
 
 ![image](https://github.com/user-attachments/assets/43981a2a-8340-4e52-a67c-9c4bebeb5cdd)
+![image](https://github.com/user-attachments/assets/c5c7be20-ac5d-4a2b-97b8-c9a87d8f4830)
+![image](https://github.com/user-attachments/assets/d51d7dea-0163-4908-b4f2-22b4f64e0544)
+![image](https://github.com/user-attachments/assets/24d36624-57aa-4b1a-b003-9dbc3ea3f0a8)
+![image](https://github.com/user-attachments/assets/9be49693-788d-424b-84b9-035bdb4c74c6)
+![image](https://github.com/user-attachments/assets/d9a8aaf1-baa1-4a2c-9405-2f5b829ab2b6)
+
+</details>
+
+
+
 
 ## 프로젝트 구조
 
