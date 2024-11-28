@@ -44,9 +44,9 @@
 ### [접속가능 :o:](http://bit.ly/3B1tlWk)
 
 ## 기능 요구서
-<img src="https://img.shields.io/badge/Microsoft_Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white"/> [원본 파일 보기](https://github.com/lsngmin/library/blob/cd1ec5c5da5738c9e11684215b19b501e323b184/library-project-%EA%B8%B0%EB%8A%A5%EC%9A%94%EA%B5%AC%EC%84%9C.xlsx)
-
-![image](https://github.com/user-attachments/assets/7efa677a-769f-4f15-8589-bf41c92ba363)
+<a href="https://github.com/lsngmin/library/blob/cd1ec5c5da5738c9e11684215b19b501e323b184/library-project-%EA%B8%B0%EB%8A%A5%EC%9A%94%EA%B5%AC%EC%84%9C.xlsx" target="_blank">
+    <img src="https://img.shields.io/badge/Microsoft_Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white" alt="Microsoft Excel">
+</a>
 
 ![image](https://github.com/user-attachments/assets/43981a2a-8340-4e52-a67c-9c4bebeb5cdd)
 
