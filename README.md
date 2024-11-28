@@ -147,6 +147,9 @@ library
 
 ![image](https://github.com/user-attachments/assets/16819cb3-470d-4f18-89f4-607fe062eeaa)
 
+![기증도서 신청 및 현황 시퀀스](https://github.com/user-attachments/assets/67b549e2-14d5-4d3b-b10d-905319ff5ff6)
+
+
 </div>
 
 ### 3. 희망도서
@@ -237,7 +240,6 @@ library
 
 ![image](https://github.com/user-attachments/assets/e12b070e-b1e9-4607-ba55-c435290f5da0)
 
-</details>
 
 ### 7. 도서 기증 / 희망 신청 현황
 <div align="center">
@@ -246,7 +248,8 @@ library
 
 ![image](https://github.com/user-attachments/assets/0dbd8458-7756-4697-b221-e329a7d3062f)
 
-</div>
+</div></details>
+
 
 ## 노션 작업 테이블
 * 개발 분담을 위해서 노션에서 담당 작업과 마감일 등을 설정하여 사용 했습니다.
