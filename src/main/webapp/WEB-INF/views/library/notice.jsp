@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.library.noticeBoard.model.NoticeBoardVO" %>
@@ -122,6 +123,7 @@
     NoticeBoardService noticeBoardService = context.getBean("noticeBoardServiceImpl", NoticeBoardService.class);
     List<NoticeBoardVO> noticeList = noticeBoardService.getAllNoticeBoards();
     request.setAttribute("noticeList", noticeList);
+
 %>
 
 <jsp:include page="libraryNavbar.jsp"/>
@@ -155,23 +157,22 @@
             <tbody>
             <c:forEach var="notice" items="${noticeList}">
                 <tr>
+
+                    <td><a href="/noticeDetail?cnt=${notice.cnt}">${notice.title}</a></td> <!-- 상세 페이지로 링크 -->
+
+
                     <td>${notice.cnt}</td>
                     <td>${notice.category}</td>
                     <td>${notice.title}</td>
                     <td>${notice.writer}</td>
                     <td>${notice.date}</td>
+
                     <td>조회수 없음</td> <!-- 조회수 데이터가 없다면 임시 표시 -->
+
                 </tr>
             </c:forEach>
             </tbody>
         </table>
-    </div>
-    <div class="pagination">
-        <button class="active">1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>...</button>
-        <button>141</button>
     </div>
 </div>
 </body>

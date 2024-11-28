@@ -33,7 +33,7 @@ public class BookInquiryController {
         return "admin/bookinquiry";
     }
 
-    @GetMapping("/books/get/{bookCode}")  // URL이 /admin/books/get/{bookCode}가 됨
+    @GetMapping("/books/get/{bookCode}")
     @ResponseBody
     public ResponseEntity<?> getBookDetail(@PathVariable String bookCode) {
         try {

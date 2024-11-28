@@ -49,10 +49,12 @@
         bookPrice,
         bookCategory,
         bookLocation,
-        bookDecription
+        bookDecription,
+        borrowCount <!-- borrowCount 추가 -->
         FROM Book
-        ORDER BY bookCode DESC
+        ORDER BY borrowCount DESC; <!-- 대출 횟수 기준 정렬 -->
     </select>
+
 
     <update id="createBookTable">
         CREATE TABLE IF NOT EXISTS Book (
@@ -138,5 +140,21 @@
     </select>
     <select id="selectBookCodeByBookName" resultType="String">
         select bookCode from Book where bookName=#{bookName};
+    </select>
+
+    <update id="incrementBorrowCount" parameterType="String">
+        UPDATE Book
+        SET borrowCount = borrowCount + 1
+        WHERE bookCode = #{bookCode}
+    </update>
+
+    <select id="getBooksByCategory" parameterType="String" resultType="Book">
+        SELECT
+        bookCode, bookStatus, bookPage, bookImageSrc, bookName,
+        bookPublisher, bookPublishDate, bookAuthor, bookQuantity,
+        bookPrice, bookCategory, bookLocation, bookDecription, borrowCount
+        FROM Book
+        WHERE bookCategory = #{category}
+        ORDER BY borrowCount DESC;
     </select>
 </mapper>

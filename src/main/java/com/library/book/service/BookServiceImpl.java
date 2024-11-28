@@ -71,4 +71,14 @@ public class BookServiceImpl implements BookService {
         return bookDAO.selectBookCodeByBookName(bookName);
     }
 
+    @Override
+    public void incrementBorrowCount(String bookCode) {
+        bookDAO.incrementBorrowCount(bookCode);
+    }
+
+    @Override
+    public List<BookVO> getBooksByCategory(String category) {
+        return bookDAO.getBooksByCategory(category);
+    }
+
 }
