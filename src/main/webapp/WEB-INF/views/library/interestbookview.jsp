@@ -9,72 +9,13 @@
     <link rel="stylesheet"  href="/resources/css/library/interestbookview.css?after">
     <style>
         /* 이미지 크기 조정 */
-        .login-container img {
-            width: 24px;
-            height: 24px;
-        }
+
         body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
             background: #fff;
             display: flex;
-        }
-
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 60px;
-            background: #f8f8f8;
-            border-bottom: 1px solid #e0e0e0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            box-sizing: border-box;
-            z-index: 1001;
-        }
-
-        .sidebar {
-            position: fixed;
-            top: 60px;
-            left: 0;
-            width: 250px;
-            height: calc(100vh - 60px);
-            background: #fff;
-            border-right: 1px solid #e0e0e0;
-            padding: 20px 0;
-            box-sizing: border-box;
-            z-index: 1000;
-        }
-
-        .sidebar a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .sidebar .nav-item {
-            padding: 15px 20px;
-            margin-bottom: 10px;
-            font-size: 16px;
-            text-align: left;
-            cursor: pointer;
-            border: 1px solid transparent;
-            border-radius: 4px;
-            color: #666;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .sidebar .nav-item:hover {
-            color: #007bff;
-        }
-
-        .sidebar .nav-item.active {
-            border: 1px solid #e0e0e0;
-            background: #f9f9f9;
-            color: #333;
         }
 
 
@@ -90,52 +31,12 @@
             margin-right: 50px; /* 오른쪽 여백 */
             padding-top: 80px; /* 헤더 아래 공간 확보 */
         }
-
-
     </style>
 </head>
 <body>
-<header>
-    <div class="logo-container">
-        <img src="img/logoImage.png" alt="강릉대학교 로고">
-        <h1 class="header-title"><a href="main">강릉대학교 통합도서관</a></h1>
-    </div>
-    <div class="login-container">
-        <c:choose>
-            <c:when test="${not empty sessionScope.user}">
-                <!-- 로그인 상태 -->
-                <img src="img/userImage2.png" alt="사용자 아이콘">
-                <a href="myInfo">내정보</a>
-                <a href="logout" style="margin-left: 10px;">로그아웃</a>
-            </c:when>
-            <c:otherwise>
-                <!-- 비로그인 상태 -->
-                <img src="img/userImage.png" alt="사용자 아이콘">
-                <a href="login">로그인</a>
-            </c:otherwise>
-        </c:choose>
-    </div>
-</header>
-
+<jsp:include page="libraryHeader.jsp"/>
 <div class="main-container">
-    <aside class="sidebar">
-        <a href="search">
-            <div class="nav-item">통합검색</div>
-        </a>
-        <a href="wishbookapply">
-            <div class="nav-item">희망도서</div>
-        </a>
-        <a href="interestbookview">
-            <div class="nav-item active">인기도서</div>
-        </a>
-        <a href="notice">
-            <div class="nav-item">공지사항</div>
-        </a>
-        <a href="guide">
-            <div class="nav-item">이용사항</div>
-        </a>
-    </aside>
-
+    <jsp:include page="libraryNavbar.jsp"/>
     <div class="content">
         <!-- 검색일 필터 컨테이너 -->
         <section class="date-filter-container">

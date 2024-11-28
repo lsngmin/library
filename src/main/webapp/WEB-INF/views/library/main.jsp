@@ -74,8 +74,15 @@
 <script>
     function handleSearch(event) {
         if (event.key === "Enter") {
-            alert('검색 기능은 준비 중입니다!');
-            // 여기에 실제 검색 기능을 연결하려면, alert를 대체하여 검색 로직을 구현하세요.
+            const keyword = document.getElementById("searchInput").value.trim();
+
+            if (keyword !== "") {
+                // 검색어를 쿼리 파라미터로 전달하면서 페이지 이동
+                const encodedKeyword = encodeURIComponent(keyword);
+                window.location.href = "/search?keyword=" + encodedKeyword;
+            } else {
+                alert("검색어를 입력해주세요.");
+            }
         }
     }
 </script>
