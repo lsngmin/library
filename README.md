@@ -155,6 +155,12 @@ library
 
 ## 노션 작업 테이블
 * [PDF파일 보기](https://github.com/lsngmin/library/blob/16cf3c39f534a8744a375c91f9ba9778bcb8296e/library-project-worktable.pdf)
+  
+<div align="center">
+  
+![image](https://github.com/user-attachments/assets/abaf44d8-c14d-462e-a1b6-de3b0171f3c3)
+
+</div>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=a6a6df&height=150&section=footer" />
 
