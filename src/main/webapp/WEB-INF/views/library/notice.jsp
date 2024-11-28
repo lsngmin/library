@@ -115,6 +115,10 @@
             background: #007BFF;
             color: white;
         }
+        a:link, a:visited {
+            color: inherit; /* 부모 요소의 색상 상속 */
+            text-decoration: none; /* 밑줄 제거 */
+        }
     </style>
 </head>
 <body>
@@ -151,24 +155,23 @@
                 <th>제목</th>
                 <th>글쓴이</th>
                 <th>작성일</th>
-                <th>조회수</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach var="notice" items="${noticeList}">
                 <tr>
 
+
                     <td><a href="/noticeDetail?cnt=${notice.cnt}">${notice.title}</a></td> <!-- 상세 페이지로 링크 -->
 
 
                     <td>${notice.cnt}</td>
                     <td>${notice.category}</td>
-                    <td>${notice.title}</td>
+                    <td><a href="/noticeDetail?cnt=${notice.cnt}">${notice.title}</a></td> <!-- 상세 페이지로 링크 -->
                     <td>${notice.writer}</td>
                     <td>${notice.date}</td>
 
                     <td>조회수 없음</td> <!-- 조회수 데이터가 없다면 임시 표시 -->
-
                 </tr>
             </c:forEach>
             </tbody>
