@@ -106,9 +106,19 @@ library
 <details>
   <summary>사용자</summary>
   
+### 로그인 to 내 정보 조회  
+<div align="center">
+
 ![스크린샷 2024-11-28 013618](https://github.com/user-attachments/assets/ee8caadd-a2d5-46ac-8c9b-6061464e9223)
-  
-   
+
+</div>
+
+### 도서기증
+<div align="center">
+
+![image](https://github.com/user-attachments/assets/16819cb3-470d-4f18-89f4-607fe062eeaa)
+
+</div>
 </details>
 <details>
   <summary>관리자</summary>
