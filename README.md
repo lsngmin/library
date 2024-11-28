@@ -167,6 +167,22 @@ library
 ![image](https://github.com/user-attachments/assets/766528a6-6faf-4532-b3ca-9c021501468a)
 
 </div>
+
+### 6. 공지사항
+
+<div align="center">
+
+![image](https://github.com/user-attachments/assets/7e48f5f5-7a24-4805-a812-a8bdad2400f8)
+
+</div>
+
+### 7. 인기도서
+
+<div align="center">
+
+![image](https://github.com/user-attachments/assets/336c359a-845c-41f1-8dcb-743eee15c43a)
+
+</div>
 </details>
 <details>
   <summary>관리자</summary>
@@ -205,6 +221,7 @@ library
 </details>
 
 ## 노션 작업 테이블
+* 개발 분담을 위해서 노션에서 담당 작업과 마감일 등을 설정하여 사용 했습니다.
 * [PDF파일 보기](https://github.com/lsngmin/library/blob/16cf3c39f534a8744a375c91f9ba9778bcb8296e/library-project-worktable.pdf)
   
 <div align="center">
