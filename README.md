@@ -34,7 +34,7 @@
 * 관심도서 기능과 희망, 기증 도서 신청 기능을 통해 도서관 사용자의 니즈를 알 수 있습니다.
 * 연체 해제, 책 정보 등록, 수정 기능을 사용할 수 있습니다.
 
-## 개발 기간
+## 프로젝트 기간
 * 학부 재학중 전공 수업 3시간에서 진행한 기획부터 설계 그리고 개발까지 완료한 프로젝트 입니다.
 * 2024-09-10 ~ 2024-12-03 (84일)
 * 기획 1주 / 기능 요구서 2주 / 와이어 프레임 및 목업 4주 / 클래스 다이어그램 1주 / 시퀀스 다이어그램 및 개발 5주
@@ -57,6 +57,9 @@
 
 </details>
 
+## 와이어프레임과 목업
+* [와이어프레임 보러가기](https://github.com/lsngmin/library/tree/16cf3c39f534a8744a375c91f9ba9778bcb8296e/library-project-wireframe)
+* [목업 보러가기](https://github.com/lsngmin/library/tree/16cf3c39f534a8744a375c91f9ba9778bcb8296e/library-project-mockUp)
 
 
 
@@ -149,5 +152,9 @@ library
 <details>
   <summary>관리자</summary>
 </details>
+
+## 노션 작업 테이블
+* [PDF파일 보기](https://github.com/lsngmin/library/blob/16cf3c39f534a8744a375c91f9ba9778bcb8296e/library-project-worktable.pdf)
+
 <img src="https://capsule-render.vercel.app/api?type=waving&color=a6a6df&height=150&section=footer" />
 
