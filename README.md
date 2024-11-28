@@ -39,7 +39,7 @@
 [8. 시퀀스 다이어그램](#시퀀스-다이어그램)<br/>
 [9. 작업 테이블](#작업-테이블)<br/>
 [10. TroubleShooting](#TroubleShooting)<br/>
-
+[11. 후기 및 향후 계획](#후기-및-향후-계획)<br/>
 
 ## 프로젝트 설명
 * 도서관 내의 비치된 책의 정보와 대출가능여부를 알 수 있는 홈페이지 입니다.
@@ -268,10 +268,10 @@ library
 * 개발 분담을 위해서 노션에서 담당 작업과 마감일 등을 설정하여 사용 했습니다.
 * [PDF파일 보기](https://github.com/lsngmin/library/tree/0d9365230e0d8c83f75e0181ac47080100e436b9/library-project-worktable)
 
-* LEE : 
-* WON :
-* MAENG :
-* PARK :
+* LEE : VIEW(관리자 대시보드, 관리자 로그인, 비밀번호 변경, 통합검색, 유저 로그인, 비밀번호 변경, 도서 기증, 내정보)
+* WON : VIEW(로그인, 내정보, 관리자 도서 등록, 수정, 정보, 관리자 기증/희망 도서 현황, 관리자 유저정보, 상세도서, 비밀번호 변경, 관심도서 목록)
+* MAENG : VIEW(메인, 기증도서 신청, 이용안내, 공지사항, 희망도서 신청)
+* PARK : VIEW(희망도서 현황 및 신청, 비밀번호 변경, 책 상세보기, 관심도서 신청, 인기도서, 상세도서)
   
 <div align="center">
   
@@ -297,7 +297,8 @@ java.lang.NoClassDefFoundError: org/apache/catalina/LifecycleException
 coyeb 사이트에서 Git 기반 자동 빌드 및 배포하는 사이트 이용할 계획이었으나 로컬에선 아무런 문제가 없었는데 배포 과정 중에 LifecycleException에러 발생
 jar 빌드 방식은 포기하고, war 방식으로 tomcat에 올려 구동 </br>
 war방식은 coyeb에서 지원하지 않는 것으로 보여 AWS EC2에 환경 설정 후 빠르게 배포 성공
-    
+
+##  후기 및 향후 계획
     
 
 
