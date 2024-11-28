@@ -28,6 +28,19 @@
 </a>
 </div>
 
+# 목차
+[1. 프로젝트 설명](#프로젝트-설명)<br/>
+[2. 프로젝트 기간](#프로젝트-기간)<br/>
+[3. 빌드 및 배포](#빌드-및-배포)<br/>
+[4. 기능 요구서](#기능-요구서)<br/>
+[5. 와이어프레임과 목업](#와이어프레임과-목업)<br/>
+[6. 프로젝트 구조](#프로젝트-구조)<br/>
+[7. 클래스 다이어그램](#클래스-다이어그램)<br/>
+[8. 시퀀스 다이어그램](#시퀀스-다이어그램)<br/>
+[9. 작업 테이블](#작업-테이블)<br/>
+[10. TroubleShooting](#TroubleShooting)<br/>
+
+
 ## 프로젝트 설명
 * 도서관 내의 비치된 책의 정보와 대출가능여부를 알 수 있는 홈페이지 입니다.
 * 도서관 관리자가 사용자와 책의 코드 만으로 쉽게 대출과 반납이 가능합니다.
@@ -44,7 +57,7 @@
 ### [접속가능 :o:](http://bit.ly/3B1tlWk)
 
 ## 기능 요구서
-<a href="https://github.com/lsngmin/library/blob/cd1ec5c5da5738c9e11684215b19b501e323b184/library-project-%EA%B8%B0%EB%8A%A5%EC%9A%94%EA%B5%AC%EC%84%9C.xlsx" target="_blank">
+<a href="https://github.com/lsngmin/library/tree/0d9365230e0d8c83f75e0181ac47080100e436b9/library-project-functionalRequire" target="_blank">
     <img src="https://img.shields.io/badge/Microsoft_Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white" alt="Microsoft Excel">
 </a><details><summary>상세보기</summary>
 
@@ -251,15 +264,31 @@ library
 </div></details>
 
 
-## 노션 작업 테이블
+## 작업 테이블
 * 개발 분담을 위해서 노션에서 담당 작업과 마감일 등을 설정하여 사용 했습니다.
-* [PDF파일 보기](https://github.com/lsngmin/library/blob/16cf3c39f534a8744a375c91f9ba9778bcb8296e/library-project-worktable.pdf)
+* [PDF파일 보기](https://github.com/lsngmin/library/tree/0d9365230e0d8c83f75e0181ac47080100e436b9/library-project-worktable)
+
+* LEE : 
+* WON :
+* MAENG :
+* PARK :
   
 <div align="center">
   
 ![image](https://github.com/user-attachments/assets/abaf44d8-c14d-462e-a1b6-de3b0171f3c3)
 
 </div>
+
+
+##TroubleShooting
+  * JPA 관련 설정 오류 :
+```
+
+
+```
+
+
+
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=a6a6df&height=150&section=footer" />
 
