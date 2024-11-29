@@ -28,6 +28,8 @@ public class MyInfoController {
 
         // 세션에서 로그인된 사용자 객체 가져오기
         UserVO user = (UserVO) session.getAttribute("user");
+        user = userService.getLoginUser(user);
+        session.setAttribute("user", user);
 
         RentalVO vo = new RentalVO();
         vo.setRentalUserId(user.getUserId());
