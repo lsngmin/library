@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.management.monitor.StringMonitor;
 import javax.servlet.http.HttpSession;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
@@ -30,6 +32,14 @@ public class MyInfoController {
         RentalVO vo = new RentalVO();
         vo.setRentalUserId(user.getUserId());
         List<Map<String, Object>> rental = rentalService.selectRentalList(vo);
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        for (Map<String, Object> rentalItem : rental) {
+            String rentalEndDateString = (String) rentalItem.get("rentalEndDate");
+            LocalDate rentalEndDate = LocalDate.parse(rentalEndDateString, formatter);
+            boolean isOverdue = rentalEndDate.isBefore(currentDate);
+            rentalItem.put("isOverdue", isOverdue);
+        }
         session.setAttribute("rental", rental);
         return "myinfo/myInfo"; // 내 정보 뷰
     }

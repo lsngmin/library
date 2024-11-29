@@ -194,49 +194,49 @@
   </div>
 </div>
 </div>
-<script>
-  $(document).ready(function () {
-    $("#RentalExecute").click(function () {
-      const userId = $("#userId").val().trim();
-      const bookCode = $("#bookCode").val().trim();
+<%--<script>--%>
+<%--  $(document).ready(function () {--%>
+<%--    $("#RentalExecute").click(function () {--%>
+<%--      const userId = $("#userId").val().trim();--%>
+<%--      const bookCode = $("#bookCode").val().trim();--%>
 
-      if (!userId || !bookCode) {
-        alert("학번과 도서 코드를 입력해 주세요.");
-        return;
-      }
+<%--      if (!userId || !bookCode) {--%>
+<%--        alert("학번과 도서 코드를 입력해 주세요.");--%>
+<%--        return;--%>
+<%--      }--%>
 
-      // 버튼 비활성화
-      $("#RentalExecute").prop("disabled", true);
+<%--      // 버튼 비활성화--%>
+<%--      $("#RentalExecute").prop("disabled", true);--%>
 
-      const requestData = {
-        userId: userId,
-        bookCode: bookCode
-      };
+<%--      const requestData = {--%>
+<%--        userId: userId,--%>
+<%--        bookCode: bookCode--%>
+<%--      };--%>
 
-      $.ajax({
-        url: "/admin/rentalexecute",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify(requestData),
-        success: function (response) {
-          if (response.success) {
-            alert(response.success);
-            location.reload();
-          } else if (response.error) {
-            alert(response.error);
-          }
-        },
-        error: function (xhr, status, error) {
-          alert("대출 실행 중 오류가 발생했습니다.");
-        },
-        complete: function () {
-          // 요청 완료 후 버튼 활성화
-          $("#RentalExecute").prop("disabled", false);
-        }
-      });
-    });
-  });
+<%--      $.ajax({--%>
+<%--        url: "/admin/rentalexecute",--%>
+<%--        type: "POST",--%>
+<%--        contentType: "application/json",--%>
+<%--        data: JSON.stringify(requestData),--%>
+<%--        success: function (response) {--%>
+<%--          if (response.success) {--%>
+<%--            alert(response.success);--%>
+<%--            location.reload();--%>
+<%--          } else if (response.error) {--%>
+<%--            alert(response.error);--%>
+<%--          }--%>
+<%--        },--%>
+<%--        error: function (xhr, status, error) {--%>
+<%--          alert("대출 실행 중 오류가 발생했습니다.");--%>
+<%--        },--%>
+<%--        complete: function () {--%>
+<%--          // 요청 완료 후 버튼 활성화--%>
+<%--          $("#RentalExecute").prop("disabled", false);--%>
+<%--        }--%>
+<%--      });--%>
+<%--    });--%>
+<%--  });--%>
 
-</script>
+<%--</script>script--%>
 </body>
 </html>

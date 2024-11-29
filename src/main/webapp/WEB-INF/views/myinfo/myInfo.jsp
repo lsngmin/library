@@ -74,31 +74,21 @@
                     <%
                         List<Map<String, Object>> rental = (List<Map<String, Object>>) session.getAttribute("rental");
                     %>
-                    <c:forEach var="rental" items="${rental}">
+                    <c:forEach var="rentalq" items="${rental}">
                         <%
                             if (rental != null) {
-                                LocalDate currentDate = LocalDate.now();
-                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-                                for (Map<String, Object> rentalItem : rental) {
-                                    String rentalEndDateString = (String) rentalItem.get("rentalEndDate");
-                                    LocalDate rentalEndDate = LocalDate.parse(rentalEndDateString, formatter);
-                                    boolean isOverdue = rentalEndDate.isBefore(currentDate);
                         %>
                         <div class="book-section">
-                            <% if (isOverdue) { %>
+                            <c:if test="${isOverdue}">
                             <div class="overdue-label">연체</div>
+                            </c:if>
                             <% } %>
                                 <div class="book-content">
-                                <div class="book-title">${rental.bookName}</div>
-                                <div class="book-date">${rental.rentalStartDate} ~ ${rental.rentalEndDate}</div>
+                                <div class="book-title">${rentalq.bookName}</div>
+                                <div class="book-date">${rentalq.rentalStartDate} ~ ${rentalq.rentalEndDate}</div>
                             </div>
-                            <button class="btn-more" data-bookname="${rental.bookName}">더 읽을래요 →</button>
+                            <button class="btn-more" data-bookname="${rentalq.bookName}">더 읽을래요 →</button>
                         </div>
-                        <%
-                                }
-                            }
-                        %>
                     </c:forEach>
                 </div>
             </div>

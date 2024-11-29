@@ -237,7 +237,7 @@
             <div class="input-group">
                 <input type="checkbox" id="saveId" name="saveId" ${savedUserId != null ? 'checked' : ''}>
                 <label for="saveId">아이디 저장</label>
-                <a href="/resetpassword" style="margin-left: 35%; font-size: 13px; color: #666; text-decoration: none;">비밀번호를 잊으셨나요?</a>
+                <a href="/resetpassword" style="margin-left: 26%; font-size: 13px; color: #666; text-decoration: none;">비밀번호를 잊으셨나요?</a>
             </div>
             <button type="submit" class="login-button" id="loginBtn">로그인</button>
             <script src="/js/login/loginPrevent.js"></script>
