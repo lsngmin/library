@@ -25,5 +25,6 @@ public interface BookService {
 
     List<BookVO> getBooksByCategory(String category);
 
+    List<BookVO> searchBooksByKeywordAndType(String keyword, String searchType); // 수정된 부분
 
 }
