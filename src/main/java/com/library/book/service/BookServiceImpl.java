@@ -81,4 +81,8 @@ public class BookServiceImpl implements BookService {
         return bookDAO.getBooksByCategory(category);
     }
 
+    @Override
+    public List<BookVO> searchBooksByKeywordAndType(String keyword, String searchType) {
+        return bookDAO.searchBooksByKeywordAndType(keyword, searchType); // 수정된 부분
+    }
 }

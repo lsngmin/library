@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -13,9 +15,9 @@
     }
 
     .search-container {
-      max-width: 1080px; /* 최대 너비 1080px로 변경 */
+      max-width: 1080px;
       margin: 30px auto;
-      text-align: left;
+      text-align: center; /* 검색바를 중앙 정렬하도록 수정 */
     }
 
     .search-title {
@@ -27,29 +29,30 @@
     .search-box {
       display: flex;
       align-items: center;
-      border: 1px solid #333; /* 전체 테두리 */
-      border-radius: 4px;
+      border: 2px solid #666; /* 기존: 1px solid #333 -> 수정: 두께 및 색상 변경 */
+      border-radius: 8px; /* 기존: 4px -> 수정: 더 둥글게 변경 */
       overflow: hidden;
-      height: 60px; /* 검색 박스의 세로 길이를 늘림 */
+      height: 50px; /* 기존: 60px -> 수정: 높이 조정 */
+      background-color: #f9f9f9; /* 수정: 배경색 추가 */
     }
+
 
     .dropdown-container {
       display: flex;
       align-items: center;
-      position: relative;
       padding: 10px;
-      padding-left: 35px;
-      width: 200px; /* 드롭다운 영역의 가로 길이를 늘림 */
+      width: 180px; /* 기존: 200px -> 수정: 드롭다운 너비 조정 */
     }
 
     .search-dropdown {
       border: none;
       background: none;
-      font-size: 24px; /* 폰트 크기를 키움 */
+      font-size: 16px; /* 기존: 24px -> 수정: 텍스트 크기 축소 */
       font-weight: bold;
-      appearance: none; /* 기본 드롭다운 스타일 제거 */
+      appearance: none;
       cursor: pointer;
-      width: 100%; /* 드롭다운이 dropdown-container의 너비를 꽉 채우도록 설정 */
+      width: 100%;
+      text-align: center; /* 수정: 텍스트 중앙 정렬 */
     }
 
     .dropdown-icon {
@@ -63,18 +66,23 @@
       flex-grow: 1;
       border: none;
       outline: none;
-      font-size: 18px; /* 폰트 크기를 키움 */
-      padding: 10px;
+      font-size: 16px; /* 기존: 18px -> 수정: 크기 축소 */
+      padding: 10px 15px; /* 기존: 10px -> 수정: 패딩 추가 */
+      background-color: #fff; /* 수정: 입력 필드 배경색 추가 */
     }
 
     .search-button {
-      background: #000;
-      color: #fff;
+      background: #007bff; /* 기존: #000 -> 수정: 파란색 배경 */
+      color: #fff; /* 기존: 유지 */
       border: none;
-      padding: 15px 25px; /* 버튼의 패딩을 키워서 더 커 보이도록 설정 */
+      padding: 10px 20px; /* 기존: 15px 25px -> 수정: 크기 조정 */
       cursor: pointer;
-      font-size: 18px; /* 폰트 크기를 키움 */
-      height: 100%; /* 버튼이 검색 박스의 세로 높이를 꽉 채우도록 설정 */
+      font-size: 16px; /* 기존: 18px -> 수정: 크기 축소 */
+      height: 100%; /* 기존: 유지 */
+    }
+
+    .search-button:hover {
+      background-color: #0056b3; /* 수정: 버튼 호버 시 색상 추가 */
     }
 
     .search-results {
@@ -98,6 +106,12 @@
       margin-top: 15px;
     }
 
+    .options-container > div {
+      display: flex;
+      align-items: center;
+      gap: 10px; /* 드롭다운과 버튼 간 간격 */
+    }
+
     .select-all {
       display: flex;
       align-items: center;
@@ -105,8 +119,7 @@
     }
 
     .select-all input[type="checkbox"] {
-      width: 20px; /* 체크박스의 너비 */
-      height: 20px; /* 체크박스의 높이 */
+      margin-right: 10px;
     }
 
     .bookmark-button {
@@ -141,12 +154,22 @@
 
     .book-item {
       display: flex;
+      align-items: center;
       background: #fff;
       border: 1px solid #ddd;
       border-radius: 8px;
       padding: 20px;
       margin-bottom: 20px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .checkbox-container {
+      margin-right: 20px; /* 체크박스와 책 이미지 간 간격 */
+    }
+
+    input[type="checkbox"] {
+      width: 20px; /* 체크박스 크기 설정 */
+      height: 20px;
     }
 
     .book-image {
@@ -263,66 +286,96 @@
     <div class="search-container">
       <div class="search-title">통합검색</div>
       <div class="search-box">
-        <div class="dropdown-container">
-          <select class="search-dropdown">
-            <option value="title">제목</option>
-            <option value="author">저자</option>
-            <option value="publisher">출판사</option>
-          </select>
-          <span class="dropdown-icon">▼</span> <!-- 드롭다운 아이콘 -->
-        </div>
-        <input type="text" class="search-input" placeholder="검색어를 입력하세요" value="총균쇠">
-        <button class="search-button">검색</button>
+        <!-- 검색어 입력 폼 -->
+        <form action="/searchkeyword" method="post" style="display: flex; width: 100%;">
+          <div class="dropdown-container">
+            <select class="search-dropdown" name="searchType">
+              <option value="title">제목</option>
+              <option value="author">저자</option>
+              <option value="publisher">출판사</option>
+            </select>
+            <span class="dropdown-icon">▼</span>
+          </div>
+          <input type="text" class="search-input" name="keyword" placeholder="검색어를 입력하세요" value="${param.keyword}">
+          <button type="submit" class="search-button">검색</button>
+        </form>
       </div>
       <div class="search-results">
-        "<em>총균쇠</em>"에 대하여 전체 3개가 검색되었습니다.
+        <!-- 수정: 검색 결과 처리 로직 개선 -->
+        <c:choose>
+          <c:when test="${not empty books}">
+            "<em>${param.keyword}</em>"에 대하여 전체 ${fn:length(books)}개의 결과가 검색되었습니다.
+            <div class="search-result-container">
+              <c:forEach var="book" items="${books}">
+                <div class="book-item">
+                  <h3>${book.bookName}</h3>
+                </div>
+              </c:forEach>
+            </div>
+          </c:when>
+          <c:otherwise>
+            <p>"${param.keyword}"에 대한 검색 결과가 없습니다.</p>
+          </c:otherwise>
+        </c:choose>
       </div>
       <hr>
       <div class="options-container">
         <div class="select-all">
-          <input type="checkbox" id="select-all-checkbox">
-          <label for="select-all-checkbox" style="margin-left: 5px;">전체선택</label>
+          <input type="checkbox" id="select-all-checkbox" onclick="toggleSelectAll(this)">
+          <label for="select-all-checkbox">전체선택</label>
         </div>
-        <div>
-          <select class="sort-dropdown">
+        <div style="display: flex; align-items: center; gap: 10px;"> <!-- 드롭다운과 버튼 정렬 -->
+          <select class="sort-dropdown" name="searchType"> <!-- 드롭다운 -->
             <option value="recent">최신순</option>
             <option value="title">제목순</option>
             <option value="author">저자순</option>
           </select>
-          <button class="bookmark-button">관심도서담기</button>
+          <button class="bookmark-button" onclick="addToInterestedBooks()">관심도서 담기</button> <!-- 버튼 -->
         </div>
       </div>
     </div>
     <div class="search-result-container">
-      <!-- 책 항목 1 -->
-      <div class="book-item">
-        <img class="book-image" src="/img/book1.jpg" alt="총, 균, 쇠 책 이미지">
-        <div class="book-info">
-          <div class="book-title-container">
-            <div class="book-title">
-              <input type="checkbox">
-              <h3>총, 균, 쇠</h3>
+      <c:forEach var="book" items="${books}">
+        <div class="book-item">
+          <div class="checkbox-container">
+            <input type="checkbox" class="book-checkbox">
+          </div>
+          <img class="book-image" src="${book.bookImageSrc}" alt="${book.bookName}">
+          <div class="book-info">
+            <div class="book-title-container">
+              <div class="book-title">
+                <h3>${book.bookName}</h3>
+              </div>
+              <div class="${book.bookQuantity > 0 ? 'book-available' : 'book-unavailable'}">
+                  ${book.bookQuantity > 0 ? '✔ 대출가능' : '✘ 대출중'}
+              </div>
             </div>
-            <div class="book-available">✔ 대출가능</div>
-            <div class="book-unavailable">✘ 대출중</div>
-          </div>
-          <hr style="margin-bottom: 20px">
-
-          <div class="book-details">
-            <span style="font-weight: bold; margin-right: 15px">저자:</span> <c:out value="${book.author}" />
-            <span style="font-weight: bold; margin-right: 15px">발행처:</span> <c:out value="${book.publisher}" />
-            <span style="font-weight: bold; margin-right: 15px">발행년:</span> <c:out value="${book.publishYear}" />
-            <span style="font-weight: bold; margin-right: 15px">자료위치:</span> <c:out value="${book.location}" /><br>
-            <span style="font-weight: bold;">등록번호:</span> <c:out value="${book.registrationNumber}" />
-          </div>
-          <hr style="margin-bottom: 20px">
-          <div class="book-actions">
-            <span class="subject-label">사회과학</span>
-            <button class="wishlist-button">관심도서 담기</button>
+            <div class="book-details">
+              <strong>저자:</strong> ${book.bookAuthor}<br>
+              <strong>출판사:</strong> ${book.bookPublisher}<br>
+              <strong>발행년:</strong> ${book.bookPublishDate}<br>
+              <strong>위치:</strong> ${book.bookLocation}<br>
+            </div>
+            <hr style="margin-bottom: 20px">
+            <div class="book-actions">
+              <span class="subject-label">${book.bookCategory}</span>
+              <button class="wishlist-button">관심도서 담기</button>
+            </div>
           </div>
         </div>
-      </div>
+      </c:forEach>
+    </div>
   </div>
 </div>
+<script>
+  // 전체 선택/해제 기능
+  function toggleSelectAll(selectAllCheckbox) {
+    // 모든 체크박스를 선택하거나 해제
+    const checkboxes = document.querySelectorAll('.book-checkbox');
+    checkboxes.forEach(checkbox => {
+      checkbox.checked = selectAllCheckbox.checked;
+    });
+  }
+</script>
 </body>
 </html>

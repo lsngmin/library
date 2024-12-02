@@ -157,4 +157,27 @@
         WHERE bookCategory = #{category}
         ORDER BY borrowCount DESC;
     </select>
+
+    <select id="searchBooksByKeywordAndType" parameterType="map" resultType="Book">
+        SELECT
+        bookCode, bookName, bookAuthor, bookPublisher, bookCategory, bookLocation, bookQuantity, bookImageSrc
+        FROM Book
+        WHERE
+        <choose>
+            <when test="searchType == 'title'">
+                REPLACE(bookName, ' ', '') LIKE REPLACE(#{keyword}, ' ', '') <!-- 띄어쓰기 제거 -->
+            </when>
+            <when test="searchType == 'author'">
+                REPLACE(bookAuthor, ' ', '') LIKE REPLACE(#{keyword}, ' ', '') <!-- 띄어쓰기 제거 -->
+            </when>
+            <when test="searchType == 'publisher'">
+                REPLACE(bookPublisher, ' ', '') LIKE REPLACE(#{keyword}, ' ', '') <!-- 띄어쓰기 제거 -->
+            </when>
+            <otherwise>
+                REPLACE(bookName, ' ', '') LIKE REPLACE(#{keyword}, ' ', '') <!-- 기본: 제목 검색 -->
+            </otherwise>
+        </choose>
+    </select>
+
+
 </mapper>
