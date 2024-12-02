@@ -126,6 +126,7 @@
             border-radius: 10px; /* 사각형 모서리를 약간만 둥글게 */
             background-color: #eee;
             margin-bottom: 8px;
+            object-fit: cover;
         }
 
         .student-card {
@@ -147,9 +148,14 @@
         .profile-image {
             width: 80px;
             height: 80px;
-            border-radius: 10px;
-            background-color: #eee;
             margin-bottom: 8px;
+            background: none;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .student-name {
@@ -354,6 +360,27 @@
             margin-right: auto;
         }
 
+        .book-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .book-table th, .book-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .book-table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+        }
+
+        .book-table tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+
     </style>
 </head>
 <body>
@@ -441,36 +468,20 @@
             </div>
         </div>
 
-        <table class="loan-history-table">
-            <thead>
-            <tr>
-                <th>대출코드</th>
-                <th>도서명</th>
-                <th>기간</th>
-                <th>상태</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>0000000001</td>
-                <td>총의 기원</td>
-                <td>2024-10-12 ~ 2024-10-26</td>
-                <td><span class="status-tag status-overdue">연체중</span></td>
-            </tr>
-            <tr>
-                <td>0000000002</td>
-                <td>코스모스</td>
-                <td>2023-10-12 ~ 2024-10-12</td>
-                <td><span class="status-tag status-completed">정상</span></td>
-            </tr>
-            <tr>
-                <td>0000000003</td>
-                <td>이기적 유전자</td>
-                <td>2024-10-09 ~ 2024-10-25</td>
-                <td><span class="status-tag status-extended">연장 1회</span></td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="book-return-section">
+            <table class="book-table" id="rentalTable">
+                <thead>
+                <tr>
+                    <th>대출코드</th>
+                    <th>도서명</th>
+                    <th>기간</th>
+                    <th>상태</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -483,7 +494,7 @@
             <c:forEach items="${users}" var="user">
                 <div class="student-card" data-userid="${user.userId}">
                     <div class="profile-image">
-                        <img src="/resources/images/default-profile.png" alt="프로필">
+                        <img src="/resources/img/admindashboard/userdefaultimg.png" alt="프로필">
                     </div>
                     <div class="student-name">${user.name}</div>
                     <div class="student-college">${user.colleges}</div>
@@ -517,20 +528,23 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // 학생 카드 클릭 이벤트
         document.querySelectorAll('.student-card').forEach(card => {
-            card.addEventListener('click', async function() {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.student-card.highlighted').forEach(selected => {
+                    selected.classList.remove('highlighted');
+                });
+                this.classList.add('highlighted');
+
                 const userId = this.dataset.userid;
-                console.log('Clicked user:', userId);
 
-                try {
-                    const response = await fetch('${pageContext.request.contextPath}/admin/userinfo/detail?userId=' + userId);
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    const userData = await response.json();
-                    console.log('User data:', userData);
-
+                Promise.all([
+                    fetch('/admin/userinfo/detail?userId=' + userId).then(r => r.json()),
+                    fetch('/admin/userRentalList', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({userId: userId})
+                    }).then(r => r.json())
+                ]).then(([userData, rentalData]) => {
                     const detailSection = document.getElementById('studentDetailSection');
                     const inputs = detailSection.querySelectorAll('.detail-input');
 
@@ -545,17 +559,37 @@
                     inputs[8].value = userData.reason || '-';
                     inputs[9].value = '-';
 
-                    detailSection.style.display = 'block';
-                    document.querySelectorAll('.student-card').forEach(c =>
-                        c.classList.remove('highlighted'));
-                    this.classList.add('highlighted');
+                    const tbody = document.querySelector('#rentalTable tbody');
+                    tbody.innerHTML = '';
 
-                } catch (error) {
-                    console.error('Error:', error);
-                    alert('사용자 정보를 불러오는데 실패했습니다.');
-                }
+                    if (rentalData && rentalData.length > 0) {
+                        rentalData.forEach(rental => {
+                            let status = '정상';
+                            let statusClass = 'status-completed';
+
+                            if (rental.status === '0') {
+                                status = '연체';
+                                statusClass = 'status-overdue';
+                            } else if (rental.status === '2') {
+                                status = '연장';
+                                statusClass = 'status-extended';
+                            }
+
+                            tbody.innerHTML +=
+                                '<tr>' +
+                                '<td>' + rental.rentalCode + '</td>' +
+                                '<td>' + rental.bookName + '</td>' +
+                                '<td>' + rental.rentalStartDate + ' ~ ' + rental.rentalEndDate + '</td>' +
+                                '<td><span class="status-tag ' + statusClass + '">' + status + '</span></td>' +
+                                '</tr>';
+                        });
+                    }
+
+                    detailSection.style.display = 'block';
+                });
             });
         });
+    });
 
         // 검색 기능
         document.querySelector('.search-icon').addEventListener('click', function() {
@@ -576,7 +610,6 @@
                 }
             }
         });
-    });
 </script>
 </body>
 </html>
