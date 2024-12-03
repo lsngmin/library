@@ -59,7 +59,9 @@
 
 ## 빌드 및 배포
 * Maven(war) 빌드, AWS LightSail(Tomcat) 배포
-### [접속가능 :o:](http://bit.ly/3B1tlWk)
+### 사용자 [접속가능 :X:](https://bit.ly/49foLk1)
+### 관리자 [접속가능 :X:](https://bit.ly/41eRNOQ)
+
 
 ## 기능 요구서
 <a href="https://github.com/lsngmin/library/tree/0d9365230e0d8c83f75e0181ac47080100e436b9/library-project-functionalRequire" target="_blank">
