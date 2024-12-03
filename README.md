@@ -59,8 +59,6 @@
 
 ## 빌드 및 배포
 * Maven(war) 빌드, AWS LightSail(Tomcat) 배포
-### 사용자 [접속가능 :X:](https://bit.ly/49foLk1)https://bit.ly/49foLk1
-### 관리자 [접속가능 :X:](https://bit.ly/41eRNOQ)https://bit.ly/41eRNOQ
 
 
 ## 기능 요구서
