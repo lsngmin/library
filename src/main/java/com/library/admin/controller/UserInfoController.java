@@ -44,7 +44,7 @@ public class UserInfoController {
         }
     }
 
-    @GetMapping("/userinfo/detail")
+    @GetMapping("/admin/userinfo/detail")
     @ResponseBody
     public UserVO getUserDetail(@RequestParam String userId) {
         UserVO vo = new UserVO();
