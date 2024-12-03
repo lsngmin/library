@@ -84,6 +84,7 @@
 
 
 ## 프로젝트 구조
+[메인코드](https://github.com/lsngmin/library/tree/4cbd173b0e08afa6a325fac6345020c27b21e2d9/src/main/java/com/library/admin/controller)
 
 ```bash
 library
