@@ -59,8 +59,6 @@
 
 ## 빌드 및 배포
 * Maven(war) 빌드, AWS LightSail(Tomcat) 배포
-### 사용자 [접속가능 :X:](https://bit.ly/49foLk1)
-### 관리자 [접속가능 :X:](https://bit.ly/41eRNOQ)
 
 
 ## 기능 요구서
@@ -84,6 +82,7 @@
 
 
 ## 프로젝트 구조
+[메인코드](https://github.com/lsngmin/library/tree/4cbd173b0e08afa6a325fac6345020c27b21e2d9/src/main/java/com/library/admin/controller)
 
 ```bash
 library
