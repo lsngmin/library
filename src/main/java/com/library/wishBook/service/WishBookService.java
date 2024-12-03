@@ -16,4 +16,6 @@ public interface WishBookService {
     List<WishBookVO> getAllBookWishes();
 
     List<WishBookVO> getWishBooksByUserId(String userId);
+
+    int selectCountTotal();
 }

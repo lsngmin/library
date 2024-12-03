@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin")
 public class UserInfoController {
     private static final Logger logger = LoggerFactory.getLogger(UserInfoController.class);
     private final UserService userService;

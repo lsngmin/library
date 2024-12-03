@@ -12,4 +12,5 @@ public interface RentalService {
     public void deleteRental(String userId, String bookName);
     public int selectRentalExtensionByUserIdAndBookCode(String userId, String bookCode);
     public void updateRentalExtensionByUserIdAndBookCode(String userId, String bookCode);
+    public int selectTotalRental();
 }

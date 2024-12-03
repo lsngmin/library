@@ -31,7 +31,7 @@
     <div class="icon"><img src="/img/admindashboard/wishBook_icon.png" alt="아이콘" class="info_icon"></div>
     <div class="details">
       <div class="title">희망도서 신청 건 수</div>
-      <div class="number">1,234</div>
+      <div class="number">${totalWishBookList}</div>
     </div>
   </div>
   <div class="info-box">
@@ -45,7 +45,7 @@
     <div class="icon"><img src="/img/admindashboard/rentalBook_icon.png" alt="아이콘" class="info_icon"></div>
     <div class="details">
       <div class="title">대여 진행중인 도서 수</div>
-      <div class="number">89</div>
+      <div class="number">${totalRentalBookList}</div>
     </div>
   </div>
 </div>
@@ -188,9 +188,9 @@
     </div>
     <button class="btn-submit" id="clear-over-due-button">제출하기</button>
 
-    <div class="status-message success" display>연체가 해제 되었습니다.</div>
-    <div class="status-message warning">학번을 확인해 주세요.</div>
-    <div class="status-message error">연체중이 아닙니다.</div>
+<%--    <div class="status-message success" display>연체가 해제 되었습니다.</div>--%>
+<%--    <div class="status-message warning">학번을 확인해 주세요.</div>--%>
+<%--    <div class="status-message error">연체중이 아닙니다.</div>--%>
   </div>
 </div>
 </div>

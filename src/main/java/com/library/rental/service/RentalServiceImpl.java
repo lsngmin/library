@@ -38,4 +38,9 @@ public class RentalServiceImpl implements RentalService {
     public void updateRentalExtensionByUserIdAndBookCode(String userId, String bookCode) {
         rentalDAO.updateRentalExtensionByUserIdAndBookCode(userId, bookCode);
     }
+
+    @Override
+    public int selectTotalRental() {
+        return rentalDAO.selectTotalRental();
+    }
 }

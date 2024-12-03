@@ -46,7 +46,6 @@
     </style>
 </head>
 <body>
-<jsp:include page="libraryHeader.jsp"/>
 <div class="main-container">
     <jsp:include page="libraryNavbar.jsp"/>
     <div class="content">

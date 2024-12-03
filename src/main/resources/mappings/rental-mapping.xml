@@ -56,4 +56,7 @@
         WHERE rentalUserId = #{userId}
         AND rentalBookCode = #{bookCode};
     </update>
+    <select id="selectTotalRental" resultType="int">
+        select count(rentalCode) from BookRental;
+    </select>
 </mapper>

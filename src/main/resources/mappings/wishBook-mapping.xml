@@ -57,5 +57,7 @@
         WHERE wishUserId = #{userId}
         ORDER BY wishCode DESC
     </select>
-
+    <select id="selectCountTotal" resultType="int">
+        Select count(wishCode) from BookWishList;
+    </select>
 </mapper>

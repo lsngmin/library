@@ -42,4 +42,9 @@ public class WishBookServiceImpl implements WishBookService {
     public List<WishBookVO> getWishBooksByUserId(String userId) {
         return bookWishListDAO.getWishBooksByUserId(userId);  // bookWishListDAO로 수정
     }
+
+    @Override
+    public int selectCountTotal() {
+        return bookWishListDAO.selectCountTotal();
+    }
 }

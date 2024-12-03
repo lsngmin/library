@@ -169,32 +169,32 @@
   </script>
 </head>
 <body>
-<div class="top-section">
-  <div class="top-nav">
-    <div class="nav-buttons">
-      <a href="/admin/rl" class="nav-button">홈</a>
-      <a href="/bookregister" class="nav-button">도서 등록</a>
-      <a href="/admin/bookinquiry" class="nav-button">도서 정보</a>
-      <a href="#" class="nav-button">학생 정보</a>
-      <a href="#" class="nav-button">희망/기증 도서 신청 목록</a>
-    </div>
-    <div class="nav-right">
-      <a href="#" class="nav-button">도서관 바로가기</a>
-      <a href="#" class="nav-button">로그아웃</a>
-    </div>
-  </div>
+<%--<div class="top-section">--%>
+<%--  <div class="top-nav">--%>
+<%--    <div class="nav-buttons">--%>
+<%--      <a href="/admin/rl" class="nav-button">홈</a>--%>
+<%--      <a href="/bookregister" class="nav-button">도서 등록</a>--%>
+<%--      <a href="/admin/bookinquiry" class="nav-button">도서 정보</a>--%>
+<%--      <a href="#" class="nav-button">학생 정보</a>--%>
+<%--      <a href="#" class="nav-button">희망/기증 도서 신청 목록</a>--%>
+<%--    </div>--%>
+<%--    <div class="nav-right">--%>
+<%--      <a href="#" class="nav-button">도서관 바로가기</a>--%>
+<%--      <a href="#" class="nav-button">로그아웃</a>--%>
+<%--    </div>--%>
+<%--  </div>--%>
 
-  <div class="main-header">
-    <div class="header">
-      <h1>강릉대학교 통합도서관 관리 시스템</h1>
-      <div class="search-bar">
-        <input type="text" placeholder="학생 정보 또는 도서 정보를 입력하세요...">
-        <span class="search-icon">🔍</span>
-      </div>
-    </div>
-  </div>
-</div>
-
+<%--  <div class="main-header">--%>
+<%--    <div class="header">--%>
+<%--      <h1>강릉대학교 통합도서관 관리 시스템</h1>--%>
+<%--      <div class="search-bar">--%>
+<%--        <input type="text" placeholder="학생 정보 또는 도서 정보를 입력하세요...">--%>
+<%--        <span class="search-icon">🔍</span>--%>
+<%--      </div>--%>
+<%--    </div>--%>
+<%--  </div>--%>
+<%--</div>--%>
+<jsp:include page="adminHeader.jsp"/>
 <div class="content-wrapper">
   <div class="form-container">
     <h3 class="section-title">도서 등록</h3>

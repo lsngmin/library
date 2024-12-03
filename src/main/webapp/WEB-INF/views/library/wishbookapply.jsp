@@ -7,72 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>강릉대학교 통합도서관 - 희망도서 신청</title>
     <style>
-        * {
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background: #f5f5f5;
-            color: #333;
-        }
-
-        .header {
+            font-family: Arial, sans-serif;
+            background: #fff;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background: #f8f8f8;
-            border-bottom: 1px solid #e0e0e0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-container img {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-        }
-
-        .logo-container h1 a {
-            font-size: 22px;
-            font-weight: bold;
-            text-decoration: none;
-            color: #333;
-        }
-
-        .login-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .login-container img {
-            width: 18px;
-            height: 18px;
-            margin-right: 5px;
-        }
-
-        .login-container a {
-            text-decoration: none;
-            color: #333;
-            font-size: 14px;
-            margin-left: 10px;
-        }
-
-        .login-container a:hover {
-            color: #007bff;
-        }
 
         .main-container {
             display: flex;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+
         }
 
         .sidebar {
@@ -224,44 +173,8 @@
     </style>
 </head>
 <body>
-<header class="header">
-    <div class="logo-container">
-        <img src="img/logoImage.png" alt="강릉대학교 로고">
-        <h1><a href="main">강릉대학교 통합도서관</a></h1>
-    </div>
-    <div class="login-container">
-        <c:choose>
-            <c:when test="${not empty sessionScope.user}">
-                <img src="img/userImage2.png" alt="사용자 아이콘" style="width: 24px; height: 24px;"> <!-- 이미지 크기 조정 -->
-                <a href="myInfo" style="font-size: 18px; font-weight: bold; margin-left: 10px;">내정보</a> <!-- 텍스트 크기와 강조 -->
-                <a href="logout" style="font-size: 18px; font-weight: bold; margin-left: 15px;">로그아웃</a> <!-- 텍스트 크기와 강조 -->
-            </c:when>
-            <c:otherwise>
-                <a href="login" style="font-size: 18px; font-weight: bold;">로그인</a> <!-- 텍스트 크기와 강조 -->
-            </c:otherwise>
-        </c:choose>
-    </div>
-</header>
-
 <div class="main-container">
-    <aside class="sidebar">
-        <a href="search" style="text-decoration: none; color: inherit;">
-            <div class="nav-item">통합검색</div>
-        </a>
-        <a href="wishbookapply" style="text-decoration: none; color: inherit;">
-            <div class="nav-item active">희망도서</div>
-        </a>
-        <a href="interestbookview" style="text-decoration: none; color: inherit;">
-            <div class="nav-item">인기도서</div>
-        </a>
-        <a href="notice" style="text-decoration: none; color: inherit;">
-            <div class="nav-item">공지사항</div>
-        </a>
-        <a href="guide" style="text-decoration: none; color: inherit;">
-            <div class="nav-item">이용사항</div>
-        </a>
-    </aside>
-
+    <jsp:include page="libraryNavbar.jsp"/>
     <div class="content">
         <h2>희망도서 신청</h2>
         <section class="request-container">

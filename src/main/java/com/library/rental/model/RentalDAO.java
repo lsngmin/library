@@ -40,5 +40,8 @@ public class RentalDAO {
         params.put("bookCode", bookCode);
         mybatis.update("RentalDAO.updateRentalExtensionByUserIdAndBookCode", params);
     }
+    public int selectTotalRental() {
+        return mybatis.selectOne("RentalDAO.selectTotalRental");
+    }
 }
 

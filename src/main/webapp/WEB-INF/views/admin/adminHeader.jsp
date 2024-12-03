@@ -11,7 +11,7 @@
         <li><a href="/admindashboard"><img src="/img/admindashboard/home_icon.png" alt="홈 아이콘" class="logout_icon">&nbsp홈</a></li>
         <li><a href="/bookregister"><img src="/img/admindashboard/bookregi_icon.png" alt="도서등록 아이콘" class="logout_icon">&nbsp도서 등록</a></li>
         <li><a href="admin/bookinquiry"><img src="/img/admindashboard/bookinfo_icon.png" alt="도서 정보 아이콘" class="logout_icon">&nbsp도서 정보</a></li>
-        <li><a href="admin/userinfo"><img src="/img/admindashboard/userinfo_icon.png" alt="학생 정보 아이콘" class="logout_icon">&nbsp학생 정보</a></li>
+        <li><a href="/userinfo"><img src="/img/admindashboard/userinfo_icon.png" alt="학생 정보 아이콘" class="logout_icon">&nbsp학생 정보</a></li>
         <li><a href="admin/bookapplylist"><img src="/img/admindashboard/status_icon.png" alt="희망/기종 도서 신청 아이콘" class="logout_icon">&nbsp희망/기종 도서 신청 목록</a></li>
     </ul>
     <ul class="right">

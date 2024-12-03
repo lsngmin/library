@@ -40,4 +40,7 @@ public class WishBookDAO {
     public List<WishBookVO> getWishBooksByUserId(String userId) {
         return mybatis.selectList("WishBookDAO.getWishBooksByUserId", userId);
     }
+    public int selectCountTotal() {
+        return mybatis.selectOne("WishBookDAO.selectCountTotal");
+    }
 }

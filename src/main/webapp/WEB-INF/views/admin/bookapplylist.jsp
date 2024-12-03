@@ -6,8 +6,11 @@
   <title>강릉대학교 통합도서관 관리 시스템</title>
   <style>
     /* 기본 스타일 */
-    * { box-sizing: border-box; }
-    body {
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }    body {
       font-family: 'Noto Sans KR', sans-serif;
       margin: 0;
       padding: 0;
@@ -45,35 +48,35 @@
       background-color: #444;
     }
 
-    /* 헤더 스타일 */
-    .main-header {
-      background-color: white;
-      padding: 15px 20px;
-      margin: 0;
-      border-bottom: 1px solid #ddd;
-    }
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .header h1 {
-      margin: 0;
-      color: #333;
-      font-size: 20px;
-    }
-    .header .search-bar {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-    .header .search-bar input {
-      width: 300px;
-      padding: 8px 35px 8px 15px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      background-color: #f8f8f8;
-    }
+    /*!* 헤더 스타일 *!*/
+    /*.main-header {*/
+    /*  background-color: white;*/
+    /*  padding: 15px 20px;*/
+    /*  margin: 0;*/
+    /*  border-bottom: 1px solid #ddd;*/
+    /*}*/
+    /*.header {*/
+    /*  display: flex;*/
+    /*  justify-content: space-between;*/
+    /*  align-items: center;*/
+    /*}*/
+    /*.header h1 {*/
+    /*  margin: 0;*/
+    /*  color: #333;*/
+    /*  font-size: 20px;*/
+    /*}*/
+    /*.header .search-bar {*/
+    /*  position: relative;*/
+    /*  display: flex;*/
+    /*  align-items: center;*/
+    /*}*/
+    /*.header .search-bar input {*/
+    /*  width: 300px;*/
+    /*  padding: 8px 35px 8px 15px;*/
+    /*  border: 1px solid #ddd;*/
+    /*  border-radius: 4px;*/
+    /*  background-color: #f8f8f8;*/
+    /*}*/
     .search-icon {
       position: absolute;
       right: 12px;
@@ -305,31 +308,32 @@
   </style>
 </head>
 <body>
-<div class="top-section">
-  <div class="top-nav">
-    <div class="nav-buttons">
-      <a href="/admin/rl" class="nav-button">홈</a>
-      <a href="/admin/bookregister" class="nav-button">도서 등록</a>
-      <a href="/admin/bookinquiry" class="nav-button">도서 정보</a>
-      <a href="#" class="nav-button">학생 정보</a>
-      <a href="#" class="nav-button">희망/기증 도서 신청 목록</a>
-    </div>
-    <div class="nav-right">
-      <a href="#" class="nav-button">도서관 바로가기</a>
-      <a href="#" class="nav-button">로그아웃</a>
-    </div>
-  </div>
+<jsp:include page="adminHeader.jsp"/>
+<%--<div class="top-section">--%>
+<%--  <div class="top-nav">--%>
+<%--    <div class="nav-buttons">--%>
+<%--      <a href="/admin/rl" class="nav-button">홈</a>--%>
+<%--      <a href="/admin/bookregister" class="nav-button">도서 등록</a>--%>
+<%--      <a href="/admin/bookinquiry" class="nav-button">도서 정보</a>--%>
+<%--      <a href="#" class="nav-button">학생 정보</a>--%>
+<%--      <a href="#" class="nav-button">희망/기증 도서 신청 목록</a>--%>
+<%--    </div>--%>
+<%--    <div class="nav-right">--%>
+<%--      <a href="#" class="nav-button">도서관 바로가기</a>--%>
+<%--      <a href="#" class="nav-button">로그아웃</a>--%>
+<%--    </div>--%>
+<%--  </div>--%>
 
-  <div class="main-header">
-    <div class="header">
-      <h1>강릉대학교 통합도서관 관리 시스템</h1>
-      <div class="search-bar">
-        <input type="text" placeholder="도서명을 입력해 주세요">
-        <span class="search-icon">🔍</span>
-      </div>
-    </div>
-  </div>
-</div>
+<%--  <div class="main-header">--%>
+<%--    <div class="header">--%>
+<%--      <h1>강릉대학교 통합도서관 관리 시스템</h1>--%>
+<%--      <div class="search-bar">--%>
+<%--        <input type="text" placeholder="도서명을 입력해 주세요">--%>
+<%--        <span class="search-icon">🔍</span>--%>
+<%--      </div>--%>
+<%--    </div>--%>
+<%--  </div>--%>
+<%--</div>--%>
 
 <div class="content-wrapper">
   <!-- 희망도서 신청 목록 섹션 -->
